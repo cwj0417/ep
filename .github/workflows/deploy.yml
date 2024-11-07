@@ -15,7 +15,7 @@ jobs:
             node-version: "20.x"
         - run: yarn
         - run: yarn build
-        - uses: JamesIves/github-pages-deploy-action@4
+        - uses: JamesIves/github-pages-deploy-action@v4
           with:
             branch: page
             folder: dist
