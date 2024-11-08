@@ -86,8 +86,8 @@ const setAll = (isDefault) => {
             不渲染
           </div>
         </div>
-        <div class="strat">
-          <div class="action" @click="setAll(true)">默认</div>
+        <div class="strat setall">
+          <div class="action" @click="setAll(true)">恢复默认</div>
           <div class="action" @click="setAll(false)">关闭渲染</div>
         </div>
       </div>
@@ -119,6 +119,7 @@ const setAll = (isDefault) => {
   width: 30%;
   height: 100%;
   overflow: auto;
+  border: 1px solid #b6b6b6;
 }
 
 #calender-head {
@@ -126,7 +127,9 @@ const setAll = (isDefault) => {
   height: 50px;
   display: flex;
   flex-wrap: wrap;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
+  border: 1px solid #b6b6b6;
+  box-sizing: border-box;
 }
 
 #calander-body {
@@ -146,23 +149,23 @@ const setAll = (isDefault) => {
 }
 
 .card {
-  height: 100px;
+  height: 8vw;
   border: 1px solid #dddddd;
   box-sizing: border-box;
   position: relative;
 }
 
 .card.active {
-  background-color: #fff;
+  background-color: #c9fff9
 }
 
 .date {
-  opacity: 0.3;
-  font-size: 30px;
-  line-height: 30px;
+  opacity: 0.4;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0.2rem;
+  top: 0.2rem;
 }
 
 .record {
@@ -171,6 +174,7 @@ const setAll = (isDefault) => {
 }
 
 #strategy-select {
+  font-size: 0.8rem;
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
@@ -193,7 +197,7 @@ const setAll = (isDefault) => {
   display: flex;
   text-align: center;
   justify-content: center;
-  border: 1px solid #eee;
+  box-shadow: 1px 1px 2px #bbb;
   font-weight: 500;
 }
 
@@ -221,5 +225,32 @@ pre {
   margin: 0;
   padding: 0 10px;
   white-space: break-spaces;
+}
+
+@media screen and (max-width: 600px) {
+  .strat {
+    width: 25%;
+  }
+  #app {
+    flex-direction: column;
+  }
+  #cont-wrap {
+    width: 100%;
+    height: 40%;
+  }
+  #detail {
+    width: 100%;
+    height: 60%;
+  }
+  .setall {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .action {
+    width: 100%;
+    height: 100% !important;
+  }
 }
 </style>
