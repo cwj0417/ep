@@ -21,7 +21,7 @@ const formatTs = (ts) => {
 let detailRefs = {}
 
 const jumpTo = (ts) => {
-  detailRefs[ts]?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+  detailRefs[ts]?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
 }
 
 let currentScroll = 0
