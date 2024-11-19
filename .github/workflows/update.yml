@@ -1,5 +1,15 @@
 name: update
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'date'
+        required: true
+        type: string
+      detail:
+        description: 'detail'
+        type: string
+        required: true
 permissions:
   contents: write
 jobs: 
