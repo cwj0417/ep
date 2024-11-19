@@ -20,6 +20,7 @@ jobs:
         - uses: actions/setup-node@v4
           with:
             node-version: "20.x"
+        - run: yarn
         - run: node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }}
         - run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
