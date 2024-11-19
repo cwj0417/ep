@@ -1,4 +1,5 @@
 import fse from 'fs-extra'
+console.log(process.argv)
 const date = process.argv[2]
 const detail = decodeURI(process.argv[3])
 const hh = process.argv[4] || 0
