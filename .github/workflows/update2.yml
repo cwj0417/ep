@@ -38,7 +38,7 @@ jobs:
           GH_TOKEN: ${{ secrets.PUSH_SECRET }}
         run: |
           yarn
-          node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }} ${{ inputs.hh }} ${{ inputs.s3 }} ${{ inputs.s4 }}}}
+          node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }} ${{ inputs.hh }} ${{ inputs.s3 }} ${{ inputs.s4 }}
           git config --local user.email "chenwenjun@yo-cwj.com"
           git config --local user.name "cwj0417"
           git add .
