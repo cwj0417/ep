@@ -3,30 +3,32 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'date'
+        description: "date"
         required: true
         type: string
       detail:
-        description: 'detail'
+        description: "detail"
         type: string
         required: true
 permissions:
   contents: write
-jobs: 
+jobs:
   recievedataandpushchange:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v4
-        - uses: actions/setup-node@v4
-          with:
-            node-version: "20.x"
-        - run: yarn
-        - run: node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }}
-        - run: |
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
-            git commit -a -m "action: update data"
-        - uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{ secrets.PUSH_SECRET }}
-            branch: ${{ github.ref }}
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - run: yarn
+      - run: node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }}
+      - run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "action: update data"
+      - uses: ad-m/github-push-action@master
+        env:
+          GH_TOKEN: ${{ secrets.PUSH_SECRET }}
+        with:
+          github_token: ${{ secrets.PUSH_SECRET }}
+          branch: ${{ github.ref }}
