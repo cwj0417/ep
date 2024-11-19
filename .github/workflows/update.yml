@@ -28,5 +28,5 @@ jobs:
             git commit -a -m "action: update data"
         - uses: ad-m/github-push-action@master
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            github_token: ${{ secrets.PUSH_SECRET }}
             branch: ${{ github.ref }}
