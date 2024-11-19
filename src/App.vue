@@ -97,6 +97,12 @@ const setAll = (isDefault) => {
     <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)"
       :ref="ref => detailRefs[datets] = ref">
       {{ formatTs(datets) }}
+      <pre v-if="item.memo">
+        {{ item.memo }}
+      </pre>
+      <pre v-if="item.coner">
+        {{ item.coner[1] }}
+      </pre>
       <pre>
         {{ item.detail }}
       </pre>
