@@ -27,5 +27,8 @@ jobs:
         run: |
           yarn
           node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }}
-          git commit -a -m "action: update data"
+          git config --local user.email "chenwenjun@yo-cwj.com"
+          git config --local user.name "cwj0417"
+          git add .
+          git commit -m "action: update data"
           git push origin main
