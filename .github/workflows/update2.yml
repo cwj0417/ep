@@ -1,0 +1,46 @@
+name: update
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "date"
+        required: true
+        type: string
+      detail:
+        description: "detail"
+        type: string
+        required: true
+      hh:
+        description: "hh"
+        type: number
+        required: true
+      s3:
+        description: "s3"
+        type: number
+        required: true
+      s4:
+        description: "s4"
+        type: number
+        required: true
+permissions:
+  contents: write
+jobs:
+  recievedataandpushchange:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        env:
+          GH_TOKEN: ${{ secrets.PUSH_SECRET }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - env:
+          GH_TOKEN: ${{ secrets.PUSH_SECRET }}
+        run: |
+          yarn
+          node scripts/updateDataFromAction.js ${{ inputs.date }} ${{ inputs.detail }} ${{ inputs.hh }} ${{ inputs.s3 }} ${{ inputs.s4 }}}}
+          git config --local user.email "chenwenjun@yo-cwj.com"
+          git config --local user.name "cwj0417"
+          git add .
+          git commit -m "action: update data"
+          git push origin main
