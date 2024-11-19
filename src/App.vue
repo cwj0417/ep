@@ -3,7 +3,9 @@ import { reactive, ref } from 'vue'
 import Record from './components/Record.vue'
 import renderStrategy, { stratMap, defaultStrat } from './renderer.js'
 
-import datasource from './data'
+import data from './data.json'
+
+const datasource = Object.fromEntries(Object.entries(data).map(([k, v]) => ([new Date(k).valueOf(), v])))
 
 const dateRange = ['2024-01-29', '2024-12-30']
 const days = (new Date(dateRange[1]) - new Date(dateRange[0])) / 86400000
