@@ -29,8 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        env:
-          GH_TOKEN: ${{ secrets.PUSH_SECRET }}
+        with:
+          token: ${{ secrets.PUSH_SECRET }}
       - uses: actions/setup-node@v4
         with:
           node-version: "20.x"
