@@ -43,6 +43,17 @@ const onMainScroll = (event) => {
   }
 }
 
+let detailScrollThrottleHandler = null
+
+const onDetailScroll = (event) => {
+  if (!detailScrollThrottleHandler) {
+    isShowFilter.value = false
+    detailScrollThrottleHandler = setTimeout(() => {
+      detailScrollThrottleHandler = null
+    }, 350)
+  }
+}
+
 const setAll = (isDefault) => {
   for (const key in defaultStrat) {
     strategy[key] = isDefault ? 0 : -1
@@ -95,7 +106,7 @@ const setAll = (isDefault) => {
       </div>
     </div>
   </div>
-  <div id="detail">
+  <div id="detail" @scroll="onDetailScroll">
     <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)"
       :ref="ref => detailRefs[datets] = ref">
       {{ formatTs(datets) }}
