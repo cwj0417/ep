@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import Record from './components/Record.vue'
 import renderStrategy, { stratMap, defaultStrat } from './renderer.js'
 
@@ -59,6 +59,11 @@ const setAll = (isDefault) => {
     strategy[key] = isDefault ? 0 : -1
   }
 }
+
+onMounted(() => {
+  const body = document.querySelector('#calander-body')
+  body.scroll(0, body.scrollHeight * (new Date() - new Date(dateRange[0])) / (new Date(dateRange[1]) - new Date(dateRange[0])) - body.clientHeight)
+})
 </script>
 
 <template>
