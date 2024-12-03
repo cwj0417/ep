@@ -1039,27 +1039,44 @@
 14:30 涨/烫/风凉
 19:39 涨/烫/风凉
 21:06 涨/烫/风凉
-半夜麻了1次，睡醒麻了0次`,hh:0,s3:1,s4:7},"2024-11-27":{detail:`16:58 涨/烫/风凉
+半夜麻了1次，睡醒麻了0次`,hh:0,s3:1,s4:7},"2024-11-27":{detail:`
+16:58 涨/烫/风凉
 19:39 涨/烫/风凉
 20:19 涨/烫/风凉
 21:54 涨/烫/风凉
 22:01 失重
 22:09 失重
-半夜麻了0次，睡醒麻了0次`,hh:0,s3:0,s4:6},"2024-11-28":{detail:`11:12 涨/烫/风凉
+半夜麻了0次，睡醒麻了0次`,hh:0,s3:0,s4:6},"2024-11-28":{detail:`
+11:12 涨/烫/风凉
 19:16 涨/烫/风凉
 有一次轻微的感觉不对，这次算作轻微发
-半夜麻了0次，睡醒麻了0次`,hh:1,s3:0,s4:2},"2024-11-29":{detail:`10:36恍惚，梦境感，但没想吐和拉屎
+半夜麻了0次，睡醒麻了0次`,hh:1,s3:0,s4:2},"2024-11-29":{detail:`
+10:36恍惚，梦境感，但没想吐和拉屎
 13:44 涨/烫/风凉
 15.00 恍惚，梦境感
 16:54 涨/烫/风凉
 20:17恍惚，梦境，想吐，21分好，不知道为什么手上电脑，是谁的，不知道时间，有没有上班，刚才的事（指发作前几分钟）觉得很远，大概早上或者昨天，发作时的事不真实
 半夜2点有说回他，早上问说不知道有没有发，但知道早上眼睛跳了
-半夜麻了0次，睡醒麻了1次`,hh:3,s3:1,s4:2},"2024-12-01":{detail:`09:20 恍惚, 说”平时也会这样, 平时是身上”发怵”, 现在是上半身”发怵””, 24恶心的感觉没了
+半夜麻了0次，睡醒麻了1次`,hh:3,s3:1,s4:2},"2024-11-30":{memo:"恍惚严重发作第四次",detail:`
+19:24 恍惚严重（事后记忆还行）, 梦境感, 有想吐, 头好晕, 28了还在发, 29分, 人笑了, 问了是主动笑的, 说感觉很神奇(这种感受), 30分问话不回答了, 30分:51秒 问有没有拉屎感说没了, 说不知道礼拜几, 32分: 我问恍惚过了吗, 他说没恍惚过, 问我刚才是恍惚了吗, 问我是不是刚从罗南回来, 其实不是, 下午家里呆了一下午
+问我下午有没有睡过觉, 因为感觉有梦到一些剧情
+35分, 说出礼拜六了, 问我们白天在哪里, 自己回忆了一点东西, 都是正确的, 但感觉不真实
+
+20.41 恍惚, “难受”, 44: 恶心的感觉没有了, 45分问, “电脑是我带回来的吗? 今天礼拜几?感觉像做了很多梦, 不知道之前干什么了” 46: 不知道自己恍惚了, 48: 我让他现在吃药, 他问我吃什么药, 我问了知道生病吗, 说知道.49:又问了我自己睡过觉没, 上一次发作问了3次, 51分, 问有没有做梦, 看到电脑问为什么有2个电脑, 54分问我为什么他要把电脑带回家
+
+(不知道这2次是不是因为在做斐波那契数列, 下午因为comfyui搞不清教点基础, 偶然从递归弄到斐波那契数列他一下午没做出)
+21.43忘记和小婷吃了什么
+22:47 涨/烫/风凉
+
+0.54 说了很短一句话
+半夜麻了1次，睡醒麻了0次`,hh:2,s3:1,s4:1},"2024-12-01":{detail:`
+09:20 恍惚, 说”平时也会这样, 平时是身上”发怵”, 现在是上半身”发怵””, 24恶心的感觉没了
 17:23 恍惚，梦境感，想大便，想吐，24说发好了
 21:17想拉屎，想吐，后背后脑勺下半部分风凉，熟悉感，梦境感，19分梦境感熟悉感明显。20分问有没有梦境中的梦境。21分好了
 00.14 失重麻
 1.30左右 右脚抽动多次
-半夜麻了0次，睡醒麻了0次`,hh:3,s3:1,s4:0},"2024-12-02":{detail:`09:20上班路上恍惚，估计9.15吧
+半夜麻了0次，睡醒麻了0次`,hh:3,s3:1,s4:0},"2024-12-02":{detail:`
+09:20上班路上恍惚，估计9.15吧
 13.08 睡醒想吐，头疼，短暂
 半夜麻了0次，睡醒麻了0次`,hh:1,s3:1,s4:0}},uo={id:"cont-wrap"},ao={id:"calender-wrap"},ho={id:"calender-head"},po={class:"calender-year"},go=["onClick"],mo={class:"date"},_o={class:"strat"},bo={class:"opt-head"},yo=["onClick"],vo=["onClick"],xo={class:"strat setall"},wo={key:0},So={key:1},Co={__name:"App",setup(e){const t=Object.fromEntries(Object.entries(fo).map(([P,A])=>[new Date(P).valueOf(),A])),n=["2024-01-27","2024-12-30"],s=(new Date(n[1])-new Date(n[0]))/864e5,i=new Date(n[0]).valueOf(),r=rs(new Date(n[0]).valueOf()+864e5*4),l=en(Ms),c=P=>{const A=new Date(+P);return`${A.getFullYear()}-${A.getMonth()+1}-${A.getDate()}`};let f={};const h=P=>{var A;(A=f[P])==null||A.scrollIntoView({behavior:"smooth",block:"end",inline:"nearest"})};let a=0,p=null;const S=rs(!0),C=P=>{if(!p){const A=P.target;S.value=a>A.scrollTop,a=A.scrollTop;const I=new Date(n[0]).valueOf()+(new Date(n[1])-new Date(n[0]))/A.scrollHeight*(A.scrollTop+A.clientHeight/2);r.value=I,p=setTimeout(()=>{p=null},350)}};let F=null;const H=P=>{F||(S.value=!1,F=setTimeout(()=>{F=null},350))},Y=P=>{for(const A in Ms)l[A]=P?0:-1};return Wn(()=>{const P=document.querySelector("#calander-body");P.scroll(0,P.scrollHeight*(new Date-new Date(n[0]))/(new Date(n[1])-new Date(n[0]))-P.clientHeight)}),(P,A)=>(de(),me(re,null,[z("div",uo,[z("div",ao,[z("div",ho,[z("div",po,Se(new Date(r.value).getFullYear())+"年"+Se(new Date(r.value).getMonth()+1)+"月 ",1),A[2]||(A[2]=Sl('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),z("div",{id:"calander-body",onScroll:C},[(de(),me(re,null,$t(s,I=>z("div",{class:st(["calender-item card",{active:ge(i)+I*864e5-r.value<864e5*31&&new Date(ge(i)+I*864e5).getMonth()===new Date(r.value).getMonth()}]),onClick:T=>h(ge(i)+I*864e5)},[z("div",mo,Se(new Date(ge(i)+I*864e5).getDate()),1),be(co,{strategy:l,record:ge(t)[ge(i)+I*864e5]},null,8,["strategy","record"])],10,go)),64))],32),z("div",{id:"strategy-select",style:Qt(`transform: translateY(${S.value?0:"100%"})`)},[(de(!0),me(re,null,$t(Object.entries(ge(Pn)),I=>(de(),me("div",_o,[z("div",bo,Se(ge(lo)[I[0]]),1),(de(!0),me(re,null,$t(I[1],(T,W)=>(de(),me("div",{class:st(["option",{active:W===l[I[0]]}]),onClick:Re=>l[I[0]]=W},Se(T.name),11,yo))),256)),z("div",{class:st(["option",{active:l[I[0]]===-1}]),onClick:T=>l[I[0]]=-1}," 不渲染 ",10,vo)]))),256)),z("div",xo,[z("div",{class:"action",onClick:A[0]||(A[0]=I=>Y(!0))},"恢复默认"),z("div",{class:"action",onClick:A[1]||(A[1]=I=>Y(!1))},"关闭渲染")])],4)])]),z("div",{id:"detail",onScroll:H},[(de(!0),me(re,null,$t(Object.entries(ge(t)),([I,T])=>(de(),me("div",{class:"detail-card",ref_for:!0,ref:W=>ge(f)[I]=W},[Ii(Se(c(I))+" ",1),T.memo?(de(),me("pre",wo,"        "+Se(T.memo)+`
       `,1)):gs("",!0),T.coner?(de(),me("pre",So,"        "+Se(T.coner[1])+`
