@@ -114,15 +114,11 @@ onMounted(() => {
   <div id="detail" @scroll="onDetailScroll">
     <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)"
       :ref="ref => detailRefs[datets] = ref">
-      {{ formatTs(datets) }}
-      <pre v-if="item.memo">
-        {{ item.memo }}
-      </pre>
-      <pre v-if="item.coner">
-        {{ item.coner[1] }}
-      </pre>
-      <pre>
-        {{ item.detail }}
+      {{ formatTs(datets) }} <span class="tag s3">小发 {{ item.s3 }}</span><span class="tag s4">轻微 {{ item.s4 }}</span><span class="tag hh">恍惚 {{ item.hh }}</span>
+      <pre v-if="item.memo" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.memo }}</pre>
+      <pre v-if="item.coner" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.coner[1] }}</pre>
+      <pre>{{ item.detail }}
+
       </pre>
     </div>
   </div>
@@ -244,12 +240,32 @@ canvas {
   width: 100%;
 }
 
+.tag {
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  margin-left: 8px;
+}
+.s3 {
+  background-color: hsl(200, 40%, 25%);
+  color: hsl(200 100% 70%);
+}
+.s4 {
+  background-color: hsl(310, 40%, 25%);
+  color: hsl(310 100% 70%);
+}
+.hh {
+  background-color: hsl(127 40% 25%);
+  color: hsl(127 100% 70%);
+}
+
 pre {
   text-align: left;
   margin: 0;
   padding: 0 10px;
   white-space: break-spaces;
 }
+
 
 @media screen and (max-width: 600px) {
   .strat {
