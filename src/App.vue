@@ -5,20 +5,21 @@ import renderStrategy, { stratMap, defaultStrat } from './renderer.js'
 
 import data from './data.json'
 
+const to10 = num => num < 10 ? `0${num}` : num
+const formatTs = (ts) => {
+  const date = new Date(+ts)
+  return `${date.getFullYear()}-${to10(date.getMonth() + 1)}-${to10(date.getDate())}`
+}
+
 const datasource = Object.fromEntries(Object.entries(data).map(([k, v]) => ([new Date(k).valueOf(), v])))
 
-const dateRange = ['2024-01-27', '2024-12-30']
+const dateRange = ['2024-01-27', formatTs(Date.now() + 86400000 * 7)]
 const days = (new Date(dateRange[1]) - new Date(dateRange[0])) / 86400000
 const firstDate = new Date(dateRange[0]).valueOf()
 
 const scrollTs = ref(new Date(dateRange[0]).valueOf() + 86400000 * 4)
 
 const strategy = reactive(defaultStrat)
-
-const formatTs = (ts) => {
-  const date = new Date(+ts)
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-}
 
 let detailRefs = {}
 
@@ -114,7 +115,8 @@ onMounted(() => {
   <div id="detail" @scroll="onDetailScroll">
     <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)"
       :ref="ref => detailRefs[datets] = ref">
-      {{ formatTs(datets) }} <span class="tag s3">小发 {{ item.s3 }}</span><span class="tag s4">轻微 {{ item.s4 }}</span><span class="tag hh">恍惚 {{ item.hh }}</span>
+      {{ formatTs(datets) }} <span class="tag s3">小发 {{ item.s3 }}</span><span class="tag s4">轻微 {{ item.s4
+        }}</span><span class="tag hh">恍惚 {{ item.hh }}</span>
       <pre v-if="item.memo" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.memo }}</pre>
       <pre v-if="item.coner" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.coner[1] }}</pre>
       <pre>{{ item.detail }}
@@ -246,14 +248,17 @@ canvas {
   border-radius: 5px;
   margin-left: 8px;
 }
+
 .s3 {
   background-color: hsl(200, 40%, 25%);
   color: hsl(200 100% 70%);
 }
+
 .s4 {
   background-color: hsl(310, 40%, 25%);
   color: hsl(310 100% 70%);
 }
+
 .hh {
   background-color: hsl(127 40% 25%);
   color: hsl(127 100% 70%);
@@ -271,23 +276,28 @@ pre {
   .strat {
     width: 25%;
   }
+
   #app {
     flex-direction: column;
   }
+
   #cont-wrap {
     width: 100%;
     height: 40%;
   }
+
   #detail {
     width: 100%;
     height: 60%;
   }
+
   .setall {
     display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: center;
   }
+
   .action {
     width: 100%;
     height: 100% !important;
