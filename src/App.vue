@@ -115,8 +115,8 @@ onMounted(() => {
   <div id="detail" @scroll="onDetailScroll">
     <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)"
       :ref="ref => detailRefs[datets] = ref">
-      {{ formatTs(datets) }} <span class="tag s3">小发 {{ item.s3 }}</span><span class="tag s4">轻微 {{ item.s4
-        }}</span><span class="tag hh">恍惚 {{ item.hh }}</span>
+      {{ formatTs(datets) }} <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span><span class="tag s4" v-if="item.s4">轻微 {{ item.s4
+        }}</span><span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
       <pre v-if="item.memo" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.memo }}</pre>
       <pre v-if="item.coner" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.coner[1] }}</pre>
       <pre>{{ item.detail }}
