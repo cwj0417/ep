@@ -1014,7 +1014,7 @@
 20:26洗碗的时候左手烫，然后头皮躺
 21:02 涨/烫/风凉
 半夜麻了0次，睡醒麻了0次`,hh:0,s3:0,s4:3},"2025-01-20":{detail:`10:47 涨/烫/风凉
-半夜麻了1次，睡醒麻了0次`,hh:0,s3:1,s4:1},"2025-01-21":{detail:`23:25 涨/烫/风凉
+半夜麻了1次，睡醒麻了0次`,hh:0,s3:1,s4:1},"2025-01-22":{detail:`23:25 涨/烫/风凉
 23:34 涨/烫/风凉
 半夜麻了0次，睡醒麻了0次`,hh:0,s3:0,s4:2},"2025-01-23":{detail:`19:59 涨/烫/风凉
 21:32 涨/烫/风凉
@@ -1044,7 +1044,24 @@
 22:57 涨/烫/风凉
 这次发作前面2天睡得不好，但是发的2天睡的还可以
 今天晚上睡觉喘粗气
-半夜麻了0次，睡醒麻了0次`,hh:4,s3:0,s4:6},"2025-01-28":{detail:`09:13起床恍惚了
+半夜麻了0次，睡醒麻了0次`,hh:4,s3:0,s4:6},"2025-01-27":{detail:`起来有一点懵
+09:50 恍惚，54发好
+13:39 恍惚, 熟悉感, 想呕吐, 43, 微信说“非常混乱, 好了叫你”, 46, 回答好了, 但什么都不知道
+1. 为什么没吃早饭(应该没吃) 
+2. 半夜做什么了
+3. 小哈奶奶有啥不开心吗
+4. 外公外婆有啥不开心吗
+5. 我只知道放学要去 其他都不清楚
+6. 还记得你说爷爷要去娘娘家
+7. 小哈玩什么游戏
+8. 你去哪里骑了我的车
+9. 我骑车是不是引起了什么意见
+10. 奶奶是不是要买菜
+15：40恍惚，46说好一点，刚刚很多奇怪的问题
+19:14恍惚，17好了，在外婆家吃年夜饭
+20:15 涨/烫/风凉
+22:25恍惚，洗澡的时候恍的，现在出来了，可能没之前强，因为知道自己恍惚了
+半夜麻了0次，睡醒麻了0次`,hh:5,s4:1},"2025-01-28":{detail:`09:13起床恍惚了
 11:14恍惚，轻，大便，熟悉感不强，14，有梦境，15，肚子这块麻，发烫，左右脸颊烫，16，问是要过年了吗，感觉做了好多梦，我是放假了吗，混乱，熟悉感还是没有，17，问昨天跟我爸妈碰过面吗，昨天上班了吗，今天开始放假了吗，今天星期几，昨天有接我吗，我有见过我奶奶吗，小哈有去吗18，大便感好了，22，不知道自己恍惚了，并且觉得刚才的记忆更淡
 14:49恍惚过了，在四季公园的蚂蚁玩楼梯
 18:15恍惚，大便，熟悉感强烈，后脑勺有点麻，后背烫，19，好了
@@ -1061,6 +1078,27 @@
 23:00 涨/烫/风凉
 23:06手还在持续烫
 半夜恍惚了，程度和以前一样
-半夜麻了0次，睡醒麻了0次`,hh:5,s3:0,s4:4}},ao={id:"cont-wrap"},uo={id:"calender-wrap"},ho={id:"calender-head"},po={class:"calender-year"},go=["onClick"],mo={class:"date"},_o={class:"strat"},bo={class:"opt-head"},yo=["onClick"],vo=["onClick"],xo={class:"strat setall"},wo={key:0,class:"tag s3"},So={key:1,class:"tag s4"},Co={key:2,class:"tag hh"},To={key:3,style:{"font-weight":"900","font-size":"16px",padding:"10px 20px"}},Oo={key:4,style:{"font-weight":"900","font-size":"16px",padding:"10px 20px"}},Eo={__name:"App",setup(e){const t=M=>M<10?`0${M}`:M,n=M=>{const A=new Date(+M);return`${A.getFullYear()}-${t(A.getMonth()+1)}-${t(A.getDate())}`},s=Object.fromEntries(Object.entries(fo).map(([M,A])=>[new Date(M).valueOf(),A])),i=["2024-01-27",n(Date.now()+864e5*7)],r=(new Date(i[1])-new Date(i[0]))/864e5,l=new Date(i[0]).valueOf(),o=ls(new Date(i[0]).valueOf()+864e5*4),f=tn(Ms);let h={};const u=M=>{var A;(A=h[M])==null||A.scrollIntoView({behavior:"smooth",block:"end",inline:"nearest"})};let p=0,S=null;const T=ls(!0),H=M=>{if(!S){const A=M.target;T.value=p>A.scrollTop,p=A.scrollTop;const C=new Date(i[0]).valueOf()+(new Date(i[1])-new Date(i[0]))/A.scrollHeight*(A.scrollTop+A.clientHeight/2);o.value=C,S=setTimeout(()=>{S=null},350)}};let D=null;const Y=M=>{D||(T.value=!1,D=setTimeout(()=>{D=null},350))},j=M=>{for(const A in Ms)f[A]=M?0:-1};return qn(()=>{const M=document.querySelector("#calander-body");M.scroll(0,M.scrollHeight*(new Date-new Date(i[0]))/(new Date(i[1])-new Date(i[0]))-M.clientHeight)}),(M,A)=>(se(),le(oe,null,[z("div",ao,[z("div",uo,[z("div",ho,[z("div",po,de(new Date(o.value).getFullYear())+"年"+de(new Date(o.value).getMonth()+1)+"月 ",1),A[2]||(A[2]=Sl('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),z("div",{id:"calander-body",onScroll:H},[(se(),le(oe,null,jt(r,C=>z("div",{class:st(["calender-item card",{active:ye(l)+C*864e5-o.value<864e5*31&&new Date(ye(l)+C*864e5).getMonth()===new Date(o.value).getMonth()}]),onClick:F=>u(ye(l)+C*864e5)},[z("div",mo,de(new Date(ye(l)+C*864e5).getDate()),1),xe(co,{strategy:f,record:ye(s)[ye(l)+C*864e5]},null,8,["strategy","record"])],10,go)),64))],32),z("div",{id:"strategy-select",style:kt(`transform: translateY(${T.value?0:"100%"})`)},[(se(!0),le(oe,null,jt(Object.entries(ye(Mn)),C=>(se(),le("div",_o,[z("div",bo,de(ye(lo)[C[0]]),1),(se(!0),le(oe,null,jt(C[1],(F,ce)=>(se(),le("div",{class:st(["option",{active:ce===f[C[0]]}]),onClick:_e=>f[C[0]]=ce},de(F.name),11,yo))),256)),z("div",{class:st(["option",{active:f[C[0]]===-1}]),onClick:F=>f[C[0]]=-1}," 不渲染 ",10,vo)]))),256)),z("div",xo,[z("div",{class:"action",onClick:A[0]||(A[0]=C=>j(!0))},"恢复默认"),z("div",{class:"action",onClick:A[1]||(A[1]=C=>j(!1))},"关闭渲染")])],4)])]),z("div",{id:"detail",onScroll:Y},[(se(!0),le(oe,null,jt(Object.entries(ye(s)),([C,F])=>(se(),le("div",{class:"detail-card",ref_for:!0,ref:ce=>ye(h)[C]=ce},[Ii(de(n(C))+" ",1),F.s3?(se(),le("span",wo,"小发 "+de(F.s3),1)):pt("",!0),F.s4?(se(),le("span",So,"轻微 "+de(F.s4),1)):pt("",!0),F.hh?(se(),le("span",Co,"恍惚 "+de(F.hh),1)):pt("",!0),F.memo?(se(),le("pre",To,de(F.memo),1)):pt("",!0),F.coner?(se(),le("pre",Oo,de(F.coner[1]),1)):pt("",!0),z("pre",null,de(F.detail)+`
+半夜麻了0次，睡醒麻了0次`,hh:5,s3:0,s4:4},"2025-01-30":{detail:`今天是初二，楚楚外婆请吃饭，我们又自己吃了一绪晚饭，回家晚，1点14他们睡了
+10:41 涨/烫/风凉
+15:39 恍惚，熟悉感，脸和后脑勺烫，想吐，42手烫着，43好了，45，在说拉布拉多觉得熟悉，05说觉得外公来过像前两天发生的
+17:13 涨/烫/风凉 2次
+21:21 恍惚，拉屎，还没熟悉，想吐明显，放屁，22，熟悉感来了，想吐，23熟悉感好了，还是有呕吐感，24好了，说不知道为什么在这里，不知道星期几，知道关键字“阿姨姐姐爸妈，王思楠”，22.27回家感觉2，3天没回来
+23:41 涨/烫/风凉
+21点恍惚前就一直心悸到现在
+23:53 涨/烫/风凉
+23:58 涨/烫/风凉
+00:03 涨/烫/风凉
+00:05左边耳朵有点烫，一点点麻
+00:27 涨/烫/风凉
+00:54手指头烫，过了半分钟变成手
+01:07 涨/烫/风凉
+01:10 涨/烫/风凉
+1点14他们才睡，小哈一直没睡，他有点心悸，想安静下来
+01:34 说有点麻，我问他是不是左边，说是的，问有没有声音，说有，我就知道不对劲，告诉他要发了，我在没事，我开了下灯准备录，他说亮我关了，然后打开手机视频录制，其实光很小，他说，不要光我害怕，然后就发了
+这次完全是我不好，吃一绪前是讨论过要不要去的，我应该决定不去的，明明知道已经很累了，教训：不能累和兴奋
+另外有2个点：吃了白茶，和吃药的时候吃了很多东西，是不是药没到，因为这次时长明显超过1分钟
+5点43小哈尿出来醒了，问我有没有发，因为有麻的记忆，后面不知道了
+半夜麻了0次，睡醒麻了0次`,hh:2,s4:12},"2025-01-31":{detail:`09:51 涨/烫/风凉
+14:25 后脑勺烫, 耳朵一直有堵住的感觉/回声的感觉`,s1:[3],s4:2}},ao={id:"cont-wrap"},uo={id:"calender-wrap"},ho={id:"calender-head"},po={class:"calender-year"},go=["onClick"],mo={class:"date"},_o={class:"strat"},bo={class:"opt-head"},yo=["onClick"],vo=["onClick"],xo={class:"strat setall"},wo={key:0,class:"tag s3"},So={key:1,class:"tag s4"},Co={key:2,class:"tag hh"},To={key:3,style:{"font-weight":"900","font-size":"16px",padding:"10px 20px"}},Oo={key:4,style:{"font-weight":"900","font-size":"16px",padding:"10px 20px"}},Eo={__name:"App",setup(e){const t=M=>M<10?`0${M}`:M,n=M=>{const A=new Date(+M);return`${A.getFullYear()}-${t(A.getMonth()+1)}-${t(A.getDate())}`},s=Object.fromEntries(Object.entries(fo).map(([M,A])=>[new Date(M).valueOf(),A])),i=["2024-01-27",n(Date.now()+864e5*7)],r=(new Date(i[1])-new Date(i[0]))/864e5,l=new Date(i[0]).valueOf(),o=ls(new Date(i[0]).valueOf()+864e5*4),f=tn(Ms);let h={};const u=M=>{var A;(A=h[M])==null||A.scrollIntoView({behavior:"smooth",block:"end",inline:"nearest"})};let p=0,S=null;const T=ls(!0),H=M=>{if(!S){const A=M.target;T.value=p>A.scrollTop,p=A.scrollTop;const C=new Date(i[0]).valueOf()+(new Date(i[1])-new Date(i[0]))/A.scrollHeight*(A.scrollTop+A.clientHeight/2);o.value=C,S=setTimeout(()=>{S=null},350)}};let D=null;const Y=M=>{D||(T.value=!1,D=setTimeout(()=>{D=null},350))},j=M=>{for(const A in Ms)f[A]=M?0:-1};return qn(()=>{const M=document.querySelector("#calander-body");M.scroll(0,M.scrollHeight*(new Date-new Date(i[0]))/(new Date(i[1])-new Date(i[0]))-M.clientHeight)}),(M,A)=>(se(),le(oe,null,[z("div",ao,[z("div",uo,[z("div",ho,[z("div",po,de(new Date(o.value).getFullYear())+"年"+de(new Date(o.value).getMonth()+1)+"月 ",1),A[2]||(A[2]=Sl('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),z("div",{id:"calander-body",onScroll:H},[(se(),le(oe,null,jt(r,C=>z("div",{class:st(["calender-item card",{active:ye(l)+C*864e5-o.value<864e5*31&&new Date(ye(l)+C*864e5).getMonth()===new Date(o.value).getMonth()}]),onClick:F=>u(ye(l)+C*864e5)},[z("div",mo,de(new Date(ye(l)+C*864e5).getDate()),1),xe(co,{strategy:f,record:ye(s)[ye(l)+C*864e5]},null,8,["strategy","record"])],10,go)),64))],32),z("div",{id:"strategy-select",style:kt(`transform: translateY(${T.value?0:"100%"})`)},[(se(!0),le(oe,null,jt(Object.entries(ye(Mn)),C=>(se(),le("div",_o,[z("div",bo,de(ye(lo)[C[0]]),1),(se(!0),le(oe,null,jt(C[1],(F,ce)=>(se(),le("div",{class:st(["option",{active:ce===f[C[0]]}]),onClick:_e=>f[C[0]]=ce},de(F.name),11,yo))),256)),z("div",{class:st(["option",{active:f[C[0]]===-1}]),onClick:F=>f[C[0]]=-1}," 不渲染 ",10,vo)]))),256)),z("div",xo,[z("div",{class:"action",onClick:A[0]||(A[0]=C=>j(!0))},"恢复默认"),z("div",{class:"action",onClick:A[1]||(A[1]=C=>j(!1))},"关闭渲染")])],4)])]),z("div",{id:"detail",onScroll:Y},[(se(!0),le(oe,null,jt(Object.entries(ye(s)),([C,F])=>(se(),le("div",{class:"detail-card",ref_for:!0,ref:ce=>ye(h)[C]=ce},[Ii(de(n(C))+" ",1),F.s3?(se(),le("span",wo,"小发 "+de(F.s3),1)):pt("",!0),F.s4?(se(),le("span",So,"轻微 "+de(F.s4),1)):pt("",!0),F.hh?(se(),le("span",Co,"恍惚 "+de(F.hh),1)):pt("",!0),F.memo?(se(),le("pre",To,de(F.memo),1)):pt("",!0),F.coner?(se(),le("pre",Oo,de(F.coner[1]),1)):pt("",!0),z("pre",null,de(F.detail)+`
 
       `,1)],512))),256))],32)],64))}};so(Eo).mount("#app");
