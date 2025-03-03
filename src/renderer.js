@@ -3,7 +3,7 @@ const renderStrategy = {
         {
             name: '红色背景',
             strategy: (ctx, w, h, val, strat) => {
-                ctx.globalCompositeOperation = 'destination-over'
+                ctx.globalCompositeOperation = 'destination-over' // todo: 需要加一个"priority"属性来确定背景最后渲染, 现在暂时改变了data的顺序
                 ctx.fillStyle = '#c14949'
                 ctx.fillRect(0, 0, w, h)
             }
