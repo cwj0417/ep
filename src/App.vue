@@ -57,6 +57,9 @@ const onDetailScroll = (event) => {
 
 const setAll = (isDefault) => {
   for (const key in defaultStrat) {
+    if (['coner', 'memo', 'detail'].includes(key)) {
+      continue
+    }
     strategy[key] = isDefault ? 0 : -1
   }
 }
@@ -85,7 +88,7 @@ onMounted(() => {
       <div id="calander-body" @scroll="onMainScroll">
         <div class="calender-item card"
           :class="{ active: firstDate + index * 86400000 - scrollTs < 86400000 * 31 && (new Date(firstDate + index * 86400000).getMonth() === new Date(scrollTs).getMonth()) }"
-          v-for="index in days" @click="jumpTo(firstDate + index * 86400000)">
+          v-for="index in days" @click="jumpTo(firstDate + index * 86400000)" :key="index">
           <div class="date">
             {{ new Date(firstDate + index * 86400000).getDate() }}
           </div>
@@ -93,12 +96,12 @@ onMounted(() => {
         </div>
       </div>
       <div id="strategy-select" :style="`transform: translateY(${isShowFilter ? 0 : '100%'})`">
-        <div class="strat" v-for="entry in Object.entries(renderStrategy)">
+        <div class="strat" v-for="entry in Object.entries(renderStrategy)" :key="entry[0]">
           <div class="opt-head">
             {{ stratMap[entry[0]] }}
           </div>
           <div class="option" @click="strategy[entry[0]] = index" v-for="(option, index) in entry[1]"
-            :class="{ active: index === strategy[entry[0]] }">
+            :class="{ active: index === strategy[entry[0]] }" :key="option.name">
             {{ option.name }}
           </div>
           <div class="option" @click="strategy[entry[0]] = -1" :class="{ active: -1 === strategy[entry[0]] }">
@@ -113,9 +116,10 @@ onMounted(() => {
     </div>
   </div>
   <div id="detail" @scroll="onDetailScroll">
-    <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)"
-      :ref="ref => detailRefs[datets] = ref">
-      {{ formatTs(datets) }} <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span><span class="tag s4" v-if="item.s4">轻微 {{ item.s4
+    <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)" :ref="ref => detailRefs[datets] = ref"
+      :key="datets">
+      {{ formatTs(datets) }} <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span><span class="tag s4"
+        v-if="item.s4">轻微 {{ item.s4
         }}</span><span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
       <pre v-if="item.memo" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.memo }}</pre>
       <pre v-if="item.coner" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.coner[1] }}</pre>
