@@ -175,7 +175,7 @@ onMounted(() => {
 }
 
 .card {
-  height: 8vw;
+  height: 8.3125vw;
   border: 1px solid #dddddd;
   box-sizing: border-box;
   position: relative;

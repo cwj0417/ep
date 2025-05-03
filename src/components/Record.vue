@@ -31,6 +31,6 @@ onMounted(() => {
 </script>
 <template>
     <div class="record">
-        <canvas :ref="el => canvas = el" />
+        <canvas :ref="el => canvas = el" width="240" height="200" />
     </div>
 </template>
