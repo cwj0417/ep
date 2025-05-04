@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, onMounted, watch } from 'vue'
 import Record from './components/Record.vue'
 import renderStrategy, { stratMap, defaultStrat } from './renderer.js'
 
@@ -44,6 +44,42 @@ const onMainScroll = (event) => {
   }
 }
 
+const summary = reactive({
+  s3: { days: 0, count: 0 },
+  s4: { days: 0, count: 0 },
+  hh: { days: 0, count: 0 },
+})
+
+watch(scrollTs, () => {
+  const currentMonth = new Date(scrollTs.value).getMonth()
+  const currentYear = new Date(scrollTs.value).getFullYear()
+
+  summary.s3.days = 0
+  summary.s3.count = 0
+  summary.s4.days = 0
+  summary.s4.count = 0
+  summary.hh.days = 0
+  summary.hh.count = 0
+
+  for (const [date, record] of Object.entries(datasource)) {
+    const recordDate = new Date(+date)
+    if (recordDate.getMonth() === currentMonth && recordDate.getFullYear() === currentYear) {
+      if (record.s3) {
+        summary.s3.days++
+        summary.s3.count += record.s3
+      }
+      if (record.s4) {
+        summary.s4.days++
+        summary.s4.count += record.s4
+      }
+      if (record.hh) {
+        summary.hh.days++
+        summary.hh.count += record.hh
+      }
+    }
+  }
+})
+
 let detailScrollThrottleHandler = null
 
 const onDetailScroll = (event) => {
@@ -76,6 +112,9 @@ onMounted(() => {
       <div id="calender-head">
         <div class="calender-year">
           {{ new Date(scrollTs).getFullYear() }}年{{ new Date(scrollTs).getMonth() + 1 }}月
+          <span class="tag s3">小发天数: {{ summary.s3.days }} 次数: {{ summary.s3.count }}</span>
+          <span class="tag s4">轻微天数: {{ summary.s4.days }} 次数: {{ summary.s4.count }}</span>
+          <span class="tag hh">恍惚天数: {{ summary.hh.days }} 次数: {{ summary.hh.count }}</span>
         </div>
         <div class="calender-item">周日</div>
         <div class="calender-item">周一</div>
@@ -168,6 +207,9 @@ onMounted(() => {
 
 .calender-year {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .calender-item {
@@ -182,7 +224,7 @@ onMounted(() => {
 }
 
 .card.active {
-  background-color: #c9fff9
+  background-color: #cceff0;
 }
 
 .date {
