@@ -35,9 +35,9 @@ const renderStrategy = {
             name: '蓝色进度条',
             id: 's31',
             strategy: (ctx, w, h, val, strat) => {
-                ctx.globalCompositeOperation = 'destination-over'
-                ctx.fillStyle = '#8fb3f7'
-                ctx.fillRect(0, 0, w/5*val, h/3)
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = '#8fb3f7';
+                ctx.fillRect(w / 3, h - (h / 10 * val), w / 3, h / 10 * val); // 竖向矩形，贴着底部
             }
         }
     ],
@@ -46,9 +46,9 @@ const renderStrategy = {
             name: '粉红进度条',
             id: 's41',
             strategy: (ctx, w, h, val, strat) => {
-                ctx.globalCompositeOperation = 'destination-over'
-                ctx.fillStyle = '#ffbbfe'
-                ctx.fillRect(0, h/3, w/15*val, h/3)
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = '#ffd6e7';
+                ctx.fillRect(w / 3 * 2, h - (h / 10 * val), w / 3, h / 10 * val); // 竖向矩形，贴着底部
             }
         }
     ],
@@ -57,9 +57,9 @@ const renderStrategy = {
             name: '绿色进度条',
             id: 'hh1',
             strategy: (ctx, w, h, val, strat) => {
-                ctx.globalCompositeOperation = 'destination-over'
-                ctx.fillStyle = '#88ff8a'
-                ctx.fillRect(0, h/3*2, w/15*val, h/3)
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.fillStyle = '#88ff8a';
+                ctx.fillRect(0, h - (h / 10 * val), w / 3, h / 10 * val); // 竖向矩形，贴着底部
             }
         }
     ],
