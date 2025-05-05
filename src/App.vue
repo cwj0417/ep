@@ -21,10 +21,13 @@ const scrollTs = ref(new Date(dateRange[0]).valueOf() + 86400000 * 4)
 
 const strategy = reactive(defaultStrat)
 
+const currentDetail = ref(0)
+
 let detailRefs = {}
 
 const jumpTo = (ts) => {
-  detailRefs[ts]?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+  currentDetail.value = ts.toString()
+  detailRefs[ts]?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
 }
 
 let currentScroll = 0
@@ -155,8 +158,8 @@ onMounted(() => {
     </div>
   </div>
   <div id="detail" @scroll="onDetailScroll">
-    <div class="detail-card" v-for="[datets, item] in Object.entries(datasource)" :ref="ref => detailRefs[datets] = ref"
-      :key="datets">
+    <div :class="['detail-card', currentDetail === datets ? 'active' : '']"
+      v-for="[datets, item] in Object.entries(datasource)" :ref="ref => detailRefs[datets] = ref" :key="datets">
       {{ formatTs(datets) }} <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span><span class="tag s4"
         v-if="item.s4">轻微 {{ item.s4
         }}</span><span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
@@ -185,6 +188,9 @@ onMounted(() => {
   height: 100%;
   overflow: auto;
   border: 1px solid #b6b6b6;
+}
+.detail-card.active {
+  background-color: #cceff0;
 }
 
 #calender-head {
