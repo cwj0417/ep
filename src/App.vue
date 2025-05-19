@@ -115,9 +115,9 @@ onMounted(() => {
       <div id="calender-head">
         <div class="calender-year">
           {{ new Date(scrollTs).getFullYear() }}年{{ new Date(scrollTs).getMonth() + 1 }}月
-          <span class="tag s3">小发天数: {{ summary.s3.days }} 次数: {{ summary.s3.count }}</span>
-          <span class="tag s4">轻微天数: {{ summary.s4.days }} 次数: {{ summary.s4.count }}</span>
-          <span class="tag hh">恍惚天数: {{ summary.hh.days }} 次数: {{ summary.hh.count }}</span>
+          <span class="tag s3">{{ summary.s3.days }}天, {{ summary.s3.count }}次</span>
+          <span class="tag s4">{{ summary.s4.days }}天, {{ summary.s4.count }}次</span>
+          <span class="tag hh">{{ summary.hh.days }}天, {{ summary.hh.count }}次</span>
         </div>
         <div class="calender-item">周日</div>
         <div class="calender-item">周一</div>
@@ -189,6 +189,7 @@ onMounted(() => {
   overflow: auto;
   border: 1px solid #b6b6b6;
 }
+
 .detail-card.active {
   background-color: #cceff0;
 }
