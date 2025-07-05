@@ -26,8 +26,18 @@ const currentDetail = ref(0)
 let detailRefs = {}
 
 const jumpTo = (ts) => {
-  currentDetail.value = ts.toString()
+  currentDetail.value = ts.toString();
+  scrollTs.value = +ts;
   detailRefs[ts]?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+}
+
+const jumpToCalendar = (ts) => {
+  currentDetail.value = ts.toString();
+  scrollTs.value = +ts;
+  setTimeout(() => {
+    const card = document.querySelector(`.card[data-ts="${ts}"]`);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+  }, 0);
 }
 
 let currentScroll = 0
@@ -129,7 +139,12 @@ onMounted(() => {
       </div>
       <div id="calander-body" @scroll="onMainScroll">
         <div class="calender-item card"
-          :class="{ active: firstDate + index * 86400000 - scrollTs < 86400000 * 31 && (new Date(firstDate + index * 86400000).getMonth() === new Date(scrollTs).getMonth()) }"
+          :class="[{
+            'current-month': (new Date(firstDate + index * 86400000).getMonth() === new Date(scrollTs).getMonth()),
+            'active': currentDetail == firstDate + index * 86400000
+          }]
+          "
+          :data-ts="firstDate + index * 86400000"
           v-for="index in days" @click="jumpTo(firstDate + index * 86400000)" :key="index">
           <div class="date">
             {{ new Date(firstDate + index * 86400000).getDate() }}
@@ -158,8 +173,11 @@ onMounted(() => {
     </div>
   </div>
   <div id="detail" @scroll="onDetailScroll">
-    <div :class="['detail-card', currentDetail === datets ? 'active' : '']"
-      v-for="[datets, item] in Object.entries(datasource)" :ref="ref => detailRefs[datets] = ref" :key="datets">
+    <div :class="['detail-card', currentDetail == datets ? 'active' : '']"
+      v-for="[datets, item] in Object.entries(datasource)"
+      :ref="ref => detailRefs[datets] = ref" :key="datets"
+      @click="jumpToCalendar(datets)"
+    >
       {{ formatTs(datets) }} <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span><span class="tag s4"
         v-if="item.s4">轻微 {{ item.s4
         }}</span><span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
@@ -191,7 +209,8 @@ onMounted(() => {
 }
 
 .detail-card.active {
-  background-color: #cceff0;
+  background-color: #2bb1c7;
+  color: #fff;
 }
 
 #calender-head {
@@ -230,8 +249,12 @@ onMounted(() => {
   position: relative;
 }
 
-.card.active {
+.card.current-month {
   background-color: #cceff0;
+}
+.card.active {
+  background-color: #2bb1c7;
+  color: #fff;
 }
 
 .date {
