@@ -13,7 +13,7 @@ const formatTs = (ts) => {
 
 const datasource = Object.fromEntries(Object.entries(data).map(([k, v]) => ([new Date(k).valueOf(), v])))
 
-const dateRange = ['2024-01-27', formatTs(Date.now() + 86400000 * 7)]
+const dateRange = ['2024-01-27', formatTs(Date.now() + 86400000 * 21)]
 const days = (new Date(dateRange[1]) - new Date(dateRange[0])) / 86400000
 const firstDate = new Date(dateRange[0]).valueOf()
 
@@ -113,9 +113,23 @@ const setAll = (isDefault) => {
   }
 }
 
+const isStrategyVisible = ref(false)
+
+const toggleStrategy = () => {
+  isStrategyVisible.value = !isStrategyVisible.value
+}
+
 onMounted(() => {
   const body = document.querySelector('#calander-body')
   body.scroll(0, body.scrollHeight * (new Date() - new Date(dateRange[0])) / (new Date(dateRange[1]) - new Date(dateRange[0])) - body.clientHeight)
+
+  document.addEventListener('click', (e) => {
+    const strategySelect = document.querySelector('#strategy-select')
+    const strategyTrigger = document.querySelector('.strategy-trigger')
+    if (!strategySelect?.contains(e.target) && !strategyTrigger?.contains(e.target)) {
+      isStrategyVisible.value = false
+    }
+  })
 })
 </script>
 
@@ -138,21 +152,22 @@ onMounted(() => {
         <div class="calender-item">周六</div>
       </div>
       <div id="calander-body" @scroll="onMainScroll">
-        <div class="calender-item card"
-          :class="[{
-            'current-month': (new Date(firstDate + index * 86400000).getMonth() === new Date(scrollTs).getMonth()),
-            'active': currentDetail == firstDate + index * 86400000
-          }]
-          "
-          :data-ts="firstDate + index * 86400000"
-          v-for="index in days" @click="jumpTo(firstDate + index * 86400000)" :key="index">
+        <div class="calender-item card" :class="[{
+          'current-month': (new Date(firstDate + index * 86400000).getMonth() === new Date(scrollTs).getMonth()),
+          'active': currentDetail == firstDate + index * 86400000
+        }]
+          " :data-ts="firstDate + index * 86400000" v-for="index in days" @click="jumpTo(firstDate + index * 86400000)"
+          :key="index">
           <div class="date">
             {{ new Date(firstDate + index * 86400000).getDate() }}
           </div>
           <Record :strategy="strategy" :record="datasource[firstDate + index * 86400000]" />
         </div>
       </div>
-      <div id="strategy-select" :style="`transform: translateY(${isShowFilter ? 0 : '100%'})`">
+      <div class="strategy-trigger" @click="toggleStrategy">
+        <span style="font-size: 1.2rem;">⚙️</span>
+      </div>
+      <div id="strategy-select" :class="{ visible: isStrategyVisible }">
         <div class="strat" v-for="entry in Object.entries(renderStrategy)" :key="entry[0]">
           <div class="opt-head">
             {{ stratMap[entry[0]] }}
@@ -174,23 +189,31 @@ onMounted(() => {
   </div>
   <div id="detail" @scroll="onDetailScroll">
     <div :class="['detail-card', currentDetail == datets ? 'active' : '']"
-      v-for="[datets, item] in Object.entries(datasource)"
-      :ref="ref => detailRefs[datets] = ref" :key="datets"
-      @click="jumpToCalendar(datets)"
-    >
-      {{ formatTs(datets) }} <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span><span class="tag s4"
-        v-if="item.s4">轻微 {{ item.s4
-        }}</span><span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
-      <pre v-if="item.memo" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.memo }}</pre>
-      <pre v-if="item.coner" style="font-weight: 900;font-size:16px;padding: 10px 20px">{{ item.coner[1] }}</pre>
-      <pre>{{ item.detail }}
-
-      </pre>
+      v-for="[datets, item] in Object.entries(datasource)" :ref="ref => detailRefs[datets] = ref" :key="datets"
+      @click="jumpToCalendar(datets)">
+      <div class="detail-header">
+        <span class="detail-date">{{ formatTs(datets) }}</span>
+        <span class="detail-tags">
+          <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span>
+          <span class="tag s4" v-if="item.s4">轻微 {{ item.s4 }}</span>
+          <span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
+        </span>
+      </div>
+      <hr class="detail-divider" />
+      <pre v-if="item.memo" class="detail-memo">{{ item.memo }}</pre>
+      <pre v-if="item.coner" class="detail-coner">{{ item.coner[1] }}</pre>
+      <pre class="detail-detail">{{ item.detail }}</pre>
     </div>
   </div>
 </template>
 
 <style>
+body,
+#app {
+  background: #f7f8fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
 #cont-wrap {
   width: 70%;
   height: 100%;
@@ -199,28 +222,204 @@ onMounted(() => {
 #calender-wrap {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 #detail {
   width: 30%;
   height: 100%;
-  overflow: auto;
-  border: 1px solid #b6b6b6;
+  background: #f6f7fa;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.04);
+  overflow-y: auto;
+}
+
+.detail-card {
+  margin: 10px 10px 10px 10px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(43, 177, 199, 0.07);
+  padding: 10px 12px 8px 12px;
+  font-size: 0.88rem;
+  color: #222;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+  border: 1.5px solid #e3e8ee;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .detail-card.active {
-  background-color: #2bb1c7;
+  background: #2bb1c7;
   color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(43, 177, 199, 0.13);
+  border-color: #2bb1c7;
+}
+
+.detail-card.active .detail-header,
+.detail-card.active .detail-memo,
+.detail-card.active .detail-coner,
+.detail-card.active .detail-detail {
+  color: #fff;
+}
+
+.detail-card:hover {
+  box-shadow: 0 6px 24px 0 rgba(43, 177, 199, 0.13);
+  background: #eaf7fa;
+  color: #222;
+}
+
+.detail-card.active:hover {
+  background: #2bb1c7;
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(43, 177, 199, 0.13);
+}
+
+.detail-card.active:hover .detail-header,
+.detail-card.active:hover .detail-memo,
+.detail-card.active:hover .detail-coner,
+.detail-card.active:hover .detail-detail {
+  color: #fff;
+}
+
+.detail-card .detail-header {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detail-card .detail-date {
+  font-size: 0.88rem;
+  color: #222;
+  font-weight: 400;
+  margin-right: 8px;
+}
+
+.detail-card.active .detail-date {
+  color: #fff;
+}
+
+.detail-card .detail-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.detail-card .detail-divider {
+  height: 1px;
+  background: #e3e8ee;
+  margin: 8px 0 4px 0;
+  border: none;
+}
+
+.detail-card.active .detail-divider {
+  background: #b2e6f0;
+}
+
+.detail-card .detail-memo,
+.detail-card .detail-coner,
+.detail-card .detail-detail {
+  font-size: 0.88rem;
+  font-weight: 400;
+  padding: 2px 0 2px 0;
+  color: inherit;
+  background: none;
+  border: none;
+  margin: 0;
+  white-space: break-spaces;
+}
+
+.detail-card .detail-memo {
+  font-weight: 700;
+  color: #2bb1c7;
+}
+
+.detail-card .detail-coner {
+  font-weight: 700;
+  color: #b12bc7;
+}
+
+.detail-card .detail-detail {
+  color: #444;
 }
 
 #calender-head {
   width: 100%;
-  height: 50px;
+  height: 70px;
   display: flex;
   flex-wrap: wrap;
-  background-color: #ffffff;
-  border: 1px solid #b6b6b6;
+  background: linear-gradient(135deg, #ffffff 0%, #f6fafd 100%);
+  border: 1px solid #e3e8ee;
   box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(43, 177, 199, 0.06);
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.calender-year {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2bb1c7;
+  letter-spacing: 0.02em;
+}
+
+.calender-year .tag {
+  font-size: 0.85rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-left: 12px;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.calender-year .tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.calender-item {
+  width: 14.25%;
+  text-align: center;
+  font-weight: 600;
+  color: #6a7a8c;
+  font-size: 0.95rem;
+  padding: 6px 0;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+}
+
+.calender-item:not(.card):hover {
+  color: #2bb1c7;
+}
+
+.calender-item:not(.card):after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #2bb1c7;
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+}
+
+.calender-item:not(.card):hover:after {
+  width: 70%;
 }
 
 #calander-body {
@@ -231,86 +430,237 @@ onMounted(() => {
   overflow: auto;
 }
 
-.calender-year {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.calender-item {
-  width: 14.25%;
-}
-
 .card {
   height: 6.16455vw;
-  border: 1px solid #dddddd;
   box-sizing: border-box;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 4px 0 rgba(43, 177, 199, 0.06);
+  margin: 0;
+  padding: 0;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+  cursor: pointer;
   position: relative;
+  overflow: hidden;
+  border: 1px solid #e3e8ee;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .card.current-month {
-  background-color: #cceff0;
+  background: #f6fafd;
 }
+
 .card.active {
-  background-color: #2bb1c7;
+  background: #2bb1c7;
   color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(43, 177, 199, 0.13);
+  border-color: #2bb1c7;
 }
 
-.date {
-  opacity: 0.4;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
+.card.active .date {
+  color: #fff;
+  background: #2bb1c7;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px 0 rgba(43, 177, 199, 0.13);
+  background: #eaf7fa;
+  z-index: 2;
+  color: #222;
+}
+
+.card.active:hover {
+  background: #2bb1c7;
+  color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(43, 177, 199, 0.13);
+}
+
+.card:not(.current-month) {
+  background: #f3f3f3;
+  color: #bbb;
+}
+
+.card .date {
+  opacity: 1;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #222;
+  background: none;
+  border-radius: 50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
   position: absolute;
-  right: 0.2rem;
-  top: 0.2rem;
+  right: 0.3rem;
+  top: 0.3rem;
+  z-index: 1;
 }
 
-.record {
-  width: 100%;
-  height: 100%;
+.card.current-month .date {
+  color: #2bb1c7;
+  background: #e6f7fa;
+}
+
+.card.active .date {
+  color: #fff;
+  background: #2bb1c7;
+}
+
+.card:not(.current-month) .date {
+  color: #c0c0c0;
+  background: none;
+}
+
+.card .card-content,
+.card .card-tags {
+  display: none !important;
 }
 
 #strategy-select {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   width: 100vw;
   display: flex;
-  flex-wrap: wrap;
-  position: absolute;
+  align-items: stretch;
+  position: fixed;
   bottom: 0;
-  background-color: #fff;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 1s linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%)
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0 -4px 20px rgba(43, 177, 199, 0.08);
+  border-top: 1px solid #e3e8ee;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 12px;
+  gap: 10px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  pointer-events: none;
+  overflow-x: auto;
+}
+
+#strategy-select.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.strategy-trigger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  background: #f6fafd;
+  color: #2bb1c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  border: 1px solid #e3e8ee;
+  border-top: none;
+  border-left: none;
+}
+
+.strategy-trigger:hover {
+  background: #eaf7fa;
+  color: #32c5dd;
 }
 
 .strat {
-  width: 11%;
-  border: 1px dotted #ddd;
-  box-sizing: border-box;
-}
-
-.strat>.action {
-  height: 50%;
-  align-items: center;
+  min-width: 120px;
   display: flex;
-  text-align: center;
-  justify-content: center;
-  box-shadow: 1px 1px 2px #bbb;
-  font-weight: 500;
+  flex-direction: column;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e3e8ee;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .opt-head {
   font-weight: 600;
+  color: #2bb1c7;
+  padding: 10px 12px;
+  background: #f6fafd;
+  border-bottom: 1px solid #e3e8ee;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #6a7a8c;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #f0f3f6;
+  white-space: nowrap;
+}
+
+.option:last-child {
+  border-bottom: none;
+}
+
+.option:hover {
+  background: #eaf7fa;
+  color: #2bb1c7;
+  padding-left: 16px;
 }
 
 .option.active {
-  background-color: #8f8d8d;
+  background: #2bb1c7;
   color: white;
   font-weight: 500;
 }
 
-.option {
-  background-color: #f2f2f2;
+.option.active:hover {
+  background: #32c5dd;
+  padding-left: 12px;
+}
+
+.strat.setall {
+  margin-left: auto;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.strat.setall .action {
+  flex: 1;
+  padding: 12px;
+  background: #ffffff;
+  color: #2bb1c7;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  border-bottom: 1px solid #f0f3f6;
+}
+
+.strat.setall .action:last-child {
+  border-bottom: none;
+}
+
+.strat.setall .action:hover {
+  background: #eaf7fa;
+  color: #32c5dd;
 }
 
 canvas {
@@ -347,36 +697,19 @@ pre {
   white-space: break-spaces;
 }
 
-
 @media screen and (max-width: 600px) {
+  #strategy-select {
+    padding: 10px;
+    gap: 8px;
+    height: 280px;
+  }
+
   .strat {
-    width: 25%;
+    min-width: 110px;
   }
 
-  #app {
-    flex-direction: column;
-  }
-
-  #cont-wrap {
-    width: 100%;
-    height: 40%;
-  }
-
-  #detail {
-    width: 100%;
-    height: 60%;
-  }
-
-  .setall {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .action {
-    width: 100%;
-    height: 100% !important;
+  .strat.setall {
+    min-width: 120px;
   }
 }
 </style>
