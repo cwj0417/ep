@@ -34,3 +34,35 @@ onMounted(() => {
         <canvas :ref="el => canvas = el" width="240" height="148.32" />
     </div>
 </template>
+
+<style>
+:root {
+  --theme-primary: #9966cc;
+  --theme-primary-light: #f8f5ff;
+  --theme-primary-dark: #7a4fb5;
+  --theme-accent: #e0b3ff;
+}
+
+.record {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.theme-primary {
+  color: #fff;
+  background: var(--theme-primary);
+}
+
+.theme-primary-dark {
+  color: #fff;
+  background: var(--theme-primary-dark);
+}
+
+.theme-accent {
+  color: #fff;
+  background: var(--theme-accent);
+}
+</style>

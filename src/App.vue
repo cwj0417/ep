@@ -28,7 +28,23 @@ let detailRefs = {}
 const jumpTo = (ts) => {
   currentDetail.value = ts.toString();
   scrollTs.value = +ts;
-  detailRefs[ts]?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+  // 只在详情容器内滚动，避免影响整个页面
+  const detailElement = detailRefs[ts];
+  const detailContainer = document.querySelector('#detail');
+  if (detailElement && detailContainer) {
+    const elementRect = detailElement.getBoundingClientRect();
+    const containerRect = detailContainer.getBoundingClientRect();
+    
+    if (elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom) {
+      const elementOffsetTop = detailElement.offsetTop;
+      const containerHeight = detailContainer.clientHeight;
+      const elementHeight = detailElement.offsetHeight;
+      
+      // 计算滚动位置，让元素在容器中央
+      const scrollTop = elementOffsetTop - (containerHeight - elementHeight) / 2;
+      detailContainer.scrollTo({ top: scrollTop, behavior: 'smooth' });
+    }
+  }
 }
 
 const jumpToCalendar = (ts) => {
@@ -36,7 +52,22 @@ const jumpToCalendar = (ts) => {
   scrollTs.value = +ts;
   setTimeout(() => {
     const card = document.querySelector(`.card[data-ts="${ts}"]`);
-    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    const calendarBody = document.querySelector('#calander-body');
+    if (card && calendarBody) {
+      // 只在日历容器内滚动，避免影响整个页面
+      const cardRect = card.getBoundingClientRect();
+      const containerRect = calendarBody.getBoundingClientRect();
+      
+      if (cardRect.top < containerRect.top || cardRect.bottom > containerRect.bottom) {
+        const cardOffsetTop = card.offsetTop;
+        const containerHeight = calendarBody.clientHeight;
+        const cardHeight = card.offsetHeight;
+        
+        // 计算滚动位置，让卡片在容器中央
+        const scrollTop = cardOffsetTop - (containerHeight - cardHeight) / 2;
+        calendarBody.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      }
+    }
   }, 0);
 }
 
@@ -208,10 +239,41 @@ onMounted(() => {
 </template>
 
 <style>
+/* 确保在小屏幕上不会出现横向滚动 */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --theme-primary: #9966cc;
+  --theme-primary-light: #f8f5ff;
+  --theme-primary-dark: #7a4fb5;
+  --theme-accent: #e0b3ff;
+}
+
 body,
 #app {
   background: #f7f8fa;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* 禁用双击缩放，改善移动端体验 */
+  touch-action: manipulation;
+}
+
+/* 改善移动端滚动性能 */
+#calander-body,
+#detail {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* 移动端友好的点击区域 */
+.card,
+.detail-card,
+.strategy-trigger,
+.option,
+.action {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 #cont-wrap {
@@ -238,7 +300,7 @@ body,
   margin: 10px 10px 10px 10px;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 2px 8px 0 rgba(43, 177, 199, 0.07);
+  box-shadow: 0 2px 8px 0 rgba(153, 102, 204, 0.07);
   padding: 10px 12px 8px 12px;
   font-size: 0.88rem;
   color: #222;
@@ -252,36 +314,42 @@ body,
 }
 
 .detail-card.active {
-  background: #2bb1c7;
+  background: var(--theme-primary);
   color: #fff;
-  box-shadow: 0 4px 16px 0 rgba(43, 177, 199, 0.13);
-  border-color: #2bb1c7;
+  box-shadow: 0 4px 16px 0 rgba(153, 102, 204, 0.13);
+  border-color: var(--theme-primary);
 }
 
 .detail-card.active .detail-header,
 .detail-card.active .detail-memo,
-.detail-card.active .detail-coner,
 .detail-card.active .detail-detail {
   color: #fff;
 }
 
+.detail-card.active .detail-coner {
+  color: #ffd700;
+}
+
 .detail-card:hover {
-  box-shadow: 0 6px 24px 0 rgba(43, 177, 199, 0.13);
+  box-shadow: 0 6px 24px 0 rgba(153, 102, 204, 0.13);
   background: #eaf7fa;
   color: #222;
 }
 
 .detail-card.active:hover {
-  background: #2bb1c7;
+  background: var(--theme-primary);
   color: #fff;
-  box-shadow: 0 4px 16px 0 rgba(43, 177, 199, 0.13);
+  box-shadow: 0 4px 16px 0 rgba(153, 102, 204, 0.13);
 }
 
 .detail-card.active:hover .detail-header,
 .detail-card.active:hover .detail-memo,
-.detail-card.active:hover .detail-coner,
 .detail-card.active:hover .detail-detail {
   color: #fff;
+}
+
+.detail-card.active:hover .detail-coner {
+  color: #ffd700;
 }
 
 .detail-card .detail-header {
@@ -337,7 +405,7 @@ body,
 
 .detail-card .detail-memo {
   font-weight: 700;
-  color: #2bb1c7;
+  color: var(--theme-primary);
 }
 
 .detail-card .detail-coner {
@@ -354,10 +422,10 @@ body,
   height: 70px;
   display: flex;
   flex-wrap: wrap;
-  background: linear-gradient(135deg, #ffffff 0%, #f6fafd 100%);
-  border: 1px solid #e3e8ee;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
   box-sizing: border-box;
-  box-shadow: 0 2px 8px rgba(43, 177, 199, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 12px 12px 0 0;
   position: relative;
   z-index: 2;
@@ -371,7 +439,7 @@ body,
   padding: 4px 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #2bb1c7;
+  color: var(--theme-primary);
   letter-spacing: 0.02em;
 }
 
@@ -392,18 +460,25 @@ body,
 
 .calender-item {
   width: 14.25%;
+  min-width: 0;
   text-align: center;
-  font-weight: 600;
-  color: #6a7a8c;
-  font-size: 0.95rem;
-  padding: 6px 0;
+  font-weight: 500;
+  color: #666;
+  font-size: 0.9rem;
+  padding: 8px 0;
   transition: all 0.2s ease;
   user-select: none;
   position: relative;
+  border-right: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+
+.calender-item:last-child {
+  border-right: none;
 }
 
 .calender-item:not(.card):hover {
-  color: #2bb1c7;
+  color: var(--theme-primary);
 }
 
 .calender-item:not(.card):after {
@@ -413,7 +488,7 @@ body,
   left: 50%;
   width: 0;
   height: 2px;
-  background: #2bb1c7;
+  background: var(--theme-primary);
   transition: all 0.2s ease;
   transform: translateX(-50%);
 }
@@ -433,16 +508,17 @@ body,
 .card {
   height: 6.16455vw;
   box-sizing: border-box;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 1px 4px 0 rgba(43, 177, 199, 0.06);
+  border-radius: 0;
+  background: #ffffff;
+  box-shadow: none;
   margin: 0;
-  padding: 0;
-  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+  padding: 4px;
+  transition: background 0.2s, color 0.2s;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  border: 1px solid #e3e8ee;
+  border: 1px solid #f0f0f0;
+  border-top: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -450,70 +526,75 @@ body,
 }
 
 .card.current-month {
-  background: #f6fafd;
+  background: #f3f0ff;
+  border-color: #e8e8e8;
 }
 
 .card.active {
-  background: #2bb1c7;
+  background: var(--theme-primary);
   color: #fff;
-  box-shadow: 0 2px 8px 0 rgba(43, 177, 199, 0.13);
-  border-color: #2bb1c7;
+  box-shadow: 0 2px 10px rgba(153, 102, 204, 0.3);
+  border-color: var(--theme-primary);
+  border-width: 1px;
+  transform: none;
+  z-index: 10;
 }
 
 .card.active .date {
   color: #fff;
-  background: #2bb1c7;
+  background: var(--theme-primary);
 }
 
 .card:hover {
-  box-shadow: 0 4px 16px 0 rgba(43, 177, 199, 0.13);
-  background: #eaf7fa;
+  background: #f8f5ff;
   z-index: 2;
   color: #222;
 }
 
 .card.active:hover {
-  background: #2bb1c7;
+  background: var(--theme-primary);
   color: #fff;
-  box-shadow: 0 2px 8px 0 rgba(43, 177, 199, 0.13);
+  box-shadow: 0 4px 16px rgba(153, 102, 204, 0.4);
+  transform: none;
 }
 
 .card:not(.current-month) {
-  background: #f3f3f3;
-  color: #bbb;
+  background: #f8f8f8;
+  color: #ccc;
 }
 
 .card .date {
   opacity: 1;
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: #222;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
   background: none;
-  border-radius: 50%;
-  width: 2.1rem;
-  height: 2.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  display: block;
+  text-align: right;
+  transition: color 0.2s;
   position: absolute;
-  right: 0.3rem;
-  top: 0.3rem;
+  right: 8px;
+  top: 6px;
   z-index: 1;
 }
 
 .card.current-month .date {
-  color: #2bb1c7;
-  background: #e6f7fa;
+  color: #333;
+  background: none;
+  font-weight: 600;
 }
 
 .card.active .date {
   color: #fff;
-  background: #2bb1c7;
+  background: none;
+  font-weight: 600;
 }
 
 .card:not(.current-month) .date {
-  color: #c0c0c0;
+  color: #ccc;
   background: none;
 }
 
@@ -531,7 +612,7 @@ body,
   bottom: 0;
   left: 0;
   background: #ffffff;
-  box-shadow: 0 -4px 20px rgba(43, 177, 199, 0.08);
+  box-shadow: 0 -4px 20px rgba(153, 102, 204, 0.08);
   border-top: 1px solid #e3e8ee;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 12px;
@@ -559,7 +640,7 @@ body,
   height: 32px;
   border-radius: 0;
   background: #f6fafd;
-  color: #2bb1c7;
+  color: var(--theme-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -589,7 +670,7 @@ body,
 
 .opt-head {
   font-weight: 600;
-  color: #2bb1c7;
+  color: var(--theme-primary);
   padding: 10px 12px;
   background: #f6fafd;
   border-bottom: 1px solid #e3e8ee;
@@ -613,12 +694,12 @@ body,
 
 .option:hover {
   background: #eaf7fa;
-  color: #2bb1c7;
+  color: var(--theme-primary);
   padding-left: 16px;
 }
 
 .option.active {
-  background: #2bb1c7;
+  background: var(--theme-primary);
   color: white;
   font-weight: 500;
 }
@@ -642,7 +723,7 @@ body,
   flex: 1;
   padding: 12px;
   background: #ffffff;
-  color: #2bb1c7;
+  color: var(--theme-primary);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -697,19 +778,244 @@ pre {
   white-space: break-spaces;
 }
 
+@media screen and (max-width: 768px) {
+  body,
+  #app {
+    flex-direction: column;
+  }
+  
+  #cont-wrap {
+    width: 100%;
+    height: 65%;
+    order: 1;
+  }
+  
+  #detail {
+    width: 100%;
+    height: 35%;
+    border-radius: 12px 12px 0 0;
+    order: 2;
+    margin-top: 4px;
+    box-shadow: 0 -2px 12px 0 rgba(0, 0, 0, 0.08);
+  }
+  
+  .card {
+    height: 8.5vw;
+    padding: 2px;
+  }
+  
+  .card .date {
+    font-size: 0.85rem;
+    right: 4px;
+    top: 4px;
+  }
+  
+  #calender-head {
+    height: 60px;
+  }
+  
+  .calender-year {
+    font-size: 1rem;
+    padding: 2px 0;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .calender-year .tag {
+    font-size: 0.75rem;
+    padding: 1px 6px;
+    margin-left: 4px;
+  }
+  
+  .calender-item {
+    font-size: 0.8rem;
+    padding: 6px 0;
+  }
+  
+  .detail-card {
+    margin: 8px;
+    padding: 8px 10px 6px 10px;
+    font-size: 0.82rem;
+  }
+  
+  .detail-card .detail-header {
+    font-size: 0.85rem;
+    margin-bottom: 1px;
+  }
+  
+  .detail-card .detail-date {
+    font-size: 0.8rem;
+    margin-right: 6px;
+  }
+  
+  .detail-card .detail-tags {
+    gap: 4px;
+  }
+  
+  .detail-card .detail-tags .tag {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+  
+  .strategy-trigger {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .strategy-trigger span {
+    font-size: 1.3rem !important;
+  }
+}
+
 @media screen and (max-width: 600px) {
   #strategy-select {
-    padding: 10px;
-    gap: 8px;
-    height: 280px;
+    padding: 8px;
+    gap: 6px;
+    height: 50vh;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    max-height: 400px;
   }
 
   .strat {
-    min-width: 110px;
+    min-width: 100px;
+    flex: 1 1 calc(50% - 3px);
+    max-width: calc(50% - 3px);
   }
 
   .strat.setall {
-    min-width: 120px;
+    min-width: 100px;
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  .opt-head {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+  
+  .option {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .strat.setall .action {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+  
+  .card {
+    height: 10vw;
+  }
+  
+  .card .date {
+    font-size: 0.8rem;
+    right: 3px;
+    top: 3px;
+  }
+  
+  .calender-year {
+    font-size: 0.9rem;
+  }
+  
+  .calender-year .tag {
+    font-size: 0.7rem;
+    padding: 1px 4px;
+    margin-left: 2px;
+  }
+  
+  .calender-item {
+    font-size: 0.75rem;
+    padding: 4px 0;
+  }
+  
+  .detail-card {
+    margin: 6px;
+    padding: 6px 8px 4px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .detail-card .detail-header {
+    font-size: 0.8rem;
+  }
+  
+  .detail-card .detail-date {
+    font-size: 0.75rem;
+    margin-right: 4px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    height: 12vw;
+  }
+  
+  .card .date {
+    font-size: 0.75rem;
+    right: 2px;
+    top: 2px;
+  }
+  
+  .calender-year {
+    font-size: 0.85rem;
+    padding: 1px 0;
+  }
+  
+  .calender-year .tag {
+    font-size: 0.65rem;
+    padding: 1px 3px;
+    margin-left: 1px;
+  }
+  
+  .calender-item {
+    font-size: 0.7rem;
+    padding: 3px 0;
+  }
+  
+  #calender-head {
+    height: 50px;
+  }
+  
+  #strategy-select {
+    height: 60vh;
+    max-height: 450px;
+  }
+  
+  .strat {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-bottom: 4px;
+  }
+  
+  .detail-card {
+    margin: 4px;
+    padding: 4px 6px 3px 6px;
+    font-size: 0.75rem;
+  }
+  
+  .detail-card .detail-header {
+    font-size: 0.75rem;
+  }
+  
+  .detail-card .detail-date {
+    font-size: 0.7rem;
+    margin-right: 3px;
+  }
+  
+  .detail-card .detail-tags .tag {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+  
+  .strategy-trigger {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .strategy-trigger span {
+    font-size: 1.1rem !important;
   }
 }
 </style>
