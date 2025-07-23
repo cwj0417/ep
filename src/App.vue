@@ -5,6 +5,80 @@ import renderStrategy, { stratMap, defaultStrat } from './renderer.js'
 
 import data from './data.json'
 
+// 主题配置
+const themes = {
+  purple: {
+    name: '紫色',
+    primary: '#9966cc',
+    primaryLight: '#f8f5ff',
+    primaryDark: '#7a4fb5',
+    accent: '#e0b3ff',
+    secondary: '#b12bc7',
+    bgSubtle: '#f3f0ff',
+    highlight: '#ffd700'  // 金色与紫色形成对比
+  },
+  blue: {
+    name: '蓝色',
+    primary: '#3b82f6',
+    primaryLight: '#eff6ff',
+    primaryDark: '#1d4ed8',
+    accent: '#93c5fd',
+    secondary: '#1e40af',
+    bgSubtle: '#dbeafe',
+    highlight: '#f97316'  // 温和的橙色与蓝色形成对比
+  },
+  red: {
+    name: '红色',
+    primary: '#ef4444',
+    primaryLight: '#fef2f2',
+    primaryDark: '#dc2626',
+    accent: '#fca5a5',
+    secondary: '#dc2626',
+    bgSubtle: '#fee2e2',
+    highlight: '#22c55e'  // 温和的绿色与红色形成对比
+  },
+  green: {
+    name: '绿色',
+    primary: '#10b981',
+    primaryLight: '#ecfdf5',
+    primaryDark: '#059669',
+    accent: '#6ee7b7',
+    secondary: '#047857',
+    bgSubtle: '#d1fae5',
+    highlight: '#f59e0b'  // 温和的橙色与绿色形成对比
+  },
+  yellow: {
+    name: '黄色',
+    primary: '#f59e0b',
+    primaryLight: '#fffbeb',
+    primaryDark: '#d97706',
+    accent: '#fcd34d',
+    secondary: '#d97706',
+    bgSubtle: '#fef3c7',
+    highlight: '#8b5cf6'  // 温和的紫色与黄色形成对比
+  },
+  black: {
+    name: '黑色',
+    primary: '#1f2937',
+    primaryLight: '#f9fafb',
+    primaryDark: '#111827',
+    accent: '#6b7280',
+    secondary: '#374151',
+    bgSubtle: '#f3f4f6',
+    highlight: '#fbbf24'  // 金黄色与黑色形成对比
+  },
+  white: {
+    name: '白色',
+    primary: '#64748b',
+    primaryLight: '#f8fafc',
+    primaryDark: '#475569',
+    accent: '#94a3b8',
+    secondary: '#475569',
+    bgSubtle: '#f1f5f9',
+    highlight: '#f97316'  // 温和的橙色与白色/灰色形成对比
+  }
+}
+
 const to10 = num => num < 10 ? `0${num}` : num
 const formatTs = (ts) => {
   const date = new Date(+ts)
@@ -150,15 +224,60 @@ const toggleStrategy = () => {
   isStrategyVisible.value = !isStrategyVisible.value
 }
 
+// 主题相关状态
+const currentTheme = ref(localStorage.getItem('selectedTheme') || 'purple')
+const isThemeVisible = ref(false)
+
+const toggleTheme = () => {
+  isThemeVisible.value = !isThemeVisible.value
+}
+
+const changeTheme = (themeKey) => {
+  currentTheme.value = themeKey
+  const theme = themes[themeKey]
+  const root = document.documentElement
+  root.style.setProperty('--theme-primary', theme.primary)
+  root.style.setProperty('--theme-primary-light', theme.primaryLight)
+  root.style.setProperty('--theme-primary-dark', theme.primaryDark)
+  root.style.setProperty('--theme-accent', theme.accent)
+  root.style.setProperty('--theme-secondary', theme.secondary)
+  root.style.setProperty('--theme-bg-subtle', theme.bgSubtle)
+  root.style.setProperty('--theme-highlight', theme.highlight)
+  
+  // 为黑色主题添加特殊处理
+  if (themeKey === 'black') {
+    root.style.setProperty('--text-color-light', '#f9fafb')
+    root.style.setProperty('--bg-hover', '#374151')
+  } else {
+    root.style.setProperty('--text-color-light', '#333')
+    root.style.setProperty('--bg-hover', theme.bgSubtle)
+  }
+  
+  // 保存到本地存储
+  localStorage.setItem('selectedTheme', themeKey)
+  
+  isThemeVisible.value = false
+}
+
 onMounted(() => {
   const body = document.querySelector('#calander-body')
   body.scroll(0, body.scrollHeight * (new Date() - new Date(dateRange[0])) / (new Date(dateRange[1]) - new Date(dateRange[0])) - body.clientHeight)
 
+  // 初始化主题
+  changeTheme(currentTheme.value)
+
   document.addEventListener('click', (e) => {
     const strategySelect = document.querySelector('#strategy-select')
     const strategyTrigger = document.querySelector('.strategy-trigger')
+    const themeSelect = document.querySelector('#theme-select')
+    const themeTrigger = document.querySelector('.theme-trigger')
+    
     if (!strategySelect?.contains(e.target) && !strategyTrigger?.contains(e.target)) {
       isStrategyVisible.value = false
+    }
+    
+    if (!themeSelect?.contains(e.target) && !themeTrigger?.contains(e.target)) {
+      isThemeVisible.value = false
     }
   })
 })
@@ -197,6 +316,20 @@ onMounted(() => {
       </div>
       <div class="strategy-trigger" @click="toggleStrategy">
         <span style="font-size: 1.2rem;">⚙️</span>
+      </div>
+      <div class="theme-trigger" @click="toggleTheme">
+        <span style="font-size: 1.2rem;">🎨</span>
+      </div>
+      <div id="theme-select" :class="{ visible: isThemeVisible }">
+        <div class="theme-option" 
+             v-for="(theme, key) in themes" 
+             :key="key"
+             :data-theme="key"
+             @click="changeTheme(key)"
+             :class="{ active: currentTheme === key }"
+             :title="theme.name">
+          <div class="theme-color" :style="{ backgroundColor: theme.primary }"></div>
+        </div>
       </div>
       <div id="strategy-select" :class="{ visible: isStrategyVisible }">
         <div class="strat" v-for="entry in Object.entries(renderStrategy)" :key="entry[0]">
@@ -249,6 +382,11 @@ onMounted(() => {
   --theme-primary-light: #f8f5ff;
   --theme-primary-dark: #7a4fb5;
   --theme-accent: #e0b3ff;
+  --text-color-light: #333;
+  --bg-hover: #f8f5ff;
+  --theme-secondary: #b12bc7;
+  --theme-bg-subtle: #f3f0ff;
+  --theme-highlight: #ffd700;
 }
 
 body,
@@ -327,7 +465,7 @@ body,
 }
 
 .detail-card.active .detail-coner {
-  color: #ffd700;
+  color: var(--theme-highlight);
 }
 
 .detail-card:hover {
@@ -349,7 +487,7 @@ body,
 }
 
 .detail-card.active:hover .detail-coner {
-  color: #ffd700;
+  color: var(--theme-highlight);
 }
 
 .detail-card .detail-header {
@@ -410,7 +548,7 @@ body,
 
 .detail-card .detail-coner {
   font-weight: 700;
-  color: #b12bc7;
+  color: var(--theme-secondary);
 }
 
 .detail-card .detail-detail {
@@ -526,7 +664,7 @@ body,
 }
 
 .card.current-month {
-  background: #f3f0ff;
+  background: var(--theme-bg-subtle);
   border-color: #e8e8e8;
 }
 
@@ -546,7 +684,7 @@ body,
 }
 
 .card:hover {
-  background: #f8f5ff;
+  background: var(--bg-hover);
   z-index: 2;
   color: #222;
 }
@@ -654,7 +792,117 @@ body,
 
 .strategy-trigger:hover {
   background: #eaf7fa;
-  color: #32c5dd;
+  color: var(--theme-primary-dark);
+}
+
+.theme-trigger {
+  position: absolute;
+  top: 0;
+  left: 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  background: #f6fafd;
+  color: var(--theme-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  border: 1px solid #e3e8ee;
+  border-top: none;
+  border-left: none;
+}
+
+.theme-trigger:hover {
+  background: #eaf7fa;
+  color: var(--theme-primary-dark);
+}
+
+#theme-select {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e3e8ee;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  max-width: 140px;
+}
+
+#theme-select.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.theme-option:hover {
+  background: #f5f5f5;
+  transform: scale(1.1);
+}
+
+.theme-option.active {
+  background: #e3e8ee;
+  transform: scale(1.1);
+}
+
+.theme-option.active::after {
+  content: '✓';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: var(--theme-primary);
+  color: white;
+  font-size: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.theme-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #e3e8ee;
+  flex-shrink: 0;
+}
+
+.theme-option[data-theme="black"] .theme-color {
+  border-color: #e3e8ee;
+  box-shadow: 0 0 0 1px #333;
+}
+
+.theme-option[data-theme="white"] .theme-color {
+  border-color: #333;
+  box-shadow: 0 0 0 1px #e3e8ee;
 }
 
 .strat {
@@ -865,6 +1113,27 @@ pre {
   .strategy-trigger span {
     font-size: 1.3rem !important;
   }
+  
+  .theme-trigger {
+    left: 36px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .theme-trigger span {
+    font-size: 1.3rem !important;
+  }
+  
+  #theme-select {
+    left: 36px;
+    top: 36px;
+    max-width: 160px;
+  }
+  
+  .theme-color {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -1016,6 +1285,27 @@ pre {
   
   .strategy-trigger span {
     font-size: 1.1rem !important;
+  }
+  
+  .theme-trigger {
+    left: 32px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .theme-trigger span {
+    font-size: 1.1rem !important;
+  }
+  
+  #theme-select {
+    left: 32px;
+    top: 32px;
+    max-width: 140px;
+  }
+  
+  .theme-color {
+    width: 18px;
+    height: 18px;
   }
 }
 </style>
