@@ -190,9 +190,9 @@ watch(scrollTs, () => {
         summary.s4.days++
         summary.s4.count += record.s4
       }
-      if (record.hh) {
+      if (record.hh && record.hh.length > 0) {
         summary.hh.days++
-        summary.hh.count += record.hh
+        summary.hh.count += record.hh.length
       }
     }
   }
@@ -360,7 +360,7 @@ onMounted(() => {
         <span class="detail-tags">
           <span class="tag s3" v-if="item.s3">小发 {{ item.s3 }}</span>
           <span class="tag s4" v-if="item.s4">轻微 {{ item.s4 }}</span>
-          <span class="tag hh" v-if="item.hh">恍惚 {{ item.hh }}</span>
+          <span class="tag hh" v-if="item.hh && item.hh.length">恍惚 {{ item.hh.length }}</span>
         </span>
       </div>
       <hr class="detail-divider" />

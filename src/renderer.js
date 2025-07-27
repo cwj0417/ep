@@ -59,7 +59,17 @@ const renderStrategy = {
             strategy: (ctx, w, h, val, strat) => {
                 ctx.globalCompositeOperation = 'destination-over';
                 ctx.fillStyle = '#88ff8a';
-                ctx.fillRect(0, h - (h / 10 * val), w / 3, h / 10 * val); // 竖向矩形，贴着底部
+                ctx.fillRect(0, h - (h / 10 * val.length), w / 3, h / 10 * val.length); // 竖向矩形，贴着底部
+            }
+        },
+        {
+            name: '绿色长条',
+            strategy: (ctx, w, h, val, strat) => {
+                ctx.fillStyle = '#88ff8a';
+                ctx.globalCompositeOperation = 'destination-over'
+                val.forEach(time => {
+                    ctx.fillRect(time / 24 * w, 0, w / 24, h)
+                })
             }
         }
     ],
