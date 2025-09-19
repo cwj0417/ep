@@ -99,6 +99,12 @@ const currentDetail = ref(0)
 
 let detailRefs = {}
 
+// 详情展开/收起：每条记录独立控制，默认收起
+const expandedDetail = reactive({})
+const toggleDetailExpand = (key) => {
+  expandedDetail[key] = !expandedDetail[key]
+}
+
 const jumpTo = (ts) => {
   currentDetail.value = ts.toString();
   scrollTs.value = +ts;
@@ -366,7 +372,13 @@ onMounted(() => {
       <hr class="detail-divider" />
       <pre v-if="item.memo" class="detail-memo">{{ item.memo }}</pre>
       <pre v-if="item.coner" class="detail-coner">{{ item.coner[1] }}</pre>
-      <pre class="detail-detail">{{ item.detail }}</pre>
+      <pre
+        class="detail-detail"
+        :class="{ expanded: expandedDetail[datets] }"
+        @click.stop="toggleDetailExpand(datets)"
+        :aria-expanded="!!expandedDetail[datets]"
+        title="点击切换展开/收起"
+      >{{ item.detail }}</pre>
     </div>
   </div>
 </template>
@@ -553,6 +565,37 @@ body,
 
 .detail-card .detail-detail {
   color: #444;
+}
+
+/* 详情展开/收起：默认收起为 1/3 屏高度 */
+.detail-card .detail-detail {
+  max-height: 33vh;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.25s ease;
+}
+
+.detail-card .detail-detail::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  pointer-events: none;
+}
+
+.detail-card.active .detail-detail::after {
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.15));
+}
+
+.detail-card .detail-detail.expanded {
+  max-height: none;
+}
+
+.detail-card .detail-detail.expanded::after {
+  display: none;
 }
 
 #calender-head {
