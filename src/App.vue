@@ -114,15 +114,15 @@ const jumpTo = (ts) => {
   if (detailElement && detailContainer) {
     const elementRect = detailElement.getBoundingClientRect();
     const containerRect = detailContainer.getBoundingClientRect();
-    
+
     if (elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom) {
-      const elementOffsetTop = detailElement.offsetTop;
       const containerHeight = detailContainer.clientHeight;
       const elementHeight = detailElement.offsetHeight;
-      
-      // 计算滚动位置，让元素在容器中央
-      const scrollTop = elementOffsetTop - (containerHeight - elementHeight) / 2;
-      detailContainer.scrollTo({ top: scrollTop, behavior: 'smooth' });
+
+      // 基于当前滚动量与矩形差值，避免 offsetTop 参考系问题
+      const delta = elementRect.top - containerRect.top;
+      const target = detailContainer.scrollTop + delta - (containerHeight - elementHeight) / 2;
+      detailContainer.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
     }
   }
 }
