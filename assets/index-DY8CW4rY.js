@@ -3243,7 +3243,7 @@
 19:43梦境 4 4s
 19:49梦境3分10秒
 22:53有过1.2次，一直在理房间，刚刷好牙
-23:37还都没睡，在跟小孩说话`,s4:"43"},"2025-09-21":{detail:`07:46 7310起来，到现在5次
+23:37还都没睡，在跟小孩说话`,s4:43},"2025-09-21":{detail:`07:46 7310起来，到现在5次
 07:58到现在2次
 08:3623次
 09:18到现在2次
@@ -3258,7 +3258,7 @@
 19:30有12次
 19:50有1次
 20:50洗澡出来2次
-23:30到家，好像没有不舒服`,s4:"32"},"2025-09-22":{detail:`23.47到7.18睡了6.34
+23:30到家，好像没有不舒服`,s4:32},"2025-09-22":{detail:`23.47到7.18睡了6.34
 07:50早上到现在10次了，34分的，发34秒听10多秒又来
 52，又来了
 08:25从出门到现在有34次
@@ -3302,7 +3302,7 @@
 20:354次
 22:41梦境24
 23:13到家了
-23.30 梦境过一次，50傻逼老头在外面声音很响，都吵醒我了，我拿开腿冲出去了`,s4:"77"},"2025-09-23":{detail:`今天总时间和昨天差不多，但是5到5.48醒着，监控看起来是一直眼睛闭着，但是手表是全红，我540尿尿回来他还拉着我，然后睡了，交流后，表示没啥原因，应该是自己醒的，说是给小孩盖被子
+23.30 梦境过一次，50傻逼老头在外面声音很响，都吵醒我了，我拿开腿冲出去了`,s4:77},"2025-09-23":{detail:`今天总时间和昨天差不多，但是5到5.48醒着，监控看起来是一直眼睛闭着，但是手表是全红，我540尿尿回来他还拉着我，然后睡了，交流后，表示没啥原因，应该是自己醒的，说是给小孩盖被子
 7.57醒的
 08:18早上醒了以后10次，晚上10次，程度都和之前差不多，23分5秒
 08:20有了
@@ -3359,7 +3359,7 @@
 19:32 +2
 19:55 +1
 22:22洗澡回来，1次
-22:4634次不舒服，我很凶，因为小孩搞，他还配合小孩一起说话和搞`,s4:"101"},"2025-09-24":{detail:`07:38醒来到现在56次，大概是718醒的，6点多醒了24分钟，晚上1.30和2.00小孩不舒服醒了会
+22:4634次不舒服，我很凶，因为小孩搞，他还配合小孩一起说话和搞`,s4:101},"2025-09-24":{detail:`07:38醒来到现在56次，大概是718醒的，6点多醒了24分钟，晚上1.30和2.00小孩不舒服醒了会
 08:183次
 09:17路上3次
 11:34 梦了2次 3分5秒
@@ -3390,7 +3390,7 @@
 19:323分，8秒
 19:55到现在有12次1分很短的，23秒的
 21:02 67次12分12秒
-21:32很轻12次，可能没有，洗澡出来`,s4:"58"},"2025-09-25":{memo:"今天和昨天有手麻的感觉",detail:`睡觉很差，小孩咳嗽，520到620去医院了，自己说睡得还可以
+21:32很轻12次，可能没有，洗澡出来`,s4:58},"2025-09-25":{memo:"今天和昨天有手麻的感觉",detail:`睡觉很差，小孩咳嗽，520到620去医院了，自己说睡得还可以
 1415的时候聊到”昨天半夜睡左边的时候又不太能动, 然后睡回去就好了, 平着睡大概半分钟恢复, 上次好像也有, 如果以前8分的话, 今天6分”
 07:44 730起来的，到现在3次
 08:43 3次
@@ -3425,4 +3425,115 @@
 20:17可能有一次
 21:062次，准备洗澡
 21:30洗好，不确定有没有
-22:413次`,s3:"1",s4:"58"}},ui={id:"cont-wrap"},pi={id:"calender-wrap"},gi={id:"calender-head"},mi={class:"calender-year"},yi={class:"tag s3"},_i={class:"tag s4"},bi={class:"tag hh"},vi=["data-ts","onClick"],xi={class:"date"},Si=["data-theme","onClick","title"],wi={class:"opt-head"},Ci=["onClick"],Ti=["onClick"],Oi={class:"strat setall"},Ei=["onClick"],Pi={class:"detail-header"},Ri={class:"detail-date"},Di={class:"detail-tags"},Ai={key:0,class:"tag s3"},Mi={key:1,class:"tag s4"},Ii={key:2,class:"tag hh"},Fi={key:0,class:"detail-memo"},Hi={key:1,class:"detail-coner"},$i=["onClick","aria-expanded"],ji={__name:"App",setup(n){const e={purple:{name:"紫色",primary:"#9966cc",primaryLight:"#f8f5ff",primaryDark:"#7a4fb5",accent:"#e0b3ff",secondary:"#b12bc7",bgSubtle:"#f3f0ff",highlight:"#ffd700"},blue:{name:"蓝色",primary:"#3b82f6",primaryLight:"#eff6ff",primaryDark:"#1d4ed8",accent:"#93c5fd",secondary:"#1e40af",bgSubtle:"#dbeafe",highlight:"#f97316"},red:{name:"红色",primary:"#ef4444",primaryLight:"#fef2f2",primaryDark:"#dc2626",accent:"#fca5a5",secondary:"#dc2626",bgSubtle:"#fee2e2",highlight:"#22c55e"},green:{name:"绿色",primary:"#10b981",primaryLight:"#ecfdf5",primaryDark:"#059669",accent:"#6ee7b7",secondary:"#047857",bgSubtle:"#d1fae5",highlight:"#f59e0b"},yellow:{name:"黄色",primary:"#f59e0b",primaryLight:"#fffbeb",primaryDark:"#d97706",accent:"#fcd34d",secondary:"#d97706",bgSubtle:"#fef3c7",highlight:"#8b5cf6"},black:{name:"黑色",primary:"#1f2937",primaryLight:"#f9fafb",primaryDark:"#111827",accent:"#6b7280",secondary:"#374151",bgSubtle:"#f3f4f6",highlight:"#fbbf24"},white:{name:"白色",primary:"#64748b",primaryLight:"#f8fafc",primaryDark:"#475569",accent:"#94a3b8",secondary:"#475569",bgSubtle:"#f1f5f9",highlight:"#f97316"}},t=H=>H<10?`0${H}`:H,s=H=>{const P=new Date(+H);return`${P.getFullYear()}-${t(P.getMonth()+1)}-${t(P.getDate())}`},i=Object.fromEntries(Object.entries(di).map(([H,P])=>[new Date(H).valueOf(),P])),l=["2024-01-27",s(Date.now()+864e5*21)],r=(new Date(l[1])-new Date(l[0]))/864e5,o=new Date(l[0]).valueOf(),c=c1(new Date(l[0]).valueOf()+864e5*4),d=u1(At),h=c1(0);let p={};const w=u1({}),E=H=>{w[H]=!w[H]},j=H=>{h.value=H.toString(),c.value=+H;const P=p[H],x=document.querySelector("#detail");if(P&&x){const T=P.getBoundingClientRect(),A=x.getBoundingClientRect();if(T.top<A.top||T.bottom>A.bottom){const tn=x.clientHeight,Kn=P.offsetHeight,On=T.top-A.top,un=x.scrollTop+On-(tn-Kn)/2;x.scrollTo({top:Math.max(0,un),behavior:"smooth"})}}},$=H=>{h.value=H.toString(),c.value=+H,setTimeout(()=>{const P=document.querySelector(`.card[data-ts="${H}"]`),x=document.querySelector("#calander-body");if(P&&x){const T=P.getBoundingClientRect(),A=x.getBoundingClientRect();if(T.top<A.top||T.bottom>A.bottom){const tn=P.offsetTop,Kn=x.clientHeight,On=P.offsetHeight,un=tn-(Kn-On)/2;x.scrollTo({top:un,behavior:"smooth"})}}},0)};let Z=0,W=null;const Y=c1(!0),G=H=>{if(!W){const P=H.target;Y.value=Z>P.scrollTop,Z=P.scrollTop;const x=new Date(l[0]).valueOf()+(new Date(l[1])-new Date(l[0]))/P.scrollHeight*(P.scrollTop+P.clientHeight/2);c.value=x,W=setTimeout(()=>{W=null},350)}},O=u1({s3:{days:0,count:0},s4:{days:0,count:0},hh:{days:0,count:0}});A1(c,()=>{const H=new Date(c.value).getMonth(),P=new Date(c.value).getFullYear();O.s3.days=0,O.s3.count=0,O.s4.days=0,O.s4.count=0,O.hh.days=0,O.hh.count=0;for(const[x,T]of Object.entries(i)){const A=new Date(+x);A.getMonth()===H&&A.getFullYear()===P&&(T.s3&&(O.s3.days++,O.s3.count+=T.s3),T.s4&&(O.s4.days++,O.s4.count+=T.s4),T.hh&&T.hh.length>0&&(O.hh.days++,O.hh.count+=T.hh.length))}});let J=null;const An=H=>{J||(Y.value=!1,J=setTimeout(()=>{J=null},350))},pn=H=>{for(const P in At)["coner","memo","detail"].includes(P)||(d[P]=H?0:-1)},gn=c1(!1),r1=()=>{gn.value=!gn.value},Cn=c1(localStorage.getItem("selectedTheme")||"purple"),Tn=c1(!1),o1=()=>{Tn.value=!Tn.value},Zn=H=>{Cn.value=H;const P=e[H],x=document.documentElement;x.style.setProperty("--theme-primary",P.primary),x.style.setProperty("--theme-primary-light",P.primaryLight),x.style.setProperty("--theme-primary-dark",P.primaryDark),x.style.setProperty("--theme-accent",P.accent),x.style.setProperty("--theme-secondary",P.secondary),x.style.setProperty("--theme-bg-subtle",P.bgSubtle),x.style.setProperty("--theme-highlight",P.highlight),H==="black"?(x.style.setProperty("--text-color-light","#f9fafb"),x.style.setProperty("--bg-hover","#374151")):(x.style.setProperty("--text-color-light","#333"),x.style.setProperty("--bg-hover",P.bgSubtle)),localStorage.setItem("selectedTheme",H),Tn.value=!1};return Ye(()=>{const H=document.querySelector("#calander-body");H.scroll(0,H.scrollHeight*(new Date-new Date(l[0]))/(new Date(l[1])-new Date(l[0]))-H.clientHeight),Zn(Cn.value),document.addEventListener("click",P=>{const x=document.querySelector("#strategy-select"),T=document.querySelector(".strategy-trigger"),A=document.querySelector("#theme-select"),tn=document.querySelector(".theme-trigger");!(x!=null&&x.contains(P.target))&&!(T!=null&&T.contains(P.target))&&(gn.value=!1),!(A!=null&&A.contains(P.target))&&!(tn!=null&&tn.contains(P.target))&&(Tn.value=!1)})}),(H,P)=>(ln(),cn(hn,null,[N("div",ui,[N("div",pi,[N("div",gi,[N("div",mi,[M0(Q(new Date(c.value).getFullYear())+"年"+Q(new Date(c.value).getMonth()+1)+"月 ",1),N("span",yi,Q(O.s3.days)+"天, "+Q(O.s3.count)+"次",1),N("span",_i,Q(O.s4.days)+"天, "+Q(O.s4.count)+"次",1),N("span",bi,Q(O.hh.days)+"天, "+Q(O.hh.count)+"次",1)]),P[2]||(P[2]=ws('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),N("div",{id:"calander-body",onScroll:G},[(ln(),cn(hn,null,S1(r,x=>N("div",{class:Pn(["calender-item card",[{"current-month":new Date(Sn(o)+x*864e5).getMonth()===new Date(c.value).getMonth(),active:h.value==Sn(o)+x*864e5}]]),"data-ts":Sn(o)+x*864e5,onClick:T=>j(Sn(o)+x*864e5),key:x},[N("div",xi,Q(new Date(Sn(o)+x*864e5).getDate()),1),Dn(hi,{strategy:d,record:Sn(i)[Sn(o)+x*864e5]},null,8,["strategy","record"])],10,vi)),64))],32),N("div",{class:"strategy-trigger",onClick:r1},P[3]||(P[3]=[N("span",{style:{"font-size":"1.2rem"}},"⚙️",-1)])),N("div",{class:"theme-trigger",onClick:o1},P[4]||(P[4]=[N("span",{style:{"font-size":"1.2rem"}},"🎨",-1)])),N("div",{id:"theme-select",class:Pn({visible:Tn.value})},[(ln(),cn(hn,null,S1(e,(x,T)=>N("div",{class:Pn(["theme-option",{active:Cn.value===T}]),key:T,"data-theme":T,onClick:A=>Zn(T),title:x.name},[N("div",{class:"theme-color",style:ie({backgroundColor:x.primary})},null,4)],10,Si)),64))],2),N("div",{id:"strategy-select",class:Pn({visible:gn.value})},[(ln(!0),cn(hn,null,S1(Object.entries(Sn(Ie)),x=>(ln(),cn("div",{class:"strat",key:x[0]},[N("div",wi,Q(Sn(ci)[x[0]]),1),(ln(!0),cn(hn,null,S1(x[1],(T,A)=>(ln(),cn("div",{class:Pn(["option",{active:A===d[x[0]]}]),onClick:tn=>d[x[0]]=A,key:T.name},Q(T.name),11,Ci))),128)),N("div",{class:Pn(["option",{active:d[x[0]]===-1}]),onClick:T=>d[x[0]]=-1}," 不渲染 ",10,Ti)]))),128)),N("div",Oi,[N("div",{class:"action",onClick:P[0]||(P[0]=x=>pn(!0))},"恢复默认"),N("div",{class:"action",onClick:P[1]||(P[1]=x=>pn(!1))},"关闭渲染")])],2)])]),N("div",{id:"detail",onScroll:An},[(ln(!0),cn(hn,null,S1(Object.entries(Sn(i)),([x,T])=>(ln(),cn("div",{class:Pn(["detail-card",h.value==x?"active":""]),ref_for:!0,ref:A=>Sn(p)[x]=A,key:x,onClick:A=>$(x)},[N("div",Pi,[N("span",Ri,Q(s(x)),1),N("span",Di,[T.s3?(ln(),cn("span",Ai,"小发 "+Q(T.s3),1)):C1("",!0),T.s4?(ln(),cn("span",Mi,"轻微 "+Q(T.s4),1)):C1("",!0),T.hh&&T.hh.length?(ln(),cn("span",Ii,"恍惚 "+Q(T.hh.length),1)):C1("",!0)])]),P[5]||(P[5]=N("hr",{class:"detail-divider"},null,-1)),T.memo?(ln(),cn("pre",Fi,Q(T.memo),1)):C1("",!0),T.coner?(ln(),cn("pre",Hi,Q(T.coner[1]),1)):C1("",!0),N("pre",{class:Pn(["detail-detail",{expanded:w[x]}]),onClick:si(A=>E(x),["stop"]),"aria-expanded":!!w[x],title:"点击切换展开/收起"},Q(T.detail),11,$i)],10,Ei))),128))],32)],64))}};ri(ji).mount("#app");
+22:413次`,s3:1,s4:58},"2025-09-26":{memo:"下午开始有非常高频率的, 自己觉得放弃记录了, 并且有放弃治疗的负面情绪",detail:`早上815起来，到20已经2次了。
+睡觉非常差，小孩的关系，问有没有麻，有的，不是最确定
+08:28到现在1次
+08:36一次，3分 10秒
+08:39一次，3分，5秒
+08:56一次
+09:46一起买了螺丝，可能没有
+09:462秒
+09:59梦境，2分3秒
+10:11梦境，3分6秒
+11:00 路上5次. 有一次时间很长, 8秒
+11:40 3 5s
+12:25 4 6s
+12:49 3次 3 5s
+今天中午没睡, 在看知乎
+13:40 4 5s
+14:03 3 6s
+15:22 5 9s
+15:59 4 4s
+16:22 4 4s
+16:29 熟悉感 微信说话 看到李大仁的名字 觉得前两天也微信上聊过的
+16:31 3 4s
+16:40 3 6s
+16:47 4 4s
+16:50 4 8s
+17:57回来路上15次，5分，有短有长，短3秒，长10多秒，并且状态差，想一个人在家其他人出去吃饭，倒也不一定，以前也有过
+18:14上楼后有2，3次
+18:25有一些“比1分1秒更短”的感觉，所以感觉不好说
+18:37好几次不舒服了，但是不想记了，说放弃了，又说3次，我就不问了，19点左右吧睡着了
+19:39到现在都有10次了，刚醒，说不记了
+20:08吃了点东西后，频率有好点，他自己说是因为在玩手机，但是也不多问了
+22:16问，回答“没很夸张的”，小哈不让说话，就没再问
+22:45问，说不记得，问半小时内，说34次，程度差不多
+23:17最近半小时4次5分，5，6秒`,s3:1,s4:72},"2025-09-27":{memo:"聊天会变好, 紧张会发作, 和情绪相关很大",coner:["蓝十字/朱","加了吡仑帕奈, 开了高压氧仓"],detail:`08.01 起床，自己觉得睡觉可以，手表8小时
+08:27到现在，和昨天差不多，程度差不多，次数5到10
+08:49在吃饭，频率一样
+09:39太阳穴很紧，上车到现在可能没有
+10:33左脚烫软，已经有一会了，梦境2次
+10:55到医院了，没有梦境，腿也好了
+12:06在翠富楼，23次
+13:223次，吃好饭
+14:071，2次
+14:23到医院，路上2次
+14:51到现在没有
+15:09出医院，准备去7宝兜一下，1次
+15:39不舒服，想到外婆，梦境
+15:41又有了，还在说外婆
+16:25在医院有一会了，可能没
+16:56到现在1次
+16:59梦境，快排到了，说紧张，怕医生说没用了，打完字还没好，17，算好了，这次事件很长
+17:11梦境，在想怎么请假
+17:13梦境，还是在想这事情
+17:20有一点不舒服，说和以前不一样
+17:36梦境，准备回去，刚在躲雨
+17:37又有了，在门口
+17:42加1
+17:45加1
+17:48 涨/烫/风凉
+17:50 涨/烫/风凉
+17:56 涨/烫/风凉
+17:59 涨/烫/风凉
+18:06 涨/烫/风凉
+18:09 涨/烫/风凉
+18:12 涨/烫/风凉
+18:14 涨/烫/风凉
+18:23 涨/烫/风凉
+18:25 涨/烫/风凉
+18:31 涨/烫/风凉
+18:53 涨/烫/风凉
+18:58 涨/烫/风凉
+19:422，3次
+20:14可能1次
+20:31 3 5
+20:59 2 5
+21:44到现在，没有不舒服
+22:55起来刷牙后，有2，3次，大概是40分起来的，想等小哈睡，没等到，起来吃药准备睡觉的`,s4:55},"2025-09-28":{memo:"手麻了几次, 并且中午有忘记有没有的, 就作为没有了",coner:["卫4粒",""],detail:`晚上中间一大段没睡觉, 小孩吵我带小孩出去的，后半段睡的还可以，8不到醒的
+08:25起来到现在4，5次
+到单位说没不舒服, 因为在想快一点
+10点问, 还没有
+忘记有没有
+中午睡了40分钟
+1250醒的, 到13.43 2次
+13:51 2次 3 4s,
+忘记有没有
+14:55 左手麻, 5分, 02问, 1, 2分
+15:34 左手麻
+15:41 4 6s
+15:46 4 7s
+15:51 4 6s
+15:53 左手麻, 5分, 54好很多了
+15:54 3 3s
+16:23 轻微恍惚
+16:25 轻微恍惚
+16:28 轻微恍惚
+16:45 4 7s 想吐
+16:54 轻微恍惚
+16:56 轻微恍惚
+17:08 轻微恍惚
+17:48 轻微恍惚
+17:58 2次
+18:15 轻微恍惚
+18:47 轻微恍惚
+18:50 轻微恍惚
+18:54 轻微恍惚
+19:13 2次
+20:19到现在3次，吃好饭了，面条饺子
+20:48 2次，我洗好澡了
+20:54梦境，45分，5
+21:43梦境，4分，6秒 
+21:54梦境，3分5秒，手麻了，在说太太，说国庆要不要去，觉得见一次少一次
+22:24洗澡回来，2次
+23:06准备睡觉`,s4:42}},ui={id:"cont-wrap"},pi={id:"calender-wrap"},gi={id:"calender-head"},mi={class:"calender-year"},yi={class:"tag s3"},_i={class:"tag s4"},bi={class:"tag hh"},vi=["data-ts","onClick"],xi={class:"date"},Si=["data-theme","onClick","title"],wi={class:"opt-head"},Ci=["onClick"],Ti=["onClick"],Oi={class:"strat setall"},Ei=["onClick"],Pi={class:"detail-header"},Ri={class:"detail-date"},Di={class:"detail-tags"},Ai={key:0,class:"tag s3"},Mi={key:1,class:"tag s4"},Ii={key:2,class:"tag hh"},Fi={key:0,class:"detail-memo"},Hi={key:1,class:"detail-coner"},$i=["onClick","aria-expanded"],ji={__name:"App",setup(n){const e={purple:{name:"紫色",primary:"#9966cc",primaryLight:"#f8f5ff",primaryDark:"#7a4fb5",accent:"#e0b3ff",secondary:"#b12bc7",bgSubtle:"#f3f0ff",highlight:"#ffd700"},blue:{name:"蓝色",primary:"#3b82f6",primaryLight:"#eff6ff",primaryDark:"#1d4ed8",accent:"#93c5fd",secondary:"#1e40af",bgSubtle:"#dbeafe",highlight:"#f97316"},red:{name:"红色",primary:"#ef4444",primaryLight:"#fef2f2",primaryDark:"#dc2626",accent:"#fca5a5",secondary:"#dc2626",bgSubtle:"#fee2e2",highlight:"#22c55e"},green:{name:"绿色",primary:"#10b981",primaryLight:"#ecfdf5",primaryDark:"#059669",accent:"#6ee7b7",secondary:"#047857",bgSubtle:"#d1fae5",highlight:"#f59e0b"},yellow:{name:"黄色",primary:"#f59e0b",primaryLight:"#fffbeb",primaryDark:"#d97706",accent:"#fcd34d",secondary:"#d97706",bgSubtle:"#fef3c7",highlight:"#8b5cf6"},black:{name:"黑色",primary:"#1f2937",primaryLight:"#f9fafb",primaryDark:"#111827",accent:"#6b7280",secondary:"#374151",bgSubtle:"#f3f4f6",highlight:"#fbbf24"},white:{name:"白色",primary:"#64748b",primaryLight:"#f8fafc",primaryDark:"#475569",accent:"#94a3b8",secondary:"#475569",bgSubtle:"#f1f5f9",highlight:"#f97316"}},t=H=>H<10?`0${H}`:H,s=H=>{const P=new Date(+H);return`${P.getFullYear()}-${t(P.getMonth()+1)}-${t(P.getDate())}`},i=Object.fromEntries(Object.entries(di).map(([H,P])=>[new Date(H).valueOf(),P])),l=["2024-01-27",s(Date.now()+864e5*21)],r=(new Date(l[1])-new Date(l[0]))/864e5,o=new Date(l[0]).valueOf(),c=c1(new Date(l[0]).valueOf()+864e5*4),d=u1(At),h=c1(0);let p={};const w=u1({}),E=H=>{w[H]=!w[H]},j=H=>{h.value=H.toString(),c.value=+H;const P=p[H],x=document.querySelector("#detail");if(P&&x){const T=P.getBoundingClientRect(),A=x.getBoundingClientRect();if(T.top<A.top||T.bottom>A.bottom){const tn=x.clientHeight,Kn=P.offsetHeight,On=T.top-A.top,un=x.scrollTop+On-(tn-Kn)/2;x.scrollTo({top:Math.max(0,un),behavior:"smooth"})}}},$=H=>{h.value=H.toString(),c.value=+H,setTimeout(()=>{const P=document.querySelector(`.card[data-ts="${H}"]`),x=document.querySelector("#calander-body");if(P&&x){const T=P.getBoundingClientRect(),A=x.getBoundingClientRect();if(T.top<A.top||T.bottom>A.bottom){const tn=P.offsetTop,Kn=x.clientHeight,On=P.offsetHeight,un=tn-(Kn-On)/2;x.scrollTo({top:un,behavior:"smooth"})}}},0)};let Z=0,W=null;const Y=c1(!0),G=H=>{if(!W){const P=H.target;Y.value=Z>P.scrollTop,Z=P.scrollTop;const x=new Date(l[0]).valueOf()+(new Date(l[1])-new Date(l[0]))/P.scrollHeight*(P.scrollTop+P.clientHeight/2);c.value=x,W=setTimeout(()=>{W=null},350)}},O=u1({s3:{days:0,count:0},s4:{days:0,count:0},hh:{days:0,count:0}});A1(c,()=>{const H=new Date(c.value).getMonth(),P=new Date(c.value).getFullYear();O.s3.days=0,O.s3.count=0,O.s4.days=0,O.s4.count=0,O.hh.days=0,O.hh.count=0;for(const[x,T]of Object.entries(i)){const A=new Date(+x);A.getMonth()===H&&A.getFullYear()===P&&(T.s3&&(O.s3.days++,O.s3.count+=T.s3),T.s4&&(O.s4.days++,O.s4.count+=T.s4),T.hh&&T.hh.length>0&&(O.hh.days++,O.hh.count+=T.hh.length))}});let J=null;const An=H=>{J||(Y.value=!1,J=setTimeout(()=>{J=null},350))},pn=H=>{for(const P in At)["coner","memo","detail"].includes(P)||(d[P]=H?0:-1)},gn=c1(!1),r1=()=>{gn.value=!gn.value},Cn=c1(localStorage.getItem("selectedTheme")||"purple"),Tn=c1(!1),o1=()=>{Tn.value=!Tn.value},Zn=H=>{Cn.value=H;const P=e[H],x=document.documentElement;x.style.setProperty("--theme-primary",P.primary),x.style.setProperty("--theme-primary-light",P.primaryLight),x.style.setProperty("--theme-primary-dark",P.primaryDark),x.style.setProperty("--theme-accent",P.accent),x.style.setProperty("--theme-secondary",P.secondary),x.style.setProperty("--theme-bg-subtle",P.bgSubtle),x.style.setProperty("--theme-highlight",P.highlight),H==="black"?(x.style.setProperty("--text-color-light","#f9fafb"),x.style.setProperty("--bg-hover","#374151")):(x.style.setProperty("--text-color-light","#333"),x.style.setProperty("--bg-hover",P.bgSubtle)),localStorage.setItem("selectedTheme",H),Tn.value=!1};return Ye(()=>{const H=document.querySelector("#calander-body");H.scroll(0,H.scrollHeight*(new Date-new Date(l[0]))/(new Date(l[1])-new Date(l[0]))-H.clientHeight),Zn(Cn.value),document.addEventListener("click",P=>{const x=document.querySelector("#strategy-select"),T=document.querySelector(".strategy-trigger"),A=document.querySelector("#theme-select"),tn=document.querySelector(".theme-trigger");!(x!=null&&x.contains(P.target))&&!(T!=null&&T.contains(P.target))&&(gn.value=!1),!(A!=null&&A.contains(P.target))&&!(tn!=null&&tn.contains(P.target))&&(Tn.value=!1)})}),(H,P)=>(ln(),cn(hn,null,[N("div",ui,[N("div",pi,[N("div",gi,[N("div",mi,[M0(Q(new Date(c.value).getFullYear())+"年"+Q(new Date(c.value).getMonth()+1)+"月 ",1),N("span",yi,Q(O.s3.days)+"天, "+Q(O.s3.count)+"次",1),N("span",_i,Q(O.s4.days)+"天, "+Q(O.s4.count)+"次",1),N("span",bi,Q(O.hh.days)+"天, "+Q(O.hh.count)+"次",1)]),P[2]||(P[2]=ws('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),N("div",{id:"calander-body",onScroll:G},[(ln(),cn(hn,null,S1(r,x=>N("div",{class:Pn(["calender-item card",[{"current-month":new Date(Sn(o)+x*864e5).getMonth()===new Date(c.value).getMonth(),active:h.value==Sn(o)+x*864e5}]]),"data-ts":Sn(o)+x*864e5,onClick:T=>j(Sn(o)+x*864e5),key:x},[N("div",xi,Q(new Date(Sn(o)+x*864e5).getDate()),1),Dn(hi,{strategy:d,record:Sn(i)[Sn(o)+x*864e5]},null,8,["strategy","record"])],10,vi)),64))],32),N("div",{class:"strategy-trigger",onClick:r1},P[3]||(P[3]=[N("span",{style:{"font-size":"1.2rem"}},"⚙️",-1)])),N("div",{class:"theme-trigger",onClick:o1},P[4]||(P[4]=[N("span",{style:{"font-size":"1.2rem"}},"🎨",-1)])),N("div",{id:"theme-select",class:Pn({visible:Tn.value})},[(ln(),cn(hn,null,S1(e,(x,T)=>N("div",{class:Pn(["theme-option",{active:Cn.value===T}]),key:T,"data-theme":T,onClick:A=>Zn(T),title:x.name},[N("div",{class:"theme-color",style:ie({backgroundColor:x.primary})},null,4)],10,Si)),64))],2),N("div",{id:"strategy-select",class:Pn({visible:gn.value})},[(ln(!0),cn(hn,null,S1(Object.entries(Sn(Ie)),x=>(ln(),cn("div",{class:"strat",key:x[0]},[N("div",wi,Q(Sn(ci)[x[0]]),1),(ln(!0),cn(hn,null,S1(x[1],(T,A)=>(ln(),cn("div",{class:Pn(["option",{active:A===d[x[0]]}]),onClick:tn=>d[x[0]]=A,key:T.name},Q(T.name),11,Ci))),128)),N("div",{class:Pn(["option",{active:d[x[0]]===-1}]),onClick:T=>d[x[0]]=-1}," 不渲染 ",10,Ti)]))),128)),N("div",Oi,[N("div",{class:"action",onClick:P[0]||(P[0]=x=>pn(!0))},"恢复默认"),N("div",{class:"action",onClick:P[1]||(P[1]=x=>pn(!1))},"关闭渲染")])],2)])]),N("div",{id:"detail",onScroll:An},[(ln(!0),cn(hn,null,S1(Object.entries(Sn(i)),([x,T])=>(ln(),cn("div",{class:Pn(["detail-card",h.value==x?"active":""]),ref_for:!0,ref:A=>Sn(p)[x]=A,key:x,onClick:A=>$(x)},[N("div",Pi,[N("span",Ri,Q(s(x)),1),N("span",Di,[T.s3?(ln(),cn("span",Ai,"小发 "+Q(T.s3),1)):C1("",!0),T.s4?(ln(),cn("span",Mi,"轻微 "+Q(T.s4),1)):C1("",!0),T.hh&&T.hh.length?(ln(),cn("span",Ii,"恍惚 "+Q(T.hh.length),1)):C1("",!0)])]),P[5]||(P[5]=N("hr",{class:"detail-divider"},null,-1)),T.memo?(ln(),cn("pre",Fi,Q(T.memo),1)):C1("",!0),T.coner?(ln(),cn("pre",Hi,Q(T.coner[1]),1)):C1("",!0),N("pre",{class:Pn(["detail-detail",{expanded:w[x]}]),onClick:si(A=>E(x),["stop"]),"aria-expanded":!!w[x],title:"点击切换展开/收起"},Q(T.detail),11,$i)],10,Ei))),128))],32)],64))}};ri(ji).mount("#app");
