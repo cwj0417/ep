@@ -14,7 +14,7 @@
 * @vue/runtime-dom v3.5.13
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
-**/let M2;const b0=typeof window<"u"&&window.trustedTypes;if(b0)try{M2=b0.createPolicy("vue",{createHTML:n=>n})}catch{}const He=M2?n=>M2.createHTML(n):n=>n,H3="http://www.w3.org/2000/svg",$3="http://www.w3.org/1998/Math/MathML",W1=typeof document<"u"?document:null,v0=W1&&W1.createElement("template"),L3={insert:(n,e,t)=>{e.insertBefore(n,t||null)},remove:n=>{const e=n.parentNode;e&&e.removeChild(n)},createElement:(n,e,t,s)=>{const i=e==="svg"?W1.createElementNS(H3,n):e==="mathml"?W1.createElementNS($3,n):t?W1.createElement(n,{is:t}):W1.createElement(n);return n==="select"&&s&&s.multiple!=null&&i.setAttribute("multiple",s.multiple),i},createText:n=>W1.createTextNode(n),createComment:n=>W1.createComment(n),setText:(n,e)=>{n.nodeValue=e},setElementText:(n,e)=>{n.textContent=e},parentNode:n=>n.parentNode,nextSibling:n=>n.nextSibling,querySelector:n=>W1.querySelector(n),setScopeId(n,e){n.setAttribute(e,"")},insertStaticContent(n,e,t,s,i,l){const r=t?t.previousSibling:e.lastChild;if(i&&(i===l||i.nextSibling))for(;e.insertBefore(i.cloneNode(!0),t),!(i===l||!(i=i.nextSibling)););else{v0.innerHTML=He(s==="svg"?`<svg>${n}</svg>`:s==="mathml"?`<math>${n}</math>`:n);const o=v0.content;if(s==="svg"||s==="mathml"){const h=o.firstChild;for(;h.firstChild;)o.appendChild(h.firstChild);o.removeChild(h)}e.insertBefore(o,t)}return[r?r.nextSibling:e.firstChild,t?t.previousSibling:e.lastChild]}},j3=Symbol("_vtc");function N3(n,e,t){const s=n[j3];s&&(e=(e?[e,...s]:[...s]).join(" ")),e==null?n.removeAttribute("class"):t?n.setAttribute("class",e):n.className=e}const x0=Symbol("_vod"),W3=Symbol("_vsh"),B3=Symbol(""),U3=/(^|;)\s*display\s*:/;function V3(n,e,t){const s=n.style,i=Q(t);let l=!1;if(t&&!i){if(e)if(Q(e))for(const r of e.split(";")){const o=r.slice(0,r.indexOf(":")).trim();t[o]==null&&Yn(s,o,"")}else for(const r in e)t[r]==null&&Yn(s,r,"");for(const r in t)r==="display"&&(l=!0),Yn(s,r,t[r])}else if(i){if(e!==t){const r=s[B3];r&&(t+=";"+r),s.cssText=t,l=U3.test(t)}}else e&&n.removeAttribute("style");x0 in n&&(n[x0]=l?s.display:"",n[W3]&&(s.display="none"))}const S0=/\s*!important$/;function Yn(n,e,t){if(M(t))t.forEach(s=>Yn(n,e,s));else if(t==null&&(t=""),e.startsWith("--"))n.setProperty(e,t);else{const s=K3(n,e);S0.test(t)?n.setProperty(on(s),t.replace(S0,""),"important"):n[s]=t}}const w0=["Webkit","Moz","ms"],v2={};function K3(n,e){const t=v2[e];if(t)return t;let s=J1(e);if(s!=="filter"&&s in n)return v2[e]=s;s=$0(s);for(let i=0;i<w0.length;i++){const l=w0[i]+s;if(l in n)return v2[e]=l}return e}const C0="http://www.w3.org/1999/xlink";function T0(n,e,t,s,i,l=Je(e)){s&&e.startsWith("xlink:")?t==null?n.removeAttributeNS(C0,e.slice(6,e.length)):n.setAttributeNS(C0,e,t):t==null||l&&!j0(t)?n.removeAttribute(e):n.setAttribute(e,l?"":z1(t)?String(t):t)}function O0(n,e,t,s,i){if(e==="innerHTML"||e==="textContent"){t!=null&&(n[e]=e==="innerHTML"?He(t):t);return}const l=n.tagName;if(e==="value"&&l!=="PROGRESS"&&!l.includes("-")){const o=l==="OPTION"?n.getAttribute("value")||"":n.value,h=t==null?n.type==="checkbox"?"on":"":String(t);(o!==h||!("_value"in n))&&(n.value=h),t==null&&n.removeAttribute(e),n._value=t;return}let r=!1;if(t===""||t==null){const o=typeof n[e];o==="boolean"?t=j0(t):t==null&&o==="string"?(t="",r=!0):o==="number"&&(t=0,r=!0)}try{n[e]=t}catch{}r&&n.removeAttribute(i||e)}function k3(n,e,t,s){n.addEventListener(e,t,s)}function q3(n,e,t,s){n.removeEventListener(e,t,s)}const E0=Symbol("_vei");function Y3(n,e,t,s,i=null){const l=n[E0]||(n[E0]={}),r=l[e];if(s&&r)r.value=s;else{const[o,h]=G3(e);if(s){const f=l[e]=X3(s,i);k3(n,o,f,h)}else r&&(q3(n,o,r,h),l[e]=void 0)}}const P0=/(?:Once|Passive|Capture)$/;function G3(n){let e;if(P0.test(n)){e={};let s;for(;s=n.match(P0);)n=n.slice(0,n.length-s[0].length),e[s[0].toLowerCase()]=!0}return[n[2]===":"?n.slice(3):on(n.slice(2)),e]}let x2=0;const J3=Promise.resolve(),z3=()=>x2||(J3.then(()=>x2=0),x2=Date.now());function X3(n,e){const t=s=>{if(!s._vts)s._vts=Date.now();else if(s._vts<=t.attached)return;L1(Z3(s,t.value),e,5,[s])};return t.value=n,t.attached=z3(),t}function Z3(n,e){if(M(e)){const t=n.stopImmediatePropagation;return n.stopImmediatePropagation=()=>{t.call(n),n._stopped=!0},e.map(s=>i=>!i._stopped&&s&&s(i))}else return e}const R0=n=>n.charCodeAt(0)===111&&n.charCodeAt(1)===110&&n.charCodeAt(2)>96&&n.charCodeAt(2)<123,Q3=(n,e,t,s,i,l)=>{const r=i==="svg";e==="class"?N3(n,s,r):e==="style"?V3(n,t,s):n2(e)?H2(e)||Y3(n,e,t,s,l):(e[0]==="."?(e=e.slice(1),!0):e[0]==="^"?(e=e.slice(1),!1):ns(n,e,s,r))?(O0(n,e,s),!n.tagName.includes("-")&&(e==="value"||e==="checked"||e==="selected")&&T0(n,e,s,r,l,e!=="value")):n._isVueCE&&(/[A-Z]/.test(e)||!Q(s))?O0(n,J1(e),s,l,e):(e==="true-value"?n._trueValue=s:e==="false-value"&&(n._falseValue=s),T0(n,e,s,r))};function ns(n,e,t,s){if(s)return!!(e==="innerHTML"||e==="textContent"||e in n&&R0(e)&&F(t));if(e==="spellcheck"||e==="draggable"||e==="translate"||e==="form"||e==="list"&&n.tagName==="INPUT"||e==="type"&&n.tagName==="TEXTAREA")return!1;if(e==="width"||e==="height"){const i=n.tagName;if(i==="IMG"||i==="VIDEO"||i==="CANVAS"||i==="SOURCE")return!1}return R0(e)&&Q(t)?!1:e in n}const es=s1({patchProp:Q3},L3);let A0;function ts(){return A0||(A0=l3(es))}const ss=(...n)=>{const e=ts().createApp(...n),{mount:t}=e;return e.mount=s=>{const i=ls(s);if(!i)return;const l=e._component;!F(l)&&!l.render&&!l.template&&(l.template=i.innerHTML),i.nodeType===1&&(i.textContent="");const r=t(i,!1,is(i));return i instanceof Element&&(i.removeAttribute("v-cloak"),i.setAttribute("data-v-app","")),r},e};function is(n){if(n instanceof SVGElement)return"svg";if(typeof MathMLElement=="function"&&n instanceof MathMLElement)return"mathml"}function ls(n){return Q(n)?document.querySelector(n):n}const I2={s1:[{name:"红色背景",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#c14949",n.fillRect(0,0,e,t)}},{name:"红色长条",strategy:(n,e,t,s,i)=>{n.fillStyle="red",n.globalCompositeOperation="destination-over",s.forEach(l=>{n.fillRect(l/24*e,0,e/24,t)})}}],s2:[{name:"紫色背景",id:"s21",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#d58585",n.fillRect(0,0,e,t)}}],s3:[{name:"蓝色进度条",id:"s31",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#8fb3f7",n.fillRect(e/3,t-t/10*s,e/3,t/10*s)}}],s4:[{name:"粉红进度条",id:"s41",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#ffd6e7",n.fillRect(e/3*2,t-t/10*s,e/3,t/10*s)}}],hh:[{name:"绿色进度条",id:"hh1",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#88ff8a",n.fillRect(0,t-t/10*s.length,e/3,t/10*s.length)}},{name:"绿色长条",strategy:(n,e,t,s,i)=>{n.fillStyle="#88ff8a",n.globalCompositeOperation="destination-over",s.forEach(l=>{n.fillRect(l/24*e,0,e/24,t)})}}],coner:[{name:"左上角大字",id:"coner1",strategy:(n,e,t,s,i)=>{n.font="50px gray",n.fillStyle="#2c2c2c",n.textBaseline="top",n.fillText(s[0],10,10)}}],memo:[{name:"左下角展示",id:"memo1",strategy:(n,e,t,s,i)=>{n.font="20px gray",n.fillStyle="black",n.textBaseline="bottom",n.fillText(s,10,t-10)}}],detail:[{name:"粉红badge",id:"detail1",strategy:(n,e,t,s,i)=>{}}]},rs={s1:"大发",s2:"大发不抽",s3:"小发",s4:"轻微发",hh:"恍惚",coner:"事件",memo:"备注",detail:"详情"},D0={s1:0,s2:0,s3:0,s4:0,hh:0,coner:0,memo:0,detail:0},os={class:"record"},as={__name:"Record",props:{record:Object,strategy:Object},setup(n){const e=n;let t,s,i,l;return Y2(()=>{s=t.getContext("2d"),i=t.width,l=t.height,An(e,()=>{if(e.record&&e.strategy&&s){s.clearRect(0,0,i,l);for(let r in e.record)e.strategy[r]!==-1&&I2[r][e.strategy[r]].strategy&&I2[r][e.strategy[r]].strategy(s,i,l,e.record[r],e.strategy)}},{deep:!0,immediate:!0})}),(r,o)=>(l1(),h1("div",os,[B("canvas",{ref:h=>t1(t)?t.value=h:t=h,width:"240",height:"148.32"},null,512)]))}},hs={"2024-02-04":{s1:[7],detail:`2月4号 7点（自己烧饭之类的，不开心？）尿了？
+**/let M2;const b0=typeof window<"u"&&window.trustedTypes;if(b0)try{M2=b0.createPolicy("vue",{createHTML:n=>n})}catch{}const He=M2?n=>M2.createHTML(n):n=>n,H3="http://www.w3.org/2000/svg",$3="http://www.w3.org/1998/Math/MathML",W1=typeof document<"u"?document:null,v0=W1&&W1.createElement("template"),L3={insert:(n,e,t)=>{e.insertBefore(n,t||null)},remove:n=>{const e=n.parentNode;e&&e.removeChild(n)},createElement:(n,e,t,s)=>{const i=e==="svg"?W1.createElementNS(H3,n):e==="mathml"?W1.createElementNS($3,n):t?W1.createElement(n,{is:t}):W1.createElement(n);return n==="select"&&s&&s.multiple!=null&&i.setAttribute("multiple",s.multiple),i},createText:n=>W1.createTextNode(n),createComment:n=>W1.createComment(n),setText:(n,e)=>{n.nodeValue=e},setElementText:(n,e)=>{n.textContent=e},parentNode:n=>n.parentNode,nextSibling:n=>n.nextSibling,querySelector:n=>W1.querySelector(n),setScopeId(n,e){n.setAttribute(e,"")},insertStaticContent(n,e,t,s,i,l){const r=t?t.previousSibling:e.lastChild;if(i&&(i===l||i.nextSibling))for(;e.insertBefore(i.cloneNode(!0),t),!(i===l||!(i=i.nextSibling)););else{v0.innerHTML=He(s==="svg"?`<svg>${n}</svg>`:s==="mathml"?`<math>${n}</math>`:n);const o=v0.content;if(s==="svg"||s==="mathml"){const h=o.firstChild;for(;h.firstChild;)o.appendChild(h.firstChild);o.removeChild(h)}e.insertBefore(o,t)}return[r?r.nextSibling:e.firstChild,t?t.previousSibling:e.lastChild]}},j3=Symbol("_vtc");function N3(n,e,t){const s=n[j3];s&&(e=(e?[e,...s]:[...s]).join(" ")),e==null?n.removeAttribute("class"):t?n.setAttribute("class",e):n.className=e}const x0=Symbol("_vod"),W3=Symbol("_vsh"),B3=Symbol(""),U3=/(^|;)\s*display\s*:/;function V3(n,e,t){const s=n.style,i=Q(t);let l=!1;if(t&&!i){if(e)if(Q(e))for(const r of e.split(";")){const o=r.slice(0,r.indexOf(":")).trim();t[o]==null&&Yn(s,o,"")}else for(const r in e)t[r]==null&&Yn(s,r,"");for(const r in t)r==="display"&&(l=!0),Yn(s,r,t[r])}else if(i){if(e!==t){const r=s[B3];r&&(t+=";"+r),s.cssText=t,l=U3.test(t)}}else e&&n.removeAttribute("style");x0 in n&&(n[x0]=l?s.display:"",n[W3]&&(s.display="none"))}const S0=/\s*!important$/;function Yn(n,e,t){if(M(t))t.forEach(s=>Yn(n,e,s));else if(t==null&&(t=""),e.startsWith("--"))n.setProperty(e,t);else{const s=K3(n,e);S0.test(t)?n.setProperty(on(s),t.replace(S0,""),"important"):n[s]=t}}const w0=["Webkit","Moz","ms"],v2={};function K3(n,e){const t=v2[e];if(t)return t;let s=J1(e);if(s!=="filter"&&s in n)return v2[e]=s;s=$0(s);for(let i=0;i<w0.length;i++){const l=w0[i]+s;if(l in n)return v2[e]=l}return e}const C0="http://www.w3.org/1999/xlink";function T0(n,e,t,s,i,l=Je(e)){s&&e.startsWith("xlink:")?t==null?n.removeAttributeNS(C0,e.slice(6,e.length)):n.setAttributeNS(C0,e,t):t==null||l&&!j0(t)?n.removeAttribute(e):n.setAttribute(e,l?"":z1(t)?String(t):t)}function O0(n,e,t,s,i){if(e==="innerHTML"||e==="textContent"){t!=null&&(n[e]=e==="innerHTML"?He(t):t);return}const l=n.tagName;if(e==="value"&&l!=="PROGRESS"&&!l.includes("-")){const o=l==="OPTION"?n.getAttribute("value")||"":n.value,h=t==null?n.type==="checkbox"?"on":"":String(t);(o!==h||!("_value"in n))&&(n.value=h),t==null&&n.removeAttribute(e),n._value=t;return}let r=!1;if(t===""||t==null){const o=typeof n[e];o==="boolean"?t=j0(t):t==null&&o==="string"?(t="",r=!0):o==="number"&&(t=0,r=!0)}try{n[e]=t}catch{}r&&n.removeAttribute(i||e)}function k3(n,e,t,s){n.addEventListener(e,t,s)}function q3(n,e,t,s){n.removeEventListener(e,t,s)}const E0=Symbol("_vei");function Y3(n,e,t,s,i=null){const l=n[E0]||(n[E0]={}),r=l[e];if(s&&r)r.value=s;else{const[o,h]=G3(e);if(s){const f=l[e]=X3(s,i);k3(n,o,f,h)}else r&&(q3(n,o,r,h),l[e]=void 0)}}const P0=/(?:Once|Passive|Capture)$/;function G3(n){let e;if(P0.test(n)){e={};let s;for(;s=n.match(P0);)n=n.slice(0,n.length-s[0].length),e[s[0].toLowerCase()]=!0}return[n[2]===":"?n.slice(3):on(n.slice(2)),e]}let x2=0;const J3=Promise.resolve(),z3=()=>x2||(J3.then(()=>x2=0),x2=Date.now());function X3(n,e){const t=s=>{if(!s._vts)s._vts=Date.now();else if(s._vts<=t.attached)return;L1(Z3(s,t.value),e,5,[s])};return t.value=n,t.attached=z3(),t}function Z3(n,e){if(M(e)){const t=n.stopImmediatePropagation;return n.stopImmediatePropagation=()=>{t.call(n),n._stopped=!0},e.map(s=>i=>!i._stopped&&s&&s(i))}else return e}const R0=n=>n.charCodeAt(0)===111&&n.charCodeAt(1)===110&&n.charCodeAt(2)>96&&n.charCodeAt(2)<123,Q3=(n,e,t,s,i,l)=>{const r=i==="svg";e==="class"?N3(n,s,r):e==="style"?V3(n,t,s):n2(e)?H2(e)||Y3(n,e,t,s,l):(e[0]==="."?(e=e.slice(1),!0):e[0]==="^"?(e=e.slice(1),!1):n4(n,e,s,r))?(O0(n,e,s),!n.tagName.includes("-")&&(e==="value"||e==="checked"||e==="selected")&&T0(n,e,s,r,l,e!=="value")):n._isVueCE&&(/[A-Z]/.test(e)||!Q(s))?O0(n,J1(e),s,l,e):(e==="true-value"?n._trueValue=s:e==="false-value"&&(n._falseValue=s),T0(n,e,s,r))};function n4(n,e,t,s){if(s)return!!(e==="innerHTML"||e==="textContent"||e in n&&R0(e)&&F(t));if(e==="spellcheck"||e==="draggable"||e==="translate"||e==="form"||e==="list"&&n.tagName==="INPUT"||e==="type"&&n.tagName==="TEXTAREA")return!1;if(e==="width"||e==="height"){const i=n.tagName;if(i==="IMG"||i==="VIDEO"||i==="CANVAS"||i==="SOURCE")return!1}return R0(e)&&Q(t)?!1:e in n}const e4=s1({patchProp:Q3},L3);let A0;function t4(){return A0||(A0=l3(e4))}const s4=(...n)=>{const e=t4().createApp(...n),{mount:t}=e;return e.mount=s=>{const i=l4(s);if(!i)return;const l=e._component;!F(l)&&!l.render&&!l.template&&(l.template=i.innerHTML),i.nodeType===1&&(i.textContent="");const r=t(i,!1,i4(i));return i instanceof Element&&(i.removeAttribute("v-cloak"),i.setAttribute("data-v-app","")),r},e};function i4(n){if(n instanceof SVGElement)return"svg";if(typeof MathMLElement=="function"&&n instanceof MathMLElement)return"mathml"}function l4(n){return Q(n)?document.querySelector(n):n}const I2={s1:[{name:"红色背景",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#c14949",n.fillRect(0,0,e,t)}},{name:"红色长条",strategy:(n,e,t,s,i)=>{n.fillStyle="red",n.globalCompositeOperation="destination-over",s.forEach(l=>{n.fillRect(l/24*e,0,e/24,t)})}}],s2:[{name:"紫色背景",id:"s21",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#d58585",n.fillRect(0,0,e,t)}}],s3:[{name:"蓝色进度条",id:"s31",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#8fb3f7",n.fillRect(e/3,t-t/10*s,e/3,t/10*s)}}],s4:[{name:"粉红进度条",id:"s41",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#ffd6e7",n.fillRect(e/3*2,t-t/10*s,e/3,t/10*s)}}],hh:[{name:"绿色进度条",id:"hh1",strategy:(n,e,t,s,i)=>{n.globalCompositeOperation="destination-over",n.fillStyle="#88ff8a",n.fillRect(0,t-t/10*s.length,e/3,t/10*s.length)}},{name:"绿色长条",strategy:(n,e,t,s,i)=>{n.fillStyle="#88ff8a",n.globalCompositeOperation="destination-over",s.forEach(l=>{n.fillRect(l/24*e,0,e/24,t)})}}],coner:[{name:"左上角大字",id:"coner1",strategy:(n,e,t,s,i)=>{n.font="50px gray",n.fillStyle="#2c2c2c",n.textBaseline="top",n.fillText(s[0],10,10)}}],memo:[{name:"左下角展示",id:"memo1",strategy:(n,e,t,s,i)=>{n.font="20px gray",n.fillStyle="black",n.textBaseline="bottom",n.fillText(s,10,t-10)}}],detail:[{name:"粉红badge",id:"detail1",strategy:(n,e,t,s,i)=>{}}]},r4={s1:"大发",s2:"大发不抽",s3:"小发",s4:"轻微发",hh:"恍惚",coner:"事件",memo:"备注",detail:"详情"},D0={s1:0,s2:0,s3:0,s4:0,hh:0,coner:0,memo:0,detail:0},o4={class:"record"},a4={__name:"Record",props:{record:Object,strategy:Object},setup(n){const e=n;let t,s,i,l;return Y2(()=>{s=t.getContext("2d"),i=t.width,l=t.height,An(e,()=>{if(e.record&&e.strategy&&s){s.clearRect(0,0,i,l);for(let r in e.record)e.strategy[r]!==-1&&I2[r][e.strategy[r]].strategy&&I2[r][e.strategy[r]].strategy(s,i,l,e.record[r],e.strategy)}},{deep:!0,immediate:!0})}),(r,o)=>(l1(),h1("div",o4,[B("canvas",{ref:h=>t1(t)?t.value=h:t=h,width:"240",height:"148.32"},null,512)]))}},h4={"2024-02-04":{s1:[7],detail:`2月4号 7点（自己烧饭之类的，不开心？）尿了？
 `},"2024-03-01":{s1:[1],detail:`（2/29 陪去浦东提车？）
 1点02分 感觉听声音不舒服
 1点03发作，右手抽，其他僵硬
@@ -6154,4 +6154,219 @@
 18.25 2次
 20.30 梦境
 今天都是10以下但是5以上的，还有一些没记，在干活，200快的林博士的
-23:43梦境了，10分，半分钟`,hh:[18,20,23],s3:0,s4:4}},cs={id:"cont-wrap"},ds={id:"calender-wrap"},fs={id:"calender-head"},us={class:"calender-year"},ps={class:"tag s3"},ms={class:"tag s4"},gs={class:"tag hh"},ys=["data-ts","onClick"],_s={class:"date"},bs=["data-theme","onClick","title"],vs={class:"opt-head"},xs=["onClick"],Ss=["onClick"],ws={class:"strat setall"},Cs=["onClick"],Ts={class:"detail-header"},Os={class:"detail-date"},Es={class:"detail-tags"},Ps={key:0,class:"tag s3"},Rs={key:1,class:"tag s4"},As={key:2,class:"tag hh"},Ds={key:0,class:"detail-memo"},Ms={key:1,class:"detail-coner"},Is={class:"detail-detail"},Fs={__name:"App",setup(n){const e={purple:{name:"紫色",primary:"#9966cc",primaryLight:"#f8f5ff",primaryDark:"#7a4fb5",accent:"#e0b3ff",secondary:"#b12bc7",bgSubtle:"#f3f0ff",highlight:"#ffd700"},blue:{name:"蓝色",primary:"#3b82f6",primaryLight:"#eff6ff",primaryDark:"#1d4ed8",accent:"#93c5fd",secondary:"#1e40af",bgSubtle:"#dbeafe",highlight:"#f97316"},red:{name:"红色",primary:"#ef4444",primaryLight:"#fef2f2",primaryDark:"#dc2626",accent:"#fca5a5",secondary:"#dc2626",bgSubtle:"#fee2e2",highlight:"#22c55e"},green:{name:"绿色",primary:"#10b981",primaryLight:"#ecfdf5",primaryDark:"#059669",accent:"#6ee7b7",secondary:"#047857",bgSubtle:"#d1fae5",highlight:"#f59e0b"},yellow:{name:"黄色",primary:"#f59e0b",primaryLight:"#fffbeb",primaryDark:"#d97706",accent:"#fcd34d",secondary:"#d97706",bgSubtle:"#fef3c7",highlight:"#8b5cf6"},black:{name:"黑色",primary:"#1f2937",primaryLight:"#f9fafb",primaryDark:"#111827",accent:"#6b7280",secondary:"#374151",bgSubtle:"#f3f4f6",highlight:"#fbbf24"},white:{name:"白色",primary:"#64748b",primaryLight:"#f8fafc",primaryDark:"#475569",accent:"#94a3b8",secondary:"#475569",bgSubtle:"#f1f5f9",highlight:"#f97316"}},t=$=>$<10?`0${$}`:$,s=$=>{const O=new Date(+$);return`${O.getFullYear()}-${t(O.getMonth()+1)}-${t(O.getDate())}`},i=Object.fromEntries(Object.entries(hs).map(([$,O])=>[new Date($).valueOf(),O])),l=["2024-01-27",s(Date.now()+864e5*21)],r=(new Date(l[1])-new Date(l[0]))/864e5,o=new Date(l[0]).valueOf(),h=hn(new Date(l[0]).valueOf()+864e5*4),f=Fn(D0),d=hn(0);let p={};const w=$=>{d.value=$.toString(),h.value=+$;const O=p[$],C=document.querySelector("#detail");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=C.clientHeight,U=O.offsetHeight,C1=D.top-L.top,K1=C.scrollTop+C1-(W-U)/2;C.scrollTo({top:Math.max(0,K1),behavior:"smooth"})}}},T=$=>{d.value=$.toString(),h.value=+$,setTimeout(()=>{const O=document.querySelector(`.card[data-ts="${$}"]`),C=document.querySelector("#calander-body");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=O.offsetTop,U=C.clientHeight,C1=O.offsetHeight,K1=W-(U-C1)/2;C.scrollTo({top:K1,behavior:"smooth"})}}},0)};let j=0,H=null;const n1=hn(!0),k=$=>{if(!H){const O=$.target;n1.value=j>O.scrollTop,j=O.scrollTop;const C=new Date(l[0]).valueOf()+(new Date(l[1])-new Date(l[0]))/O.scrollHeight*(O.scrollTop+O.clientHeight/2);h.value=C,H=setTimeout(()=>{H=null},350)}},I=Fn({s3:{days:0,count:0},s4:{days:0,count:0},hh:{days:0,count:0}});An(h,()=>{const $=new Date(h.value).getMonth(),O=new Date(h.value).getFullYear();I.s3.days=0,I.s3.count=0,I.s4.days=0,I.s4.count=0,I.hh.days=0,I.hh.count=0;for(const[C,D]of Object.entries(i)){const L=new Date(+C);L.getMonth()===$&&L.getFullYear()===O&&(D.s3&&(I.s3.days++,I.s3.count+=D.s3),D.s4&&(I.s4.days++,I.s4.count+=D.s4),D.hh&&D.hh.length>0&&(I.hh.days++,I.hh.count+=D.hh.length))}});let Y=null;const R=$=>{Y||(n1.value=!1,Y=setTimeout(()=>{Y=null},350))},Z=$=>{for(const O in D0)["coner","memo","detail"].includes(O)||(f[O]=$?0:-1)},u1=hn(!1),v1=()=>{u1.value=!u1.value},x1=hn(localStorage.getItem("selectedTheme")||"purple"),P1=hn(!1),j1=()=>{P1.value=!P1.value},V1=$=>{x1.value=$;const O=e[$],C=document.documentElement;C.style.setProperty("--theme-primary",O.primary),C.style.setProperty("--theme-primary-light",O.primaryLight),C.style.setProperty("--theme-primary-dark",O.primaryDark),C.style.setProperty("--theme-accent",O.accent),C.style.setProperty("--theme-secondary",O.secondary),C.style.setProperty("--theme-bg-subtle",O.bgSubtle),C.style.setProperty("--theme-highlight",O.highlight),$==="black"?(C.style.setProperty("--text-color-light","#f9fafb"),C.style.setProperty("--bg-hover","#374151")):(C.style.setProperty("--text-color-light","#333"),C.style.setProperty("--bg-hover",O.bgSubtle)),localStorage.setItem("selectedTheme",$),P1.value=!1};return Y2(()=>{const $=document.querySelector("#calander-body");$.scroll(0,$.scrollHeight*(new Date-new Date(l[0]))/(new Date(l[1])-new Date(l[0]))-$.clientHeight),V1(x1.value),document.addEventListener("click",O=>{const C=document.querySelector("#strategy-select"),D=document.querySelector(".strategy-trigger"),L=document.querySelector("#theme-select"),W=document.querySelector(".theme-trigger");!(C!=null&&C.contains(O.target))&&!(D!=null&&D.contains(O.target))&&(u1.value=!1),!(L!=null&&L.contains(O.target))&&!(W!=null&&W.contains(O.target))&&(P1.value=!1)})}),($,O)=>(l1(),h1(d1,null,[B("div",cs,[B("div",ds,[B("div",fs,[B("div",us,[Me(e1(new Date(h.value).getFullYear())+"年"+e1(new Date(h.value).getMonth()+1)+"月 ",1),B("span",ps,e1(I.s3.days)+"天, "+e1(I.s3.count)+"次",1),B("span",ms,e1(I.s4.days)+"天, "+e1(I.s4.count)+"次",1),B("span",gs,e1(I.hh.days)+"天, "+e1(I.hh.count)+"次",1)]),O[2]||(O[2]=w3('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),B("div",{id:"calander-body",onScroll:k},[(l1(),h1(d1,null,xn(r,C=>B("div",{class:I1(["calender-item card",[{"current-month":new Date(S1(o)+C*864e5).getMonth()===new Date(h.value).getMonth(),active:d.value==S1(o)+C*864e5}]]),"data-ts":S1(o)+C*864e5,onClick:D=>w(S1(o)+C*864e5),key:C},[B("div",_s,e1(new Date(S1(o)+C*864e5).getDate()),1),E1(as,{strategy:f,record:S1(i)[S1(o)+C*864e5]},null,8,["strategy","record"])],10,ys)),64))],32),B("div",{class:"strategy-trigger",onClick:v1},O[3]||(O[3]=[B("span",{style:{"font-size":"1.2rem"}},"⚙️",-1)])),B("div",{class:"theme-trigger",onClick:j1},O[4]||(O[4]=[B("span",{style:{"font-size":"1.2rem"}},"🎨",-1)])),B("div",{id:"theme-select",class:I1({visible:P1.value})},[(l1(),h1(d1,null,xn(e,(C,D)=>B("div",{class:I1(["theme-option",{active:x1.value===D}]),key:D,"data-theme":D,onClick:L=>V1(D),title:C.name},[B("div",{class:"theme-color",style:i2({backgroundColor:C.primary})},null,4)],10,bs)),64))],2),B("div",{id:"strategy-select",class:I1({visible:u1.value})},[(l1(!0),h1(d1,null,xn(Object.entries(S1(I2)),C=>(l1(),h1("div",{class:"strat",key:C[0]},[B("div",vs,e1(S1(rs)[C[0]]),1),(l1(!0),h1(d1,null,xn(C[1],(D,L)=>(l1(),h1("div",{class:I1(["option",{active:L===f[C[0]]}]),onClick:W=>f[C[0]]=L,key:D.name},e1(D.name),11,xs))),128)),B("div",{class:I1(["option",{active:f[C[0]]===-1}]),onClick:D=>f[C[0]]=-1}," 不渲染 ",10,Ss)]))),128)),B("div",ws,[B("div",{class:"action",onClick:O[0]||(O[0]=C=>Z(!0))},"恢复默认"),B("div",{class:"action",onClick:O[1]||(O[1]=C=>Z(!1))},"关闭渲染")])],2)])]),B("div",{id:"detail",onScroll:R},[(l1(!0),h1(d1,null,xn(Object.entries(S1(i)),([C,D])=>(l1(),h1("div",{class:I1(["detail-card",d.value==C?"active":""]),ref_for:!0,ref:L=>S1(p)[C]=L,key:C,onClick:L=>T(C)},[B("div",Ts,[B("span",Os,e1(s(C)),1),B("span",Es,[D.s3?(l1(),h1("span",Ps,"小发 "+e1(D.s3),1)):wn("",!0),D.s4?(l1(),h1("span",Rs,"轻微 "+e1(D.s4),1)):wn("",!0),D.hh&&D.hh.length?(l1(),h1("span",As,"恍惚 "+e1(D.hh.length),1)):wn("",!0)])]),O[5]||(O[5]=B("hr",{class:"detail-divider"},null,-1)),D.memo?(l1(),h1("pre",Ds,e1(D.memo),1)):wn("",!0),D.coner?(l1(),h1("pre",Ms,e1(D.coner[1]),1)):wn("",!0),B("pre",Is,e1(D.detail),1)],10,Cs))),128))],32)],64))}};ss(Fs).mount("#app");
+23:43梦境了，10分，半分钟`,hh:[18,20,23],s3:0,s4:4},"2026-07-17":{detail:`没麻
+今天看病，奥卡西平要自费了
+12:55不舒服，在小吊梨汤吃饭，8，9分，今天第一次
+17:09到家，没有10分，但是非常非常热（客观说）
+00.35 自己记录10
+01:52才开始睡觉
+02:00还没睡，过来拉了我下`,coner:["医院","看病, 奥卡西平要自费了"],hh:[0,1,2,12,17],s3:0,s4:2},"2026-07-18":{detail:`早上起来麻，流口水的，7点出头醒的，没带手表，麻醒后没睡，待看，看起来没发，记性一般，了自己的昨天吃的
+07.56 自己记录梦境
+18:14下午睡了会，睡前麻了，鬼压床，没口水，醒来以后打嗝多，没有过20，不知道有没有10，睡醒以后没有10
+20:24不舒服，5分，20秒，做数学的时候可能有过10分，是想买架子算尺寸`,hh:[7,18,20],s3:1,s4:2},"2026-07-19":{detail:`没有麻，今天开始减奥卡西平
+14:23看电视有10分，没有超过10分的
+17:42睡醒没事
+20:55梦境6分`,coner:["奥减","奥卡西平开始减"],hh:[14,17,20],s3:0,s4:2},"2026-07-20":{detail:`晚上问的，说不知道
+17.14 梦境，5到10分，发完打嗝20分钟
+20.26 不舒服，今天小哈很闹
+21:17 不舒服，问了说5，6分，但说是“不一样的感觉”`,hh:[17,20,21],s3:0,s4:2},"2026-07-21":{detail:`没麻，今天又在骂外婆和说杀了我再自杀
+15.53 自己记录梦境，不知道几分
+20:39梦境10，今天最重的，40秒`,hh:[15,20],s3:0,s4:2},"2026-07-22":{detail:`不知道有没有麻
+20:15没有20，可能有10
+20:47不舒服，在七号冰室吃饭，40秒，5分，但我感觉是10，因为吃饭停，打分是主观的`,hh:[20],s3:0,s4:2},"2026-07-23":{detail:`晚上麻没麻不知道，早上麻
+06:36小发被我抓到，到眼睛
+08:05打嗝厉害
+8.28 自己记录梦境
+今天去一妇婴，结果是再打一针，因为检查还有
+10:10说昨天太阳穴紧
+11:27梦境熟悉，4分重
+12:38说今天早上的情况大概5天一次
+14:47不舒服，刚到家，准备去百果园，30秒，5分
+16.06 自己记录梦境
+20:11不舒服，刚吃好饭，30秒问，感觉有反复，50秒好了，5分
+21:17洗澡的时候可能有5，6分
+22:26有过15`,coner:["妇婴","再打一针, 检查还有"],hh:[6,8,10,11,12,14,16,20,21,22],s3:1,s4:8},"2026-07-24":{detail:`没麻
+09:41问有没有不舒服，不知道
+19:42不舒服，20分，在家里吃饭，发完心悸，太阳穴紧，不重
+20:11我洗好碗，他在房间里趴着，跪着趴，问怎么不舒服，不说，看起来比较不舒服，问，指肚子，问是不是痛，说不说，问是不是涨，是的
+20:18回忆20分的前后还有2次8的`,hh:[9,19,20],s3:1,s4:2},"2026-07-25":{detail:`没有
+12:07可能没有
+18:21梦境5
+22:46左手臂涨，后来问好了`,hh:[12,18,22],s3:0,s4:1},"2026-07-26":{detail:`没麻
+今天和前进王思南吃万岛
+16.09 自己8
+17.24 自己10
+20.19 自己8
+20.30 自己20
+9点到家的，说记得不全
+22:21洗澡有没有不舒服，不知道
+23:12耳鸣`,hh:[16,17,20,22,23],s3:1,s4:3},"2026-07-27":{detail:`没麻
+11:09和小哈吵架哭了，拒绝吃饭
+17:39太阳穴紧，问梦境多不多，说不知道，但我觉得多，问有没有20，不知道，今天没吃饭，说想打和踩外婆，说讨厌小哈，一直打嗝，太阳穴是左边疼，很明显是发作导致的
+22:27报告下午手烫，10到20有3次，不一定有20，5到10分5到10次，5分以下5到10次`,hh:[11,17,22],s3:0,s4:13},"2026-07-28":{detail:`忘记有没有麻，觉得睡觉不好，但是手表显示可以，可能和亮丙瑞林有关，今天抑郁严重
+16:39下午睡觉鬼压床，问20分有没有，不知道
+18:27和小哈吵架，心跳重
+20:53洗好澡，没，问从回来到现在，不知道`,hh:[16,18,20],s3:1,s4:0},"2026-07-29":{detail:`忘记有没有麻
+13.14 没重 在嘉定宝龙
+13:41图书馆出来的时候有梦境十分，回家路上
+14:45物理难受，是指头疼恶心，梦境比例很少，2分
+18:38梦境8分
+19.18 自己记录8（可能和下面重复）
+19:44我弄卫生间灯，帮忙的时候有5到10的
+20.33 自己12
+22:26洗好澡，可能有8，9分的`,hh:[13,14,18,19,20,22],s3:0,s4:6},"2026-07-30":{detail:`忘记有没有麻
+说最近没写微博，心悸可能是更年期，以前也有
+10:39忘记，现在到天街吃饭，没重的
+15.08 自己4分
+19:18可能今天没20分，问10分，说忘记
+19:43梦境8分，10秒
+19:43又不舒服了一次，6分
+20:16不舒服，在盒马，5，6分，时间短，我估计10
+20:28短的，想吐，体感不好，6分重，太阳穴好了
+20:41和刚才一样
+21:04比上次好一点，觉得经常是这种频率的，严重程度也是，可能隔天有
+21:15问了和圈圈见面愿意，生活打分5分
+21:23一样的不舒服
+22:19洗好澡，忘记，所以我怀疑最近的忘记可能都是有的
+00:16不舒服，在聊天，10秒，5分`,hh:[0,10,15,19,20,21,22],s3:0,s4:9},"2026-07-31":{detail:`应该没有麻
+12:10没有20，没有10，5不知道，频率不知道
+12:42左眼珠疼，和小哈吵架，打嗝多，左后脑勺疼
+15:55下午睡觉起来鬼压床，比较重，眼睛跳，感觉有口水，有拉丝，睡醒到现在没有，大概2小时，嘴巴有3个溃疡，有几天了
+16:46想吐，5以下，10以下
+忘记橡胶味是什么样了，但是泪流满面的时候有味道，上次泪流满面是昨天，因为一件别人注意不到的事
+16:51又不舒服了，因为我在说他玻璃心，和上次差不多
+19:03梦境20，在烧菜，半分钟
+20:44估计有过2次8分
+21:00 梦境5，6分
+21:23洗澡有，差不多
+22:48有7，8分，因为在说死刑，我打断
+00:07说前两天又写过外婆，聊到0054准备睡`,hh:[0,12,15,16,19,20,21,22],s3:2,s4:7},"2026-08-01":{detail:`没有
+19.28 梦境8
+19.28 没20，10不知道，如果有的话，2次，5以上的，5到10
+20.12 自己8
+22:54我烧菜回来，他说不太行，问了是10分，但是头晕，梦境，熟悉，感受不好（不确定是不是刚发）
+00:36梦境`,hh:[0,19,20,22],s3:0,s4:6},"2026-08-02":{detail:`不知道有没有麻
+09:08买了肯德基不吃，冷漠，一直摆弄手机，还有点藏着，问了一会是肚子问题，在查
+13:57我睡醒，记得他和小孩哭过，我问，被拒绝回答，但是状态比早上好
+17:12发做过 说不清 一直问 但忘记了
+00:11梦境，20秒，20分，一下子好的，梦境重，有味道，不是橡胶，以前有过`,hh:[0,9,13,17],s3:1,s4:1},"2026-08-03":{detail:`不麻
+11.43 自己6
+18.49 自己8，并说“下午6改成10”
+20:08梦境，打嗝，5到10的，但是时间久，半分钟，今天没20，10不知道`,hh:[11,18,20],s3:0,s4:3},"2026-08-04":{detail:`没有
+11:08想吐，6分
+11.39 自己3
+14.32 自己10
+16.01 自己8
+17.54 自己20
+19.11 自己10
+20.56 自己30，又想吐，又梦境，又失重，给生活打分打6分
+21:22这两天开始，表达观点，和写微博，离开一会就容易思路断
+23:48肚子叫，打嗝，睡前说工作我比较激动他状态不好`,hh:[11,14,16,17,19,20,21,23],s3:2,s4:5},"2026-08-05":{detail:`睡觉不麻，我12点起来，他打嗝多，我感觉状态不太好
+18:17梦境，在说奶奶，半分钟，慢慢好的，说是明确梦境加熟悉，20分
+19:02不舒服，梦境，很强，因为在说强迫症症状（故事），9分，1分钟`,hh:[18,19],s3:1,s4:1},"2026-08-06":{detail:`没麻
+8.53 自己6
+10:08因为小哈刷牙拖，心跳了好几次，一直打嗝
+12.08 自己4
+15.32 睡醒鬼压床，没昨天厉害
+18.30 自己5
+19.43 自己20
+20:27在研究ai，被我泼冷水，太阳穴疼，2边`,hh:[8,10,12,15,18,19,20],s3:2,s4:3},"2026-08-07":{detail:`睡前麻，中等，没到眼睛
+16:01手涨，说最近有点不爽都会涨，今天没20，没10
+16.09 自己4
+21.03 5分 打嗝 出汗`,hh:[16,21],s3:0,s4:2},"2026-08-08":{detail:`没麻
+13:29我早上睡的，刚睡醒，打嗝很多很厉害，在电脑上查强迫症
+15.40 自己4
+21.51 自己10`,hh:[13,15,21],s3:0,s4:2},"2026-08-09":{detail:`没麻
+11:44没有
+15:47吃了菜包说以前一直闻到这个味道，打嗝变多
+17.36 自己6
+19.10 有过2，3次6`,hh:[11,15,17,19],s3:0,s4:4},"2026-08-10":{detail:`没麻
+12:57发大水，在天街吃饭，没10
+21:18有过10
+22:24有过5到10化学的
+23:07物理不舒服，物理指梦境强，认为现在的事情梦到过，化学指迷迷糊糊不确定是梦境，‘想到梦的内容’，这次是5分
+00:56 鬼压床，有人，不一定到眼睛，没口水，26睡的，看起来是50或者54发的`,hh:[0,12,21,22,23],s3:1,s4:3},"2026-08-11":{detail:`早上也麻了，不重，也晚上一样，没那么重的，但是有口水的感觉
+16:05不舒服过，说不清，今天没有过20，10不一定
+20:40说现在比较轻的，不太能分辨的，一小时4次，上次写微博8.3，日子打分6，说有时候微博都不想写`,hh:[16,20],s3:0,s4:5},"2026-08-12":{detail:`忘记有没有麻
+16:30没20，没10，5左右的频率还是高，1小时2次
+17:50 8分
+22:25洗澡回来问，说不知道，但是没重的，应该还是有轻的，聊到自杀，说30天有15天，但今天状态还可以`,hh:[16,17,22],s3:0,s4:3},"2026-08-13":{detail:`没有麻
+09:44知道我4点睡就开始捂被子，不给看脸，1032看到在哭
+14:41觉得我吃包子有味道，开门
+15:31写微博 我睡觉晚
+18:33写微博，说是今天第三篇
+18:57问了下没20，但是其他说不知道`,hh:[9,10,14,15,18],s3:0,s4:0},"2026-08-14":{detail:`忘记有没有麻
+14:23不舒服了，日常的5到10，现在分成4级，轻中重超重，现在是中
+16:06没20，没10
+22:48梦境，轻`,hh:[14,16,22],s3:0,s4:2},"2026-08-15":{detail:`没有麻
+13:09物理的，熟悉或梦境，这次是“知道”自己在发作，6，7分重
+16:47在美兰湖和外婆，化学，想吐，7，8分
+18:32梦境，20分，在七号冰室吃饭，自己觉得40秒
+19:42轻的
+01:28拼乐高到现在
+01:37说第一次尿尿的时候有过10`,hh:[1,13,16,18,19],s3:1,s4:4},"2026-08-16":{detail:`没麻
+12:17心跳快，日常也有，和梦境频率差不多
+13:45不舒服，在外面2个人吃饭，不明确的感觉，化学，最近没味道，7，8分
+15:44不舒服了，程度6，梦境不重，但是整体感觉难受
+16:16有轻微的熟悉感，但是不觉得话说过，最近都是这样的
+19:19梦境，20，一模一样，大概1分钟，算很重级别
+20:43不舒服，打嗝很多，6，7分，40秒
+21:04不舒服，20秒，程度8分
+21:56洗好澡，忘记了
+00:56惊醒，不舒服，鬼压床`,hh:[0,12,13,15,16,19,20,21],s3:2,s4:5},"2026-08-17":{detail:`没有，就昨天睡前有，早上我和小哈吵架，我把小哈脸划伤，手划出血
+16:02没有20，没有10，最近半小时内没
+17.59 自己自己4
+18.27 自己6
+20:02不舒服，4分，吃好饭搞了半天准备回
+20:31左边脑子热，发烫，因为小哈在吵
+21:39说回来以后2次，洗澡1次，最重的6，7`,hh:[16,17,18,20,21],s3:0,s4:6},"2026-08-18":{detail:`没麻
+13.26 梦境2次5分
+15:53胀气了，在弄养老金的事
+17:23 梦境10分，物理
+19.59 自己6
+22:35不舒服，刚陪我吃饭到家，8分`,hh:[13,15,17,19,22],s3:0,s4:5},"2026-08-19":{detail:`没麻
+14.42 自己5
+15:37物理的，2次了，不到5
+17.50 自己4
+18.18 自己6
+20.07 自己8
+21.29 自己8然后10然后20
+21.50自己4`,hh:[14,15,17,18,20,21],s3:1,s4:7},"2026-08-20":{detail:`忘记
+10:55到现在没10，轻的不记得，吃好晚饭去远香湖玩了
+14:43发脾气说后悔养小孩，我认为是有问题的
+18:20睡起来鬼压床，眼睛跳，鬼压床
+20:06吃了个汉堡说洋葱味重，然后吃柠檬糖压，又说柠檬味重吐了
+20:36忘记洗澡有没有
+23:19今天没20`,hh:[10,14,18,20,23],s3:1,s4:0},"2026-08-21":{detail:`忘记
+08.34 自己4
+12:59一直打嗝放屁，心情不好，因为觉得我睡觉少，其实不少。还一直觉得小哈用眼太多之类的。早上还找过吃的，但是后来一直拒绝吃饭
+19.51 自己10
+20.40 自己9
+23.09 自己4`,hh:[8,12,19,20,23],s3:0,s4:4},"2026-08-22":{detail:`没有
+15:04看到水产，左边头和手麻
+15.43 自己6
+15.52 半边麻，5分
+16.17 又有
+17:39又有
+18:20又有，说是经常这样，昨天有，这个月也有，一针一针的
+18:24又有，一样
+18:56又不舒服，比之前重，20分，梦境，1分钟
+19:57手烫
+20.10 自己6
+20.20 自己7
+20:48不舒服，5`,hh:[15,16,17,18,19,20],s3:1,s4:9},"2026-08-23":{detail:`没有
+10.08 手臂麻
+14.00 自己10
+21.16 自己6
+今天终于去污水公园加印象城玩了
+00:54整条左手臂麻，已经有一段时间了`,hh:[0,10,14,21],s3:0,s4:2},"2026-08-24":{detail:`没有麻
+今天开始吃曲莱
+11.52 左手麻
+12.52 2个手指持续麻刀13.20, 一开始重, 后来风量感觉, 属于小麻
+20:48洗澡的时候20
+21:20手麻`,coner:["曲莱","今天开始吃曲莱"],hh:[11,12,13,20,21],s3:1,s4:1},"2026-08-25":{detail:`不麻
+10.55 手麻
+16.40 梦境20分, 恶心, 在污水公园喂鱼
+17.51 回忆路上可能有过1次
+21.39 回家路上梦境10
+22:24洗澡没有`,hh:[10,16,17,21,22],s3:1,s4:2}},c4={id:"cont-wrap"},d4={id:"calender-wrap"},f4={id:"calender-head"},u4={class:"calender-year"},p4={class:"tag s3"},m4={class:"tag s4"},g4={class:"tag hh"},y4=["data-ts","onClick"],_4={class:"date"},b4=["data-theme","onClick","title"],v4={class:"opt-head"},x4=["onClick"],S4=["onClick"],w4={class:"strat setall"},C4=["onClick"],T4={class:"detail-header"},O4={class:"detail-date"},E4={class:"detail-tags"},P4={key:0,class:"tag s3"},R4={key:1,class:"tag s4"},A4={key:2,class:"tag hh"},D4={key:0,class:"detail-memo"},M4={key:1,class:"detail-coner"},I4={class:"detail-detail"},F4={__name:"App",setup(n){const e={purple:{name:"紫色",primary:"#9966cc",primaryLight:"#f8f5ff",primaryDark:"#7a4fb5",accent:"#e0b3ff",secondary:"#b12bc7",bgSubtle:"#f3f0ff",highlight:"#ffd700"},blue:{name:"蓝色",primary:"#3b82f6",primaryLight:"#eff6ff",primaryDark:"#1d4ed8",accent:"#93c5fd",secondary:"#1e40af",bgSubtle:"#dbeafe",highlight:"#f97316"},red:{name:"红色",primary:"#ef4444",primaryLight:"#fef2f2",primaryDark:"#dc2626",accent:"#fca5a5",secondary:"#dc2626",bgSubtle:"#fee2e2",highlight:"#22c55e"},green:{name:"绿色",primary:"#10b981",primaryLight:"#ecfdf5",primaryDark:"#059669",accent:"#6ee7b7",secondary:"#047857",bgSubtle:"#d1fae5",highlight:"#f59e0b"},yellow:{name:"黄色",primary:"#f59e0b",primaryLight:"#fffbeb",primaryDark:"#d97706",accent:"#fcd34d",secondary:"#d97706",bgSubtle:"#fef3c7",highlight:"#8b5cf6"},black:{name:"黑色",primary:"#1f2937",primaryLight:"#f9fafb",primaryDark:"#111827",accent:"#6b7280",secondary:"#374151",bgSubtle:"#f3f4f6",highlight:"#fbbf24"},white:{name:"白色",primary:"#64748b",primaryLight:"#f8fafc",primaryDark:"#475569",accent:"#94a3b8",secondary:"#475569",bgSubtle:"#f1f5f9",highlight:"#f97316"}},t=$=>$<10?`0${$}`:$,s=$=>{const O=new Date(+$);return`${O.getFullYear()}-${t(O.getMonth()+1)}-${t(O.getDate())}`},i=Object.fromEntries(Object.entries(h4).map(([$,O])=>[new Date($).valueOf(),O])),l=["2024-01-27",s(Date.now()+864e5*21)],r=(new Date(l[1])-new Date(l[0]))/864e5,o=new Date(l[0]).valueOf(),h=hn(new Date(l[0]).valueOf()+864e5*4),f=Fn(D0),d=hn(0);let p={};const w=$=>{d.value=$.toString(),h.value=+$;const O=p[$],C=document.querySelector("#detail");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=C.clientHeight,U=O.offsetHeight,C1=D.top-L.top,K1=C.scrollTop+C1-(W-U)/2;C.scrollTo({top:Math.max(0,K1),behavior:"smooth"})}}},T=$=>{d.value=$.toString(),h.value=+$,setTimeout(()=>{const O=document.querySelector(`.card[data-ts="${$}"]`),C=document.querySelector("#calander-body");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=O.offsetTop,U=C.clientHeight,C1=O.offsetHeight,K1=W-(U-C1)/2;C.scrollTo({top:K1,behavior:"smooth"})}}},0)};let j=0,H=null;const n1=hn(!0),k=$=>{if(!H){const O=$.target;n1.value=j>O.scrollTop,j=O.scrollTop;const C=new Date(l[0]).valueOf()+(new Date(l[1])-new Date(l[0]))/O.scrollHeight*(O.scrollTop+O.clientHeight/2);h.value=C,H=setTimeout(()=>{H=null},350)}},I=Fn({s3:{days:0,count:0},s4:{days:0,count:0},hh:{days:0,count:0}});An(h,()=>{const $=new Date(h.value).getMonth(),O=new Date(h.value).getFullYear();I.s3.days=0,I.s3.count=0,I.s4.days=0,I.s4.count=0,I.hh.days=0,I.hh.count=0;for(const[C,D]of Object.entries(i)){const L=new Date(+C);L.getMonth()===$&&L.getFullYear()===O&&(D.s3&&(I.s3.days++,I.s3.count+=D.s3),D.s4&&(I.s4.days++,I.s4.count+=D.s4),D.hh&&D.hh.length>0&&(I.hh.days++,I.hh.count+=D.hh.length))}});let Y=null;const R=$=>{Y||(n1.value=!1,Y=setTimeout(()=>{Y=null},350))},Z=$=>{for(const O in D0)["coner","memo","detail"].includes(O)||(f[O]=$?0:-1)},u1=hn(!1),v1=()=>{u1.value=!u1.value},x1=hn(localStorage.getItem("selectedTheme")||"purple"),P1=hn(!1),j1=()=>{P1.value=!P1.value},V1=$=>{x1.value=$;const O=e[$],C=document.documentElement;C.style.setProperty("--theme-primary",O.primary),C.style.setProperty("--theme-primary-light",O.primaryLight),C.style.setProperty("--theme-primary-dark",O.primaryDark),C.style.setProperty("--theme-accent",O.accent),C.style.setProperty("--theme-secondary",O.secondary),C.style.setProperty("--theme-bg-subtle",O.bgSubtle),C.style.setProperty("--theme-highlight",O.highlight),$==="black"?(C.style.setProperty("--text-color-light","#f9fafb"),C.style.setProperty("--bg-hover","#374151")):(C.style.setProperty("--text-color-light","#333"),C.style.setProperty("--bg-hover",O.bgSubtle)),localStorage.setItem("selectedTheme",$),P1.value=!1};return Y2(()=>{const $=document.querySelector("#calander-body");$.scroll(0,$.scrollHeight*(new Date-new Date(l[0]))/(new Date(l[1])-new Date(l[0]))-$.clientHeight),V1(x1.value),document.addEventListener("click",O=>{const C=document.querySelector("#strategy-select"),D=document.querySelector(".strategy-trigger"),L=document.querySelector("#theme-select"),W=document.querySelector(".theme-trigger");!(C!=null&&C.contains(O.target))&&!(D!=null&&D.contains(O.target))&&(u1.value=!1),!(L!=null&&L.contains(O.target))&&!(W!=null&&W.contains(O.target))&&(P1.value=!1)})}),($,O)=>(l1(),h1(d1,null,[B("div",c4,[B("div",d4,[B("div",f4,[B("div",u4,[Me(e1(new Date(h.value).getFullYear())+"年"+e1(new Date(h.value).getMonth()+1)+"月 ",1),B("span",p4,e1(I.s3.days)+"天, "+e1(I.s3.count)+"次",1),B("span",m4,e1(I.s4.days)+"天, "+e1(I.s4.count)+"次",1),B("span",g4,e1(I.hh.days)+"天, "+e1(I.hh.count)+"次",1)]),O[2]||(O[2]=w3('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),B("div",{id:"calander-body",onScroll:k},[(l1(),h1(d1,null,xn(r,C=>B("div",{class:I1(["calender-item card",[{"current-month":new Date(S1(o)+C*864e5).getMonth()===new Date(h.value).getMonth(),active:d.value==S1(o)+C*864e5}]]),"data-ts":S1(o)+C*864e5,onClick:D=>w(S1(o)+C*864e5),key:C},[B("div",_4,e1(new Date(S1(o)+C*864e5).getDate()),1),E1(a4,{strategy:f,record:S1(i)[S1(o)+C*864e5]},null,8,["strategy","record"])],10,y4)),64))],32),B("div",{class:"strategy-trigger",onClick:v1},O[3]||(O[3]=[B("span",{style:{"font-size":"1.2rem"}},"⚙️",-1)])),B("div",{class:"theme-trigger",onClick:j1},O[4]||(O[4]=[B("span",{style:{"font-size":"1.2rem"}},"🎨",-1)])),B("div",{id:"theme-select",class:I1({visible:P1.value})},[(l1(),h1(d1,null,xn(e,(C,D)=>B("div",{class:I1(["theme-option",{active:x1.value===D}]),key:D,"data-theme":D,onClick:L=>V1(D),title:C.name},[B("div",{class:"theme-color",style:i2({backgroundColor:C.primary})},null,4)],10,b4)),64))],2),B("div",{id:"strategy-select",class:I1({visible:u1.value})},[(l1(!0),h1(d1,null,xn(Object.entries(S1(I2)),C=>(l1(),h1("div",{class:"strat",key:C[0]},[B("div",v4,e1(S1(r4)[C[0]]),1),(l1(!0),h1(d1,null,xn(C[1],(D,L)=>(l1(),h1("div",{class:I1(["option",{active:L===f[C[0]]}]),onClick:W=>f[C[0]]=L,key:D.name},e1(D.name),11,x4))),128)),B("div",{class:I1(["option",{active:f[C[0]]===-1}]),onClick:D=>f[C[0]]=-1}," 不渲染 ",10,S4)]))),128)),B("div",w4,[B("div",{class:"action",onClick:O[0]||(O[0]=C=>Z(!0))},"恢复默认"),B("div",{class:"action",onClick:O[1]||(O[1]=C=>Z(!1))},"关闭渲染")])],2)])]),B("div",{id:"detail",onScroll:R},[(l1(!0),h1(d1,null,xn(Object.entries(S1(i)),([C,D])=>(l1(),h1("div",{class:I1(["detail-card",d.value==C?"active":""]),ref_for:!0,ref:L=>S1(p)[C]=L,key:C,onClick:L=>T(C)},[B("div",T4,[B("span",O4,e1(s(C)),1),B("span",E4,[D.s3?(l1(),h1("span",P4,"小发 "+e1(D.s3),1)):wn("",!0),D.s4?(l1(),h1("span",R4,"轻微 "+e1(D.s4),1)):wn("",!0),D.hh&&D.hh.length?(l1(),h1("span",A4,"恍惚 "+e1(D.hh.length),1)):wn("",!0)])]),O[5]||(O[5]=B("hr",{class:"detail-divider"},null,-1)),D.memo?(l1(),h1("pre",D4,e1(D.memo),1)):wn("",!0),D.coner?(l1(),h1("pre",M4,e1(D.coner[1]),1)):wn("",!0),B("pre",I4,e1(D.detail),1)],10,C4))),128))],32)],64))}};s4(F4).mount("#app");
