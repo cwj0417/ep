@@ -6369,4 +6369,170 @@
 16.40 梦境20分, 恶心, 在污水公园喂鱼
 17.51 回忆路上可能有过1次
 21.39 回家路上梦境10
-22:24洗澡没有`,hh:[10,16,17,21,22],s3:1,s4:2}},c4={id:"cont-wrap"},d4={id:"calender-wrap"},f4={id:"calender-head"},u4={class:"calender-year"},p4={class:"tag s3"},m4={class:"tag s4"},g4={class:"tag hh"},y4=["data-ts","onClick"],_4={class:"date"},b4=["data-theme","onClick","title"],v4={class:"opt-head"},x4=["onClick"],S4=["onClick"],w4={class:"strat setall"},C4=["onClick"],T4={class:"detail-header"},O4={class:"detail-date"},E4={class:"detail-tags"},P4={key:0,class:"tag s3"},R4={key:1,class:"tag s4"},A4={key:2,class:"tag hh"},D4={key:0,class:"detail-memo"},M4={key:1,class:"detail-coner"},I4={class:"detail-detail"},F4={__name:"App",setup(n){const e={purple:{name:"紫色",primary:"#9966cc",primaryLight:"#f8f5ff",primaryDark:"#7a4fb5",accent:"#e0b3ff",secondary:"#b12bc7",bgSubtle:"#f3f0ff",highlight:"#ffd700"},blue:{name:"蓝色",primary:"#3b82f6",primaryLight:"#eff6ff",primaryDark:"#1d4ed8",accent:"#93c5fd",secondary:"#1e40af",bgSubtle:"#dbeafe",highlight:"#f97316"},red:{name:"红色",primary:"#ef4444",primaryLight:"#fef2f2",primaryDark:"#dc2626",accent:"#fca5a5",secondary:"#dc2626",bgSubtle:"#fee2e2",highlight:"#22c55e"},green:{name:"绿色",primary:"#10b981",primaryLight:"#ecfdf5",primaryDark:"#059669",accent:"#6ee7b7",secondary:"#047857",bgSubtle:"#d1fae5",highlight:"#f59e0b"},yellow:{name:"黄色",primary:"#f59e0b",primaryLight:"#fffbeb",primaryDark:"#d97706",accent:"#fcd34d",secondary:"#d97706",bgSubtle:"#fef3c7",highlight:"#8b5cf6"},black:{name:"黑色",primary:"#1f2937",primaryLight:"#f9fafb",primaryDark:"#111827",accent:"#6b7280",secondary:"#374151",bgSubtle:"#f3f4f6",highlight:"#fbbf24"},white:{name:"白色",primary:"#64748b",primaryLight:"#f8fafc",primaryDark:"#475569",accent:"#94a3b8",secondary:"#475569",bgSubtle:"#f1f5f9",highlight:"#f97316"}},t=$=>$<10?`0${$}`:$,s=$=>{const O=new Date(+$);return`${O.getFullYear()}-${t(O.getMonth()+1)}-${t(O.getDate())}`},i=Object.fromEntries(Object.entries(h4).map(([$,O])=>[new Date($).valueOf(),O])),l=["2024-01-27",s(Date.now()+864e5*21)],r=(new Date(l[1])-new Date(l[0]))/864e5,o=new Date(l[0]).valueOf(),h=hn(new Date(l[0]).valueOf()+864e5*4),f=Fn(D0),d=hn(0);let p={};const w=$=>{d.value=$.toString(),h.value=+$;const O=p[$],C=document.querySelector("#detail");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=C.clientHeight,U=O.offsetHeight,C1=D.top-L.top,K1=C.scrollTop+C1-(W-U)/2;C.scrollTo({top:Math.max(0,K1),behavior:"smooth"})}}},T=$=>{d.value=$.toString(),h.value=+$,setTimeout(()=>{const O=document.querySelector(`.card[data-ts="${$}"]`),C=document.querySelector("#calander-body");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=O.offsetTop,U=C.clientHeight,C1=O.offsetHeight,K1=W-(U-C1)/2;C.scrollTo({top:K1,behavior:"smooth"})}}},0)};let j=0,H=null;const n1=hn(!0),k=$=>{if(!H){const O=$.target;n1.value=j>O.scrollTop,j=O.scrollTop;const C=new Date(l[0]).valueOf()+(new Date(l[1])-new Date(l[0]))/O.scrollHeight*(O.scrollTop+O.clientHeight/2);h.value=C,H=setTimeout(()=>{H=null},350)}},I=Fn({s3:{days:0,count:0},s4:{days:0,count:0},hh:{days:0,count:0}});An(h,()=>{const $=new Date(h.value).getMonth(),O=new Date(h.value).getFullYear();I.s3.days=0,I.s3.count=0,I.s4.days=0,I.s4.count=0,I.hh.days=0,I.hh.count=0;for(const[C,D]of Object.entries(i)){const L=new Date(+C);L.getMonth()===$&&L.getFullYear()===O&&(D.s3&&(I.s3.days++,I.s3.count+=D.s3),D.s4&&(I.s4.days++,I.s4.count+=D.s4),D.hh&&D.hh.length>0&&(I.hh.days++,I.hh.count+=D.hh.length))}});let Y=null;const R=$=>{Y||(n1.value=!1,Y=setTimeout(()=>{Y=null},350))},Z=$=>{for(const O in D0)["coner","memo","detail"].includes(O)||(f[O]=$?0:-1)},u1=hn(!1),v1=()=>{u1.value=!u1.value},x1=hn(localStorage.getItem("selectedTheme")||"purple"),P1=hn(!1),j1=()=>{P1.value=!P1.value},V1=$=>{x1.value=$;const O=e[$],C=document.documentElement;C.style.setProperty("--theme-primary",O.primary),C.style.setProperty("--theme-primary-light",O.primaryLight),C.style.setProperty("--theme-primary-dark",O.primaryDark),C.style.setProperty("--theme-accent",O.accent),C.style.setProperty("--theme-secondary",O.secondary),C.style.setProperty("--theme-bg-subtle",O.bgSubtle),C.style.setProperty("--theme-highlight",O.highlight),$==="black"?(C.style.setProperty("--text-color-light","#f9fafb"),C.style.setProperty("--bg-hover","#374151")):(C.style.setProperty("--text-color-light","#333"),C.style.setProperty("--bg-hover",O.bgSubtle)),localStorage.setItem("selectedTheme",$),P1.value=!1};return Y2(()=>{const $=document.querySelector("#calander-body");$.scroll(0,$.scrollHeight*(new Date-new Date(l[0]))/(new Date(l[1])-new Date(l[0]))-$.clientHeight),V1(x1.value),document.addEventListener("click",O=>{const C=document.querySelector("#strategy-select"),D=document.querySelector(".strategy-trigger"),L=document.querySelector("#theme-select"),W=document.querySelector(".theme-trigger");!(C!=null&&C.contains(O.target))&&!(D!=null&&D.contains(O.target))&&(u1.value=!1),!(L!=null&&L.contains(O.target))&&!(W!=null&&W.contains(O.target))&&(P1.value=!1)})}),($,O)=>(l1(),h1(d1,null,[B("div",c4,[B("div",d4,[B("div",f4,[B("div",u4,[Me(e1(new Date(h.value).getFullYear())+"年"+e1(new Date(h.value).getMonth()+1)+"月 ",1),B("span",p4,e1(I.s3.days)+"天, "+e1(I.s3.count)+"次",1),B("span",m4,e1(I.s4.days)+"天, "+e1(I.s4.count)+"次",1),B("span",g4,e1(I.hh.days)+"天, "+e1(I.hh.count)+"次",1)]),O[2]||(O[2]=w3('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),B("div",{id:"calander-body",onScroll:k},[(l1(),h1(d1,null,xn(r,C=>B("div",{class:I1(["calender-item card",[{"current-month":new Date(S1(o)+C*864e5).getMonth()===new Date(h.value).getMonth(),active:d.value==S1(o)+C*864e5}]]),"data-ts":S1(o)+C*864e5,onClick:D=>w(S1(o)+C*864e5),key:C},[B("div",_4,e1(new Date(S1(o)+C*864e5).getDate()),1),E1(a4,{strategy:f,record:S1(i)[S1(o)+C*864e5]},null,8,["strategy","record"])],10,y4)),64))],32),B("div",{class:"strategy-trigger",onClick:v1},O[3]||(O[3]=[B("span",{style:{"font-size":"1.2rem"}},"⚙️",-1)])),B("div",{class:"theme-trigger",onClick:j1},O[4]||(O[4]=[B("span",{style:{"font-size":"1.2rem"}},"🎨",-1)])),B("div",{id:"theme-select",class:I1({visible:P1.value})},[(l1(),h1(d1,null,xn(e,(C,D)=>B("div",{class:I1(["theme-option",{active:x1.value===D}]),key:D,"data-theme":D,onClick:L=>V1(D),title:C.name},[B("div",{class:"theme-color",style:i2({backgroundColor:C.primary})},null,4)],10,b4)),64))],2),B("div",{id:"strategy-select",class:I1({visible:u1.value})},[(l1(!0),h1(d1,null,xn(Object.entries(S1(I2)),C=>(l1(),h1("div",{class:"strat",key:C[0]},[B("div",v4,e1(S1(r4)[C[0]]),1),(l1(!0),h1(d1,null,xn(C[1],(D,L)=>(l1(),h1("div",{class:I1(["option",{active:L===f[C[0]]}]),onClick:W=>f[C[0]]=L,key:D.name},e1(D.name),11,x4))),128)),B("div",{class:I1(["option",{active:f[C[0]]===-1}]),onClick:D=>f[C[0]]=-1}," 不渲染 ",10,S4)]))),128)),B("div",w4,[B("div",{class:"action",onClick:O[0]||(O[0]=C=>Z(!0))},"恢复默认"),B("div",{class:"action",onClick:O[1]||(O[1]=C=>Z(!1))},"关闭渲染")])],2)])]),B("div",{id:"detail",onScroll:R},[(l1(!0),h1(d1,null,xn(Object.entries(S1(i)),([C,D])=>(l1(),h1("div",{class:I1(["detail-card",d.value==C?"active":""]),ref_for:!0,ref:L=>S1(p)[C]=L,key:C,onClick:L=>T(C)},[B("div",T4,[B("span",O4,e1(s(C)),1),B("span",E4,[D.s3?(l1(),h1("span",P4,"小发 "+e1(D.s3),1)):wn("",!0),D.s4?(l1(),h1("span",R4,"轻微 "+e1(D.s4),1)):wn("",!0),D.hh&&D.hh.length?(l1(),h1("span",A4,"恍惚 "+e1(D.hh.length),1)):wn("",!0)])]),O[5]||(O[5]=B("hr",{class:"detail-divider"},null,-1)),D.memo?(l1(),h1("pre",D4,e1(D.memo),1)):wn("",!0),D.coner?(l1(),h1("pre",M4,e1(D.coner[1]),1)):wn("",!0),B("pre",I4,e1(D.detail),1)],10,C4))),128))],32)],64))}};s4(F4).mount("#app");
+22:24洗澡没有`,hh:[10,16,17,21,22],s3:1,s4:2},"2026-08-26":{detail:`没麻，起床有感觉压下去了，而且感觉每天都是，只是今天压下去了，但是前几天明明记录没麻，就不能确定了
+吃早饭我发脾气左手臂麻烫风凉
+12:02小发，咽口水出声我发现的，发完问是鬼压床
+19:13梦境10分
+20:16梦境3，4文峰剪好头
+00:44叫了一声，看监控还好，可能是翻身`,hh:[0,12,19,20],s3:1,s4:2},"2026-08-27":{detail:`没有
+9.19 自己6
+13.28 自己5
+15:40梦境5，打嗝问的
+17.09 自己5
+17.13 自己5
+21:45没20`,hh:[9,13,15,17,21],s3:0,s4:5},"2026-08-28":{detail:`没有
+16:35不舒服，然后打嗝，9分，化学的
+17.04 自己9
+18:25不舒服，物理，有一瞬间觉得奶茶难闻，8分
+20:20不舒服，买好百果园和优衣库，化学，10分，半分钟
+20:26又有了，很难过，看起来很重，我熄火，他让我别说，嘴里一直"嗯嗯啊啊"表示很难受到30末，开始有点抽，20秒左右，在摩托车后座我扶着，抽的范围是头颈及以上，歪头歪眼的。5秒后流口水，叫了不应，应该是没有意识，1分钟恢复，下车，37分出发回家，到家门口，记忆没问题，表达能力有问题，说不出刚才买的水果的中文名字，只能说grape banana西"妹"，去年有一次说小哈是"小花"
+20:54感觉刚才去天街是3天前的事，但知道是刚刚去的，说单从味道还在嘴里，可能是这样，自己又觉得这两天强迫症厉害
+21:14有过8分，短的，20左右，然后回忆今天经历的事，说隐隐约约都是梦的感觉
+21:25又来了一阵子，又打嗝，说还有单丛的味道
+21:27又有了，"梦境里经常出现的画面"，提到是不是叶子很厉害，说明还记得奶茶的样子
+21:42去洗澡，51回来，应该有过，但是不确定
+23:14有过5`,hh:[16,17,18,20,21,23],s2:1,s3:0,s4:9},"2026-08-29":{detail:`没麻
+说有过
+09:51左脚麻，到小腿一半，持续到1.16还有一点
+12.05 自己6
+17:04不舒服，物理的厉害，觉得一模一样，刚打扫好房间，1分钟，9分
+18:54梦境10
+23:43物理`,hh:[9,12,13,17,18,23],s3:0,s4:5},"2026-08-30":{detail:`没麻
+16:36没有重的，5到10的一小时4次
+17:09浓度高，短，6分，最近几次都这样
+18:00梦境5到10
+23:27没有20`,hh:[16,17,18,23],s3:0,s4:6},"2026-08-31":{detail:`没有
+18:34熟悉，8分，今天没20，没10，频率还是高，一小时4次
+20:42梦境10
+20:53不舒服，物理，10分
+21:18左边烫
+21:54梦境5`,hh:[18,20,21],s3:0,s4:7},"2026-09-01":{detail:`不知道有没有麻
+08:05梦境，化学，10
+16:41梦境8分，我和小哈硬买了他不肯买的东西
+19:33梦境10
+20:20洗好澡，忘记了
+20:30梦境，说肯定有10，但是是"化学"，所以不那么难过，持续30秒
+21:23梦境6，因为小哈摸了她的手不洗手`,hh:[8,16,19,20,21],s3:0,s4:5},"2026-09-02":{detail:`没有
+10:50到青浦了，路上没有，后来五月广场兜了圈，再彩虹桥走了一半，然后去万达，大概1230多到的
+12:59鸡皮疙瘩，下雨了，早上就说喉咙烫
+13:33梦境，30分，最重的一次，可能在发烧，截图，说"太难受了"，截图，好一点了，烫
+13:47两边太阳穴都疼
+14:22 在卫生院量了38.6，医生说不太准
+14:24布洛芬，6小时间隔，头涨
+15:22梦境，在路上，人有点往后靠了
+15:25 我停车问，不太能说话，问能不能说话，让说我们去干嘛，说了一下"回家"
+16:07到家，觉得路上睡着，迷迷糊糊，量不出体温高，摸了也不明显，之后也是
+16:26去接了小哈，回来说不记得，肯定发了，待看监控
+18:02 梦境10，之前打嗝多，但说不是，发完后太阳穴和眼睛疼，之前好点了，打嗝频率很高到16分还在打，后来开始玩手机，41还在打
+19:57洗澡的时候，化学，9分
+20:12胀气，大的那种
+20:59太阳穴疼，很疼，肚子涨得放了4个屁，1个嗝
+23:17梦境，20秒说一模一样，说20，截图是40秒，然后好了，我决定吃布洛芬
+23:32太阳穴疼`,hh:[10,12,13,14,15,16,18,19,20,23],s3:2,s4:4},"2026-09-03":{detail:`没有麻，起来不热了，问昨天去什么医院，觉得星期一，要求我直接说，放弃想，我说了昨天的经历后，只能记得一点碎片
+14:13应该没20分的，但是记性感觉不那么好，可能是昨天发作导致的
+17.57 补自己10
+19:08没有20，有10，2次，5的一天5次以内
+19.21 自己6
+20.18 自己20（10加10）
+20:49梦境
+21:01说刚才的梦境10导致的呕吐难受
+21:08梦境，5到10`,hh:[14,17,19,20,21],s3:0,s4:14},"2026-09-04":{detail:`没麻
+12.21 补自己➕20
+16:01有一次20，没有10，5的5次左右
+16:44梦境9
+17:57不舒服，话都不说，有意识，肚子叫，1分钟，10分
+18:10看到ai软件上问的问题，问是不是我问的，然后翻微博，也都不记得
+18:18又梦境了，40秒，10分
+19:07忘记圈圈去年送花
+22:28梦境，熟悉，40秒，说"这几次都这样，比最重的轻一点"，8分`,hh:[12,16,17,18,19,22],s3:2,s4:9},"2026-09-05":{detail:`没麻
+11:10说早上还觉得小哈在放假，没10，低的有的，大概40分钟前心跳快
+18.34 自己4
+18.59 自己5`,hh:[11,18],s3:0,s4:2},"2026-09-06":{detail:`没麻
+12:55梦境3，4，到现在没10
+13:05麻到小手臂
+19:01不舒服，重，50秒，10分，一天没吃饭，晚饭吃很多，吃完又在看搞笑视频
+22:21没有10，但是上次记录了10，应该是忘记了`,hh:[12,13,19,22],s3:0,s4:2},"2026-09-07":{detail:`没麻
+15:01我睡觉起来，他一直打嗝，因为觉得我睡觉了晚上就不睡了
+15:47今天没10，打嗝严重`,hh:[15],s3:0,s4:0},"2026-09-08":{detail:`没麻
+13:18不舒服，然后打嗝，7，8分，在图书馆
+13:48在最美丽吃饭，觉得都梦到过，没有其他不舒服
+23:45动，问怎么了不回，确认是麻了，睡下去的时候打过嗝，问过没20`,hh:[13,23],s3:0,s4:3},"2026-09-09":{detail:`早上没，就昨晚的
+今天也去图书馆
+15:36吃饭聊天，说说过一样的，说刚才吃饭也觉得吃过一样的，然后说放弃了
+17:54不舒服，打嗝，5到10
+23:47今天和昨天的记忆还可以，没有20，10可能有`,hh:[15,17,23],s3:0,s4:3},"2026-09-10":{detail:`起来的时候麻，0点睡的，没拉窗帘，6点醒，具体忘了
+17:26梦境10，说昨天还是今天有20，是我睡觉的时候
+17:58刷牙的时候10
+19:05不舒服了，5
+19:15不舒服了，5分，平时最多的就是这样，梦境的感觉，但知道不是梦境
+19:32梦境，10以上，1分钟不到，算20
+20:35不舒服了，20秒，5
+23:44熟悉，梦境，5`,hh:[0,6,17,19,20,23],s3:1,s4:6},"2026-09-11":{detail:`不知道有没有麻
+09:21因为送小孩的事跟我争了几句，回家睡觉了，我觉得可能有不舒服，因为晚上睡觉时间是够的
+14:25一直打嗝，不吃东西，我吃肉包说难闻，然后睡到快4点
+16:16梦境10
+20:31不舒服，10，今天没20
+21:02吃了口韭菜，10
+23:35梦境4`,hh:[9,14,16,20,21,23],s3:0,s4:4},"2026-09-12":{detail:`不知道有没有麻
+11:16拉屎回来又死样怪气问有没有不舒服说没又蒙着脸睡觉
+13:47梦境6
+16:46不舒服，之前也有2次4分，都是打嗝发现的，这次6`,hh:[11,13,16],s3:0,s4:4},"2026-09-13":{detail:`不知道
+14:17在美兰湖小哈发脾气，5分
+17:32梦境，4，刚吃好饭
+19:16没有20，有10，1次
+19:45不舒服，10分
+21:32洗完澡，不舒服，4，洗澡的时候应该有，10`,hh:[14,17,19,21],s3:0,s4:6},"2026-09-14":{detail:`没麻
+13:47梦境4
+15:15心悸，梦境1，2分
+20:58梦境10
+00:04动了下，转身，有打嗝，所以记录`,hh:[0,13,15,20],s3:0,s4:3},"2026-09-15":{detail:`晚上麻的
+15:55梦境10分，打嗝持续很久，说从1.30睡醒起来就有，一共2次
+20:56今天没20
+23:03梦境5到10`,hh:[1,15,20,23],s3:0,s4:3},"2026-09-16":{detail:`没麻
+09:39打嗝多，心悸，脑子紧
+19:39梦境，说吃的香肠难吃，20分，好的比较快，感觉快有鸡皮疙瘩，有点失重`,hh:[9,19],s3:1,s4:0},"2026-09-17":{detail:`没麻
+07:51梦境10分
+14:09打嗝3分
+15:45梦境10
+17:56梦境10
+17:57又有了，还是打嗝，3分
+18:21梦境8，打嗝
+19:15 梦境10
+20:26梦境4
+今天自学comfyui 打嗝多，这两天还有尿尿多`,hh:[7,14,15,17,18,19,20],s3:0,s4:8},"2026-09-18":{detail:`没麻，今天去医院，还是普通配药
+11:34不舒服了，在蟠龙天地，10
+13:15不舒服，5，在吃陈香贵，南翔
+14:06不舒服，10
+下午和小婷大悦城玩
+14:44有点重（10）
+17:23有点重（10）
+21:13梦境，"非常重的梦境"，没呕吐的感觉，20
+21:24又不舒服了，10，在聊小婷，说给他买蛋糕的时候热泪盈眶，但强调没有泪流满面`,coner:["医院","普通配药"],hh:[11,13,14,17,21],s3:1,s4:6},"2026-09-19":{detail:`没麻
+早上跟小孩不开心有2次6
+18:03梦境20
+18.46 自己10
+18.55 自己20
+19.57 自己20`,hh:[18,19],s3:3,s4:3},"2026-09-20":{detail:`没麻
+早上上学校厕所之类的不开心，就死样怪气睡了一天到8点求着吃点饭
+20:32今天发作多的，忘记有没有20，下午睡觉起来鬼压床流口水
+21:29梦境20，看起来蛮重的
+21:39才吃药，晚吃一小时`,hh:[8,20,21],s3:2,s4:15},"2026-09-21":{detail:`没麻
+11:24聊了下图书馆相关的事后又死样怪气突然不说话
+13:04： 重（20）
+16:16不舒服，10，今天没20
+19:11： 有点重（10）
+18:29最多2次5到10
+小孩咳嗽晚上折磨睡觉差`,hh:[11,13,16,18,19],s3:1,s4:4},"2026-09-22":{detail:`忘记有没有麻
+18.49 自己10
+21:54有1到2次20，时间不知道，10有2次，最近的时间发作不多，其他记不得了`,hh:[18,21],s3:2,s4:2},"2026-09-23":{detail:`没麻
+13.26 梦境10
+15:48今天没20，10有2次，其中1次已经记录
+16:49不舒服，10，化学
+18.40 自己10
+21.12 自己20
+23:18： 特别重（30）
+23:21梦境20`,hh:[13,15,16,18,21,23],s3:3,s4:4},"2026-09-24":{detail:`忘记但猜没有
+15:50梦境5，吃完饭，出门有10，没有20
+16:20心悸，到家
+16:33不舒服，20，还停止吃东西并躺下了
+19:22： 一般（5到10）`,hh:[15,16,19],s3:1,s4:3}},c4={id:"cont-wrap"},d4={id:"calender-wrap"},f4={id:"calender-head"},u4={class:"calender-year"},p4={class:"tag s3"},m4={class:"tag s4"},g4={class:"tag hh"},y4=["data-ts","onClick"],_4={class:"date"},b4=["data-theme","onClick","title"],v4={class:"opt-head"},x4=["onClick"],S4=["onClick"],w4={class:"strat setall"},C4=["onClick"],T4={class:"detail-header"},O4={class:"detail-date"},E4={class:"detail-tags"},P4={key:0,class:"tag s3"},R4={key:1,class:"tag s4"},A4={key:2,class:"tag hh"},D4={key:0,class:"detail-memo"},M4={key:1,class:"detail-coner"},I4={class:"detail-detail"},F4={__name:"App",setup(n){const e={purple:{name:"紫色",primary:"#9966cc",primaryLight:"#f8f5ff",primaryDark:"#7a4fb5",accent:"#e0b3ff",secondary:"#b12bc7",bgSubtle:"#f3f0ff",highlight:"#ffd700"},blue:{name:"蓝色",primary:"#3b82f6",primaryLight:"#eff6ff",primaryDark:"#1d4ed8",accent:"#93c5fd",secondary:"#1e40af",bgSubtle:"#dbeafe",highlight:"#f97316"},red:{name:"红色",primary:"#ef4444",primaryLight:"#fef2f2",primaryDark:"#dc2626",accent:"#fca5a5",secondary:"#dc2626",bgSubtle:"#fee2e2",highlight:"#22c55e"},green:{name:"绿色",primary:"#10b981",primaryLight:"#ecfdf5",primaryDark:"#059669",accent:"#6ee7b7",secondary:"#047857",bgSubtle:"#d1fae5",highlight:"#f59e0b"},yellow:{name:"黄色",primary:"#f59e0b",primaryLight:"#fffbeb",primaryDark:"#d97706",accent:"#fcd34d",secondary:"#d97706",bgSubtle:"#fef3c7",highlight:"#8b5cf6"},black:{name:"黑色",primary:"#1f2937",primaryLight:"#f9fafb",primaryDark:"#111827",accent:"#6b7280",secondary:"#374151",bgSubtle:"#f3f4f6",highlight:"#fbbf24"},white:{name:"白色",primary:"#64748b",primaryLight:"#f8fafc",primaryDark:"#475569",accent:"#94a3b8",secondary:"#475569",bgSubtle:"#f1f5f9",highlight:"#f97316"}},t=$=>$<10?`0${$}`:$,s=$=>{const O=new Date(+$);return`${O.getFullYear()}-${t(O.getMonth()+1)}-${t(O.getDate())}`},i=Object.fromEntries(Object.entries(h4).map(([$,O])=>[new Date($).valueOf(),O])),l=["2024-01-27",s(Date.now()+864e5*21)],r=(new Date(l[1])-new Date(l[0]))/864e5,o=new Date(l[0]).valueOf(),h=hn(new Date(l[0]).valueOf()+864e5*4),f=Fn(D0),d=hn(0);let p={};const w=$=>{d.value=$.toString(),h.value=+$;const O=p[$],C=document.querySelector("#detail");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=C.clientHeight,U=O.offsetHeight,C1=D.top-L.top,K1=C.scrollTop+C1-(W-U)/2;C.scrollTo({top:Math.max(0,K1),behavior:"smooth"})}}},T=$=>{d.value=$.toString(),h.value=+$,setTimeout(()=>{const O=document.querySelector(`.card[data-ts="${$}"]`),C=document.querySelector("#calander-body");if(O&&C){const D=O.getBoundingClientRect(),L=C.getBoundingClientRect();if(D.top<L.top||D.bottom>L.bottom){const W=O.offsetTop,U=C.clientHeight,C1=O.offsetHeight,K1=W-(U-C1)/2;C.scrollTo({top:K1,behavior:"smooth"})}}},0)};let j=0,H=null;const n1=hn(!0),k=$=>{if(!H){const O=$.target;n1.value=j>O.scrollTop,j=O.scrollTop;const C=new Date(l[0]).valueOf()+(new Date(l[1])-new Date(l[0]))/O.scrollHeight*(O.scrollTop+O.clientHeight/2);h.value=C,H=setTimeout(()=>{H=null},350)}},I=Fn({s3:{days:0,count:0},s4:{days:0,count:0},hh:{days:0,count:0}});An(h,()=>{const $=new Date(h.value).getMonth(),O=new Date(h.value).getFullYear();I.s3.days=0,I.s3.count=0,I.s4.days=0,I.s4.count=0,I.hh.days=0,I.hh.count=0;for(const[C,D]of Object.entries(i)){const L=new Date(+C);L.getMonth()===$&&L.getFullYear()===O&&(D.s3&&(I.s3.days++,I.s3.count+=D.s3),D.s4&&(I.s4.days++,I.s4.count+=D.s4),D.hh&&D.hh.length>0&&(I.hh.days++,I.hh.count+=D.hh.length))}});let Y=null;const R=$=>{Y||(n1.value=!1,Y=setTimeout(()=>{Y=null},350))},Z=$=>{for(const O in D0)["coner","memo","detail"].includes(O)||(f[O]=$?0:-1)},u1=hn(!1),v1=()=>{u1.value=!u1.value},x1=hn(localStorage.getItem("selectedTheme")||"purple"),P1=hn(!1),j1=()=>{P1.value=!P1.value},V1=$=>{x1.value=$;const O=e[$],C=document.documentElement;C.style.setProperty("--theme-primary",O.primary),C.style.setProperty("--theme-primary-light",O.primaryLight),C.style.setProperty("--theme-primary-dark",O.primaryDark),C.style.setProperty("--theme-accent",O.accent),C.style.setProperty("--theme-secondary",O.secondary),C.style.setProperty("--theme-bg-subtle",O.bgSubtle),C.style.setProperty("--theme-highlight",O.highlight),$==="black"?(C.style.setProperty("--text-color-light","#f9fafb"),C.style.setProperty("--bg-hover","#374151")):(C.style.setProperty("--text-color-light","#333"),C.style.setProperty("--bg-hover",O.bgSubtle)),localStorage.setItem("selectedTheme",$),P1.value=!1};return Y2(()=>{const $=document.querySelector("#calander-body");$.scroll(0,$.scrollHeight*(new Date-new Date(l[0]))/(new Date(l[1])-new Date(l[0]))-$.clientHeight),V1(x1.value),document.addEventListener("click",O=>{const C=document.querySelector("#strategy-select"),D=document.querySelector(".strategy-trigger"),L=document.querySelector("#theme-select"),W=document.querySelector(".theme-trigger");!(C!=null&&C.contains(O.target))&&!(D!=null&&D.contains(O.target))&&(u1.value=!1),!(L!=null&&L.contains(O.target))&&!(W!=null&&W.contains(O.target))&&(P1.value=!1)})}),($,O)=>(l1(),h1(d1,null,[B("div",c4,[B("div",d4,[B("div",f4,[B("div",u4,[Me(e1(new Date(h.value).getFullYear())+"年"+e1(new Date(h.value).getMonth()+1)+"月 ",1),B("span",p4,e1(I.s3.days)+"天, "+e1(I.s3.count)+"次",1),B("span",m4,e1(I.s4.days)+"天, "+e1(I.s4.count)+"次",1),B("span",g4,e1(I.hh.days)+"天, "+e1(I.hh.count)+"次",1)]),O[2]||(O[2]=w3('<div class="calender-item">周日</div><div class="calender-item">周一</div><div class="calender-item">周二</div><div class="calender-item">周三</div><div class="calender-item">周四</div><div class="calender-item">周五</div><div class="calender-item">周六</div>',7))]),B("div",{id:"calander-body",onScroll:k},[(l1(),h1(d1,null,xn(r,C=>B("div",{class:I1(["calender-item card",[{"current-month":new Date(S1(o)+C*864e5).getMonth()===new Date(h.value).getMonth(),active:d.value==S1(o)+C*864e5}]]),"data-ts":S1(o)+C*864e5,onClick:D=>w(S1(o)+C*864e5),key:C},[B("div",_4,e1(new Date(S1(o)+C*864e5).getDate()),1),E1(a4,{strategy:f,record:S1(i)[S1(o)+C*864e5]},null,8,["strategy","record"])],10,y4)),64))],32),B("div",{class:"strategy-trigger",onClick:v1},O[3]||(O[3]=[B("span",{style:{"font-size":"1.2rem"}},"⚙️",-1)])),B("div",{class:"theme-trigger",onClick:j1},O[4]||(O[4]=[B("span",{style:{"font-size":"1.2rem"}},"🎨",-1)])),B("div",{id:"theme-select",class:I1({visible:P1.value})},[(l1(),h1(d1,null,xn(e,(C,D)=>B("div",{class:I1(["theme-option",{active:x1.value===D}]),key:D,"data-theme":D,onClick:L=>V1(D),title:C.name},[B("div",{class:"theme-color",style:i2({backgroundColor:C.primary})},null,4)],10,b4)),64))],2),B("div",{id:"strategy-select",class:I1({visible:u1.value})},[(l1(!0),h1(d1,null,xn(Object.entries(S1(I2)),C=>(l1(),h1("div",{class:"strat",key:C[0]},[B("div",v4,e1(S1(r4)[C[0]]),1),(l1(!0),h1(d1,null,xn(C[1],(D,L)=>(l1(),h1("div",{class:I1(["option",{active:L===f[C[0]]}]),onClick:W=>f[C[0]]=L,key:D.name},e1(D.name),11,x4))),128)),B("div",{class:I1(["option",{active:f[C[0]]===-1}]),onClick:D=>f[C[0]]=-1}," 不渲染 ",10,S4)]))),128)),B("div",w4,[B("div",{class:"action",onClick:O[0]||(O[0]=C=>Z(!0))},"恢复默认"),B("div",{class:"action",onClick:O[1]||(O[1]=C=>Z(!1))},"关闭渲染")])],2)])]),B("div",{id:"detail",onScroll:R},[(l1(!0),h1(d1,null,xn(Object.entries(S1(i)),([C,D])=>(l1(),h1("div",{class:I1(["detail-card",d.value==C?"active":""]),ref_for:!0,ref:L=>S1(p)[C]=L,key:C,onClick:L=>T(C)},[B("div",T4,[B("span",O4,e1(s(C)),1),B("span",E4,[D.s3?(l1(),h1("span",P4,"小发 "+e1(D.s3),1)):wn("",!0),D.s4?(l1(),h1("span",R4,"轻微 "+e1(D.s4),1)):wn("",!0),D.hh&&D.hh.length?(l1(),h1("span",A4,"恍惚 "+e1(D.hh.length),1)):wn("",!0)])]),O[5]||(O[5]=B("hr",{class:"detail-divider"},null,-1)),D.memo?(l1(),h1("pre",D4,e1(D.memo),1)):wn("",!0),D.coner?(l1(),h1("pre",M4,e1(D.coner[1]),1)):wn("",!0),B("pre",I4,e1(D.detail),1)],10,C4))),128))],32)],64))}};s4(F4).mount("#app");
